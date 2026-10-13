@@ -93,6 +93,24 @@ export default function App(){
  return()=>{cancelAnimationFrame(raf.current);window.removeEventListener('keydown',down);window.removeEventListener('keyup',up);window.removeEventListener('blur',blur);document.removeEventListener('visibilitychange',visibility);engine.held.clear();engine.edge.clear();last.current=0;};},[engine]);
  useEffect(()=>{if(s.status==='victory'&&s.score>best){setBest(s.score);try{localStorage.setItem('wombat-best-v2',String(s.score));}catch{}}},[s.status,s.score,best]);
  useEffect(()=>{engine.sfx=type=>{if(!soundRef.current)return;try{const Context=window.AudioContext||window.webkitAudioContext;audio.current ||=new Context();const ctx=audio.current;void ctx.resume();const o=ctx.createOscillator(),g=ctx.createGain(),at=ctx.currentTime,f=({hurt:120,kill:650,jump:380,dash:250,pickup:820,portal:920,upgrade:710,victory:1000,enemy:160,KeyR:535,KeyX:240})[type]||570;o.type=type==='hurt'?'sawtooth':'triangle';o.frequency.setValueAtTime(f,at);o.frequency.exponentialRampToValueAtTime(f*.72,at+.14);g.gain.setValueAtTime(.025,at);g.gain.exponentialRampToValueAtTime(.001,at+.16);o.connect(g);g.connect(ctx.destination);o.start();o.stop(at+.16);}catch{}};return()=>{engine.sfx=()=>{};};},[engine]);
+ // A quiet, disposable WebAudio atmosphere: one harmonic identity per biome.
+ useEffect(()=>{
+  if(!sound||s.status!=='playing')return;
+  let oscillators=[],gain,lfo;
+  try{
+   const Context=window.AudioContext||window.webkitAudioContext;
+   if(!Context)return;
+   audio.current ||=new Context();const ctx=audio.current;void ctx.resume();
+   const notes=[130.81,164.81,98,196,73.42],base=notes[s.biomeIndex]||130.81;
+   gain=ctx.createGain();gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.linearRampToValueAtTime(.009,ctx.currentTime+.45);gain.connect(ctx.destination);
+   for(const [ratio,type,volume] of [[1,'sine',.7],[1.5,'triangle',.24],[2.02,'sine',.1]]){
+    const osc=ctx.createOscillator(),g=ctx.createGain();
+    osc.type=type;osc.frequency.value=base*ratio;g.gain.value=volume;osc.connect(g);g.connect(gain);osc.start();oscillators.push({osc,g});
+   }
+   lfo=ctx.createOscillator();const depth=ctx.createGain();lfo.frequency.value=.17+s.biomeIndex*.035;depth.gain.value=.003;lfo.connect(depth);depth.connect(gain.gain);lfo.start();oscillators.push({osc:lfo,g:depth});
+  }catch{return;}
+  return()=>{try{const now=audio.current?.currentTime||0;gain?.gain.cancelScheduledValues(now);gain?.gain.setTargetAtTime(.0001,now,.08);for(const {osc,g} of oscillators){osc.stop(now+.3);setTimeout(()=>{try{osc.disconnect();g.disconnect();}catch{}},450);}setTimeout(()=>{try{gain?.disconnect();}catch{}},450);}catch{}};
+ },[sound,s.status,s.biomeIndex]);
  return <div className="app"><header><a className="brand" href="./"><span>✦</span> WOMBAT <small>EL ÚLTIMO HECHICERO</small></a><nav><span>AVENTURA PROCEDURAL</span><button onClick={()=>setSound(v=>!v)} title="Sonido">♫ <small>{sound?'ON':'OFF'}</small></button><button onClick={()=>engine.togglePause()} disabled={s.status!=='playing'&&s.status!=='paused'} title="Pausa (Esc)">Ⅱ</button><button onClick={async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.getElementById('stage').requestFullscreen();}catch{}}} title="Pantalla completa">⛶</button></nav></header><main>
  <div className="overline"><span>✦ LAS ESTRELLAS TE ESPERAN</span><span>RÉCORD ◆ {best.toLocaleString('es-CR')}</span></div>
  <section id="stage"><canvas ref={ref} width={WIDTH} height={HEIGHT} aria-label="Videojuego de plataformas Wombat"/>
