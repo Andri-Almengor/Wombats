@@ -19,13 +19,26 @@ export const UPGRADES=[
 const randomSeed=()=>((Date.now()^Math.floor(Math.random()*4294967296))>>>0)||1;
 export function freshPlayer(){return{x:100,y:FLOOR-70,w:45,h:68,vx:0,vy:0,dir:1,hp:5,maxHp:5,mana:100,maxMana:100,power:1,regen:10,grounded:false,jumps:0,coyote:0,buffer:0,dash:0,dashCd:0,invuln:0,shield:0,cast:0,hit:0,healFx:0,step:0,coins:0,earned:0,spawn:0,upgrades:{health:0,mana:0,power:0,regen:0}};}
 export class GameEngine{
- constructor(notify=()=>{}){this.notify=notify;this.status='menu';this.held=new Set();this.edge=new Set();this.world=null;this.player=freshPlayer();this.biomeIndex=0;this.seed=0;this.elapsed=0;this.kills=0;this.score=0;this.time=0;this.camera=0;this.shake=0;this.projectiles=[];this.hostile=[];this.particles=[];this.banner='';this.bannerTime=0;this.deadTimer=0;this.sfx=()=>{};this.lastPublish=0;}
- snapshot(){const p=this.player,w=this.world;return{status:this.status,seed:this.seed,biomeIndex:this.biomeIndex,biome:w?.biome.name||'',subtitle:w?.biome.subtitle||'',hp:p.hp,maxHp:p.maxHp,mana:Math.floor(p.mana),maxMana:p.maxMana,shield:p.shield,coins:p.coins,score:this.score,kills:this.kills,runes:w?.runes||0,progress:w?Math.floor(100*limit(p.x/w.length,0,1)):0,upgrades:{...p.upgrades},upgradeCosts:Object.fromEntries(UPGRADES.map(u=>[u.id,this.upgradeCost(u.id)])),boss:w?.enemies.find(e=>e.type==='boss'&&e.hp>0)?.hp||0,bossMax:46,banner:this.banner,elapsed:this.elapsed};}
+ constructor(notify=()=>{}){this.notify=notify;this.status='menu';this.held=new Set();this.edge=new Set();this.world=null;this.player=freshPlayer();this.biomeIndex=0;this.seed=0;this.elapsed=0;this.kills=0;this.score=0;this.time=0;this.camera=0;this.shake=0;this.projectiles=[];this.hostile=[];this.particles=[];this.banner='';this.bannerTime=0;this.deadTimer=0;this.sfx=()=>{};this.lastPublish=0;this.selectedSpellKey='KeyQ';this.menuIndex=0;}
+ snapshot(){const p=this.player,w=this.world;return{status:this.status,seed:this.seed,biomeIndex:this.biomeIndex,biome:w?.biome.name||'',subtitle:w?.biome.subtitle||'',hp:p.hp,maxHp:p.maxHp,mana:Math.floor(p.mana),maxMana:p.maxMana,shield:p.shield,coins:p.coins,score:this.score,kills:this.kills,runes:w?.runes||0,progress:w?Math.floor(100*limit(p.x/w.length,0,1)):0,upgrades:{...p.upgrades},upgradeCosts:Object.fromEntries(UPGRADES.map(u=>[u.id,this.upgradeCost(u.id)])),boss:w?.enemies.find(e=>e.type==='boss'&&e.hp>0)?.hp||0,bossMax:46,banner:this.banner,elapsed:this.elapsed,selectedSpellKey:this.selectedSpellKey,menuIndex:this.menuIndex};}
  emit(){this.notify(this.snapshot());}
  makeSeed(){let next=randomSeed();if(next===this.seed)next=(next+0x9e3779b9)>>>0;return next;}
  newRun(){this.seed=this.makeSeed();this.biomeIndex=0;this.player=freshPlayer();this.score=0;this.kills=0;this.elapsed=0;this.time=0;this.held.clear();this.edge.clear();this.loadBiome(0);this.status='playing';this.emit();}
  loadBiome(index){this.biomeIndex=index;this.world=createWorld(index,this.seed);if(!validateWorld(this.world))throw Error('Procedural map not reachable');const p=this.player;p.x=100;p.y=FLOOR-p.h;p.vx=p.vy=0;p.grounded=false;p.jumps=0;p.shield=0;p.invuln=1;p.spawn=1.1;p.mana=p.maxMana;this.camera=0;this.projectiles=[];this.hostile=[];this.particles=[];this.status='playing';this.say(this.world.biome.subtitle,3.4);this.emit();}
  togglePause(){if(this.status==='playing'){this.status='paused';this.held.clear();this.edge.clear();}else if(this.status==='paused')this.status='playing';this.emit();}
+ // Opening the quick selector suspends all simulation and input, without consuming mana.
+ openSpellMenu(){if(this.status!=='playing')return false;this.status='spell-menu';this.menuIndex=SPELLS.findIndex(sp=>sp.key===this.selectedSpellKey);this.menuIndex=Math.max(0,this.menuIndex);this.held.clear();this.edge.clear();this.emit();return true;}
+ moveSpellSelection(delta){if(this.status!=='spell-menu')return false;this.menuIndex=(this.menuIndex+delta+SPELLS.length)%SPELLS.length;this.emit();return true;}
+ selectSpell(key=SPELLS[this.menuIndex]?.key){if(this.status!=='spell-menu'&&! (this.status==='playing'&&SPELLS.some(sp=>sp.key===key)))return false;if(!SPELLS.some(sp=>sp.key===key))return false;this.selectedSpellKey=key;this.menuIndex=SPELLS.findIndex(sp=>sp.key===key);const wasOpen=this.status==='spell-menu';if(wasOpen){this.status='playing';this.held.clear();this.edge.clear();this.say(SPELLS[this.menuIndex].name+' equipado en W',1.8);}this.emit();return true;}
+ closeSpellMenu(){if(this.status!=='spell-menu')return false;this.status='playing';this.held.clear();this.edge.clear();this.emit();return true;}
+ // All arrow directions navigate while the menu is open; Enter applies, S/Escape cancels.
+ menuKey(code){if(this.status!=='spell-menu')return false;
+  if(code==='ArrowLeft'||code==='ArrowUp')this.moveSpellSelection(-1);
+  else if(code==='ArrowRight'||code==='ArrowDown')this.moveSpellSelection(1);
+  else if(code==='Enter'||code==='Space')this.selectSpell();
+  else if(code==='Escape'||code==='KeyS')this.closeSpellMenu();
+  return true;
+ }
  setHeld(key,down){if(down){if(!this.held.has(key))this.edge.add(key);this.held.add(key);}else this.held.delete(key);}
  tap(key){this.edge.add(key);}
  upgradeCost(id){return 100+this.player.upgrades[id]*85;}
@@ -48,7 +61,7 @@ export class GameEngine{
  }
  explode(x,y,r,damage){this.shake=7;this.sparks(x,y,'#ffbd71',30,235);for(const e of this.nearbyEnemies(x,y,r))this.damageEnemy(e,damage,'fire');}
  fireEnemy(e){const p=this.player,dx=p.x-e.x,dy=p.y-e.y;if(Math.abs(dx)>740)return;const l=Math.hypot(dx,dy)||1;const speed=e.type==='boss'?390:e.type==='bomber'?310:270;this.hostile.push({x:e.x+e.w/2,y:e.y+e.h/2,w:17,h:17,vx:dx/l*speed,vy:dy/l*speed,life:3,kind:e.type==='boss'?'eclipse':e.type==='bomber'?'toxic':'dark'});this.sfx('enemy');}
- update(dt){dt=limit(dt,0,.05);this.time+=dt;
+ update(dt){dt=limit(dt,0,.05);if(this.status==='spell-menu'){this.edge.clear();return;}this.time+=dt;
  if(this.status==='dead'){this.deadTimer-=dt;if(this.deadTimer<=0)this.newRun();this.edge.clear();return;}
  if(this.status!=='playing'){this.edge.clear();return;}
  const p=this.player,w=this.world,edge=this.edge,held=this.held;this.elapsed+=dt;
@@ -56,7 +69,7 @@ export class GameEngine{
  this.bannerTime-=dt;if(this.bannerTime<=0)this.banner='';
  this.shake=Math.max(0,this.shake-dt*35);
  p.mana=Math.min(p.maxMana,p.mana+p.regen*dt);
- const dir=Number(held.has('KeyD')||held.has('ArrowRight'))-Number(held.has('KeyA')||held.has('ArrowLeft'));
+ const dir=Number(held.has('ArrowRight'))-Number(held.has('ArrowLeft'));
  if(edge.has('Space')||edge.has('ArrowUp')||edge.has('KeyZ'))p.buffer=.16;
  if(p.grounded){p.coyote=.11;p.jumps=0;}
  if(p.buffer>0&&(p.coyote>0||p.jumps<2)){if(!p.grounded&&p.coyote===0&&p.jumps===0)p.jumps=1;p.vy=p.jumps===0?-650:-600;p.jumps++;p.grounded=false;p.coyote=0;p.buffer=0;this.sparks(p.x+22,p.y+p.h,'#e8e3c0',11,130);this.sfx('jump');}
@@ -76,8 +89,11 @@ export class GameEngine{
  }
  if(p.grounded){p.step+=Math.abs(p.vx)*dt/28;}
  if(p.y>HEIGHT+200){this.damagePlayer(1);p.x=limit(p.x-140,80,w.length-350);p.y=FLOOR-180;p.vy=0;p.invuln=Math.max(p.invuln,.7);}
- // Spells on the left-hand keyboard; Q can be held to fire repeatedly.
- for(const spell of SPELLS){if(edge.has(spell.key)||(spell.key==='KeyQ'&&held.has(spell.key)))this.cast(spell.key);}
+ // Left hand: W uses the equipped spell, A is always Nova, D always heals.
+ // The free spark can be held; other spells trigger once per press.
+ if(edge.has('KeyW')||(this.selectedSpellKey==='KeyQ'&&held.has('KeyW')))this.cast(this.selectedSpellKey);
+ if(edge.has('KeyA'))this.cast('KeyX');
+ if(edge.has('KeyD'))this.cast('KeyR');
  for(const enemy of w.enemies){if(enemy.hp<=0)continue;enemy.hit=Math.max(0,enemy.hit-dt);enemy.slow=Math.max(0,enemy.slow-dt);enemy.attackTimer-=dt;const speed=enemy.slow>0?.43:1;const dx=p.x-enemy.x;
   if(enemy.type==='bat'){enemy.x+=Math.sign(dx)*Math.min(Math.abs(dx),62*dt*speed);enemy.y=FLOOR-171+Math.sin(this.time*3.2+enemy.phase)*38;}
   else if(enemy.type==='boss'){enemy.x=enemy.spawnX+Math.sin(this.time*.9)*110;enemy.dir=dx>0?1:-1;if(enemy.attackTimer<=0){for(let i=-1;i<=1;i++)this.hostile.push({x:enemy.x+enemy.w/2,y:enemy.y+enemy.h/2,w:20,h:20,vx:enemy.dir*(270+Math.abs(i)*30),vy:i*125,life:2.8,kind:'eclipse'});enemy.attackTimer=enemy.hp<enemy.maxHp*.5?1.05:1.75;this.shake=4;}}
