@@ -22,6 +22,9 @@ Los sprites herido/crítico solamente incluyen quieto y caminar: para correr, he
 ## Fallback y seguridad
 `?wombatRender=legacy` activa el render procedural. Si el atlas normal no carga o sus dimensiones no coinciden, el renderer vuelve al dibujo procedural. Para volver: borrar el parámetro y `localStorage.removeItem('wombat:render')`.
 
+## Limpieza adicional de píxeles ajenos (QA visual)
+La inspección de las celdas reveló **86 islas de píxeles procedentes de filas vecinas** que sobresalían por el borde superior, distribuidas en el atlas sano y las variantes. Se eliminaron mediante un filtrado de componentes alfa conectado en 8 direcciones: solo islas desconectadas del cuerpo que tocan la fila superior y terminan antes de y=24; se preserva la figura principal y sus efectos conectados. Incluye limpieza en muerte, hielo, rayo, curación, victoria y recolección. El importador la reproduce de forma determinista a partir del ZIP, sin inventar fotogramas.
+
 ## Regenerar a partir del ZIP
 `python -m pip install Pillow`
 `python scripts/import_wombat_named.py "/ruta/WOMBAT_Sprites_Protagonista_Nombrados(1).zip"`
