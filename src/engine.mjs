@@ -102,6 +102,8 @@ export class GameEngine{
  nearbyEnemies(x,y,distance){return this.world.enemies.filter(e=>e.hp>0&&Math.hypot(e.x+e.w/2-x,e.y+e.h/2-y)<distance).sort((a,b)=>Math.hypot(a.x-x,a.y-y)-Math.hypot(b.x-x,b.y-y));}
  cast(key){if(this.status!=='playing')return;const spell=SPELLS.find(s=>s.key===key);if(!spell)return;const p=this.player;const cost=this.spellCost(key);if(p.cast>0||p.mana<cost){if(p.mana<cost)this.say('Necesitas más energía arcana',.8);return;}if(key==='KeyR'&&p.hp>=p.maxHp)return;
  p.mana-=cost;p.cast=(key==='KeyQ'?.17:key==='KeyF'?.52:.36)*(1-p.upgrades.cooldown*.07);
+ // Cosmetic-only event: replays the correct casting animation for every successful spell.
+ p.visualSpell=key;p.castSequence=(p.castSequence||0)+1;
  const ox=p.x+p.w/2+p.dir*22,oy=p.y+28;const power=p.power;
  if(key==='KeyQ'||key==='KeyW'||key==='KeyE'){
   this.projectiles.push({x:ox,y:oy,w:25,h:18,vx:p.dir*(key==='KeyW'?500:key==='KeyE'?580:760),vy:0,life:key==='KeyE'?1.15:1.05,damage:(key==='KeyE'?2.4+p.upgrades.fire*.45:key==='KeyW'?1.2+p.upgrades.ice*.32:1+p.upgrades.spark*.22)*power,kind:key==='KeyQ'?'spark':key==='KeyW'?'ice':'fire',radius:key==='KeyE'?112:0});
