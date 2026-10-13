@@ -4,9 +4,37 @@ import {WIDTH,HEIGHT} from './world.mjs';
 import {drawGame} from './render.mjs';
 const bestSaved=()=>{try{return Number(localStorage.getItem('wombat-best-v2'))||0;}catch{return 0;}};
 function Bar({current,max,type}){return <div className={'bar '+type}><i style={{width:Math.max(0,Math.min(100,current/max*100))+'%'}}/></div>;}
-function HUD({s}){return <div className="hud"><div className="hud-vitals"><div className="heart-row">{Array.from({length:s.maxHp},(_,i)=><span key={i} className={i>=s.hp?'dim':''}>♥</span>)}</div><label>VIDA <b>{s.hp}/{s.maxHp}</b></label><Bar current={s.hp} max={s.maxHp} type="health"/><label>ENERGÍA ARCANA <b>{s.mana}/{s.maxMana}</b></label><Bar current={s.mana} max={s.maxMana} type="mana"/></div><div className="hud-world"><small>MUNDO {String(s.biomeIndex+1).padStart(2,'0')} / 05</small><strong>{s.biome}</strong><Bar current={s.progress} max={100} type="progress"/></div><div className="hud-score"><b>✧ {s.runes}/3 <small>RUNAS</small></b><b>◆ {s.coins} <small>ESENCIAS</small></b><b>{s.score} <small>PUNTOS</small></b></div></div>;}
+function HUD({s}){return <div className="hud"><div className="hud-vitals"><div className="heart-row">{Array.from({length:s.maxHp},(_,i)=><span key={i} className={i>=s.hp?'dim':''}>♥</span>)}</div><label>VIDA <b>{s.hp}/{s.maxHp}</b></label><Bar current={s.hp} max={s.maxHp} type="health"/><label>ENERGÍA ARCANA <b>{s.mana}/{s.maxMana}</b></label><Bar current={s.mana} max={s.maxMana} type="mana"/></div><div className="hud-world"><small>MUNDO {String(s.biomeIndex+1).padStart(2,'0')} / 05</small><strong>{s.biome}</strong><Bar current={s.progress} max={100} type="progress"/></div><div className="hud-score"><b>✧ {s.runes}/3 <small>RUNAS</small></b>{s.bookRequired&&<b>▣ {s.bookCollected?'✓':'?'} <small>LIBRO</small></b>}<b>◆ {s.coins} <small>ESENCIAS</small></b><b>{s.score} <small>PUNTOS</small></b></div></div>;}
+
+function UpgradePanel({s,engine}){
+ return <div className="overlay upgrade-overlay" role="dialog" aria-modal="true" aria-label="Mejoras del personaje">
+  <div className="upgrade-panel">
+   <div className="upgrade-head"><div><span className="eyebrow">◆ ÁRBOL DE PROGRESIÓN · JUEGO CONGELADO</span><h2>Mejorar al Wombat</h2><p>◆ {s.coins} esencias disponibles · todas las mejoras duran esta aventura.</p></div>
+    <button className="secondary" onClick={()=>engine.closeUpgradeMenu()}>Cerrar · U / Esc ✕</button></div>
+   <div className="upgrade-grid">{UPGRADES.map(u=>{const d=s.upgradeDetails[u.id],cost=s.upgradeCosts[u.id],max=s.upgrades[u.id]>=u.max;
+    return <button type="button" key={u.id} className="upgrade-choice" disabled={max||s.coins<cost} onClick={()=>engine.upgrade(u.id)} title={u.description}>
+     <span className="upgrade-icon">{u.icon}</span><span className="upgrade-data"><strong>{u.label}</strong><small>{u.description}</small>
+      <em>Nivel {s.upgrades[u.id]}/{u.max} · {String(d.current)} → {String(d.next)}</em></span><b>{max?'MAX':'◆ '+cost}</b>
+    </button>;})}</div>
+   <small className="upgrade-foot">Las compras se conservan entre los cinco mundos. Una aventura nueva restablece las mejoras.</small>
+  </div>
+ </div>;
+}
+function Minimap({s}){
+ const map=s.map;if(!map||s.biomeIndex===0)return null;
+ const height=Math.max(1,map.maxY-map.minY),width=Math.max(1,map.width),xx=v=>5+v/width*90,yy=v=>5+(v-map.minY)/height*90;
+ const nodeById=new Map(map.nodes.map(n=>[n.id,n]));
+ return <div className="minimap" aria-label="Mapa de exploración"><small>✧ ORIENTACIÓN</small><svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label="Tu posición, conexiones, objetivos y portal">
+  {map.links.map(([a,b],i)=>{const n=nodeById.get(a),m=nodeById.get(b);return n&&m?<line key={i} x1={xx(n.x)} y1={yy(n.y)} x2={xx(m.x)} y2={yy(m.y)} stroke="#8bb3c3" strokeWidth="1.2" opacity=".5"/>:null;})}
+  {map.nodes.map(n=><circle key={n.id} cx={xx(n.x)} cy={yy(n.y)} r="1.4" fill="#8dadb5"/>)}
+  {map.items.map((it,i)=><circle key={i} cx={xx(it.x)} cy={yy(it.y)} r="2.2" fill={it.type==='book'?'#f7a9da':'#e8d18f'}/>)}
+  <circle cx={xx(map.portal.x)} cy={yy(map.portal.y)} r="3" fill="#bbf0c3"/>
+  <circle cx={xx(map.player.x)} cy={yy(map.player.y)} r="3.2" fill="#ffffff" stroke="#83a8ff" strokeWidth="1.3"/>
+ </svg></div>;
+}
 function Overlay({s,engine,best}){
  if(s.status==='playing')return null;
+ if(s.status==='upgrade-menu')return <UpgradePanel s={s} engine={engine}/>;
  if(s.status==='spell-menu')return <div className="overlay quick-menu-overlay" role="dialog" aria-modal="true" aria-label="Elegir hechizo para W">
   <div className="quick-menu">
    <span className="eyebrow">✦ GRIMORIO RÁPIDO · JUEGO CONGELADO</span>
@@ -23,11 +51,12 @@ function SpellBar({s,engine}){
  const selected=SPELLS.find(spell=>spell.key===s.equippedSpell)||SELECTABLE_SPELLS[0];
  const actions=[{code:'KeyW',spell:selected},{code:'KeyA',spell:SPELLS.find(x=>x.key==='KeyX')},{code:'KeyD',spell:SPELLS.find(x=>x.key==='KeyR')},{code:'KeyR',spell:SPELLS.find(x=>x.key==='KeyC')}];
  return <div className="spells action-spells">{actions.map(({code,spell})=><button key={code} type="button" disabled={s.status!=='playing'} title={spell.name+' — '+spell.description+' ('+spell.cost+' magia)'} className={s.mana<spell.cost?'insufficient':''} onPointerDown={e=>{e.preventDefault();engine.tap(code);}}>
- <span className="spell-key">{code.slice(-1)}</span><span className="spell-icon">{spell.icon}</span><strong>{spell.name}</strong><small>{spell.cost?spell.cost+' MP':'GRATIS'}</small></button>)}
+ <span className="spell-key">{code.slice(-1)}</span><span className="spell-icon">{spell.icon}</span><strong>{spell.name}</strong><small>{engine.spellCost(spell.key)?engine.spellCost(spell.key)+' MP':'GRATIS'} · Nv.{s.upgrades[spell.key==='KeyE'?'fire':spell.key==='KeyW'?'ice':spell.key==='KeyF'?'lightning':spell.key==='KeyX'?'nova':spell.key==='KeyC'?'shield':spell.key==='KeyR'?'heal':'spark']}</small></button>)}
  <button type="button" disabled={s.status!=='playing'} onClick={()=>engine.openSpellMenu()} title="Abrir menú de hechizos (S)"><span className="spell-key">S</span><span className="spell-icon">☷</span><strong>Cambiar W</strong><small>PAUSA</small></button>
+ <button type="button" disabled={s.status!=='playing'} onClick={()=>engine.openUpgradeMenu()} title="Mejoras (U)"><span className="spell-key">U</span><span className="spell-icon">◆</span><strong>Mejoras</strong><small>ÁRBOL</small></button>
  </div>;
 }
-function Shop({s,engine}){return <section className="shop"><div className="shop-intro"><strong>✧ MEJORA A TU HÉROE</strong><small>Derrota enemigos para ganar esencias y comprar mejoras.</small></div><div className="upgrades">{UPGRADES.map((u,i)=>{const max=u.id==='health'?s.maxHp>=10:u.id==='mana'?s.maxMana>=220:u.id==='power'?s.upgrades.power>=6:s.upgrades.regen>=5;return <button key={u.id} disabled={s.status!=='playing'||s.coins<s.upgradeCosts[u.id]||max} onClick={()=>engine.upgrade(u.id)} title={u.description}><span className="up-icon">{u.icon}</span><span><b>{u.label} <em>+{s.upgrades[u.id]}</em></b><small>{u.description}</small></span><span className="price">{max?'MAX':'◆ '+s.upgradeCosts[u.id]}</span><kbd>{i+1}</kbd></button>;})}</div></section>;}
+function Shop({s,engine}){return <section className="shop shop-teaser"><div className="shop-intro"><strong>◆ PROGRESIÓN DEL HECHICERO</strong><small>Consigue esencias derrotando enemigos y explorando rutas secretas. Mejora cada hechizo y atributo desde U.</small></div><button type="button" className="primary" disabled={s.status!=='playing'} onClick={()=>engine.openUpgradeMenu()}>◆ Mejorar personaje · U</button><span>{s.coins} esencias</span></section>;}
 function Touch({engine}){const buttons=[['ArrowLeft','◀','Izquierda'],['ArrowRight','▶','Derecha'],['ShiftLeft','➜','Esquivar'],['Space','⬆','Saltar']];return <div className="touch"><div>{buttons.slice(0,2).map(([code,icon,label])=><button key={code} aria-label={label} onPointerDown={e=>{e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);engine.setHeld(code,true);}} onPointerUp={()=>engine.setHeld(code,false)} onPointerCancel={()=>engine.setHeld(code,false)} onLostPointerCapture={()=>engine.setHeld(code,false)}>{icon}</button>)}</div><div>{buttons.slice(2).map(([code,icon,label])=><button key={code} aria-label={label} onPointerDown={e=>{e.preventDefault();engine.tap(code);}}>{icon}<small>{label}</small></button>)}</div></div>;}
 export default function App(){
  const ref=useRef(null),engineRef=useRef(null),raf=useRef(0),last=useRef(0),acc=useRef(0),soundRef=useRef(false),audio=useRef(null);
@@ -37,6 +66,10 @@ export default function App(){
  const down=e=>{
   if(['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)||e.isComposing)return;
   const code=e.code;
+  if(engine.status==='upgrade-menu'){
+   if(['KeyU','Escape'].includes(code)){e.preventDefault();if(!e.repeat)engine.closeUpgradeMenu();}
+   return;
+  }
   if(engine.status==='spell-menu'){
    if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter','NumpadEnter','Escape','KeyS'].includes(code)){
     e.preventDefault();if(e.repeat)return;
@@ -47,10 +80,11 @@ export default function App(){
    }
    return;
   }
+  if(code==='KeyU'&&engine.status==='playing'){e.preventDefault();if(!e.repeat)engine.openUpgradeMenu();return;}
   if(code==='KeyS'&&engine.status==='playing'){e.preventDefault();if(!e.repeat)engine.openSpellMenu();return;}
   if(keys.has(code)&&engine.status==='playing'){e.preventDefault();if(!e.repeat)engine.setHeld(code,true);}
   else if(['Escape','KeyP'].includes(code)&&!e.repeat){e.preventDefault();engine.togglePause();}
-  else if(/^Digit[1-4]$/.test(code)&&!e.repeat&&engine.status==='playing'){e.preventDefault();engine.upgrade(UPGRADES[Number(code.slice(-1))-1].id);}
+  
  };
  const up=e=>engine.setHeld(e.code,false);
  const blur=()=>{engine.held.clear();engine.edge.clear();if(engine.status==='playing')engine.togglePause();};
@@ -63,10 +97,11 @@ export default function App(){
  <div className="overline"><span>✦ LAS ESTRELLAS TE ESPERAN</span><span>RÉCORD ◆ {best.toLocaleString('es-CR')}</span></div>
  <section id="stage"><canvas ref={ref} width={WIDTH} height={HEIGHT} aria-label="Videojuego de plataformas Wombat"/>
  {s.status!=='menu'&&<HUD s={s}/>}
+ {s.status==='playing'&&<Minimap s={s}/>} 
  {s.status==='playing'&&s.banner&&<div className="toast">{s.banner}</div>}
  {s.boss>0&&<div className="boss"><span>☽ REY DEL ECLIPSE</span><div><i style={{width:(100*s.boss/s.bossMax)+'%'}}/></div></div>}
  {s.status==='playing'&&<Touch engine={engine}/>}<Overlay s={s} engine={engine} best={best}/></section>
  <div className="grimoire"><div><b>GRIMORIO</b><small>S cambia el hechizo W</small></div><SpellBar s={s} engine={engine}/></div><Shop s={s} engine={engine}/>
- <div className="instructions"><span><kbd>←</kbd><kbd>→</kbd> Mover</span><span><kbd>ESPACIO</kbd> Salto doble</span><span><kbd>SHIFT</kbd> Esquiva</span><span><kbd>W</kbd> Hechizo elegido</span><span><kbd>A</kbd> Nova</span><span><kbd>D</kbd> Sanar</span><span><kbd>R</kbd> Escudo</span><span><kbd>S</kbd> Cambiar hechizo</span><span><kbd>1</kbd>–<kbd>4</kbd> Mejoras</span><span><kbd>ESC</kbd> Pausa</span></div>
+ <div className="instructions"><span><kbd>←</kbd><kbd>→</kbd> Mover</span><span><kbd>ESPACIO</kbd> Salto doble</span><span><kbd>SHIFT</kbd> Esquiva</span><span><kbd>W</kbd> Hechizo elegido</span><span><kbd>A</kbd> Nova</span><span><kbd>D</kbd> Sanar</span><span><kbd>R</kbd> Escudo</span><span><kbd>S</kbd> Cambiar hechizo</span><span><kbd>U</kbd> Mejoras</span><span><kbd>ESC</kbd> Pausa</span></div>
  <footer><span>CADA DERROTA ABRE UN MUNDO DIFERENTE.</span><span>React + Canvas · 5 biomas · 7 hechizos</span></footer></main></div>;
 }
