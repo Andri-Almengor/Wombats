@@ -10,6 +10,8 @@ export const SPELLS=[
  {key:'KeyC',name:'Escudo',icon:'⬡',cost:25,description:'Protección temporal'},
  {key:'KeyX',name:'Nova',icon:'✺',cost:50,description:'Ataque circular'}
 ];
+// These four offensive spells can be equipped on W. A, D and R are always fixed.
+export const SELECTABLE_SPELLS=SPELLS.filter(spell=>['KeyQ','KeyW','KeyE','KeyF'].includes(spell.key));
 export const UPGRADES=[
  {id:'health',label:'Corazones',icon:'♥',description:'Aumenta tu vida máxima'},
  {id:'mana',label:'Magia',icon:'✦',description:'Más energía arcana'},
@@ -19,12 +21,17 @@ export const UPGRADES=[
 const randomSeed=()=>((Date.now()^Math.floor(Math.random()*4294967296))>>>0)||1;
 export function freshPlayer(){return{x:100,y:FLOOR-70,w:45,h:68,vx:0,vy:0,dir:1,hp:5,maxHp:5,mana:100,maxMana:100,power:1,regen:10,grounded:false,jumps:0,coyote:0,buffer:0,dash:0,dashCd:0,invuln:0,shield:0,cast:0,hit:0,healFx:0,step:0,coins:0,earned:0,spawn:0,upgrades:{health:0,mana:0,power:0,regen:0}};}
 export class GameEngine{
- constructor(notify=()=>{}){this.notify=notify;this.status='menu';this.held=new Set();this.edge=new Set();this.world=null;this.player=freshPlayer();this.biomeIndex=0;this.seed=0;this.elapsed=0;this.kills=0;this.score=0;this.time=0;this.camera=0;this.shake=0;this.projectiles=[];this.hostile=[];this.particles=[];this.banner='';this.bannerTime=0;this.deadTimer=0;this.sfx=()=>{};this.lastPublish=0;}
- snapshot(){const p=this.player,w=this.world;return{status:this.status,seed:this.seed,biomeIndex:this.biomeIndex,biome:w?.biome.name||'',subtitle:w?.biome.subtitle||'',hp:p.hp,maxHp:p.maxHp,mana:Math.floor(p.mana),maxMana:p.maxMana,shield:p.shield,coins:p.coins,score:this.score,kills:this.kills,runes:w?.runes||0,progress:w?Math.floor(100*limit(p.x/w.length,0,1)):0,upgrades:{...p.upgrades},upgradeCosts:Object.fromEntries(UPGRADES.map(u=>[u.id,this.upgradeCost(u.id)])),boss:w?.enemies.find(e=>e.type==='boss'&&e.hp>0)?.hp||0,bossMax:46,banner:this.banner,elapsed:this.elapsed};}
+ constructor(notify=()=>{}){this.notify=notify;this.status='menu';this.equippedSpell='KeyQ';this.menuIndex=0;this.held=new Set();this.edge=new Set();this.world=null;this.player=freshPlayer();this.biomeIndex=0;this.seed=0;this.elapsed=0;this.kills=0;this.score=0;this.time=0;this.camera=0;this.shake=0;this.projectiles=[];this.hostile=[];this.particles=[];this.banner='';this.bannerTime=0;this.deadTimer=0;this.sfx=()=>{};this.lastPublish=0;}
+ snapshot(){const p=this.player,w=this.world;return{status:this.status,equippedSpell:this.equippedSpell,menuIndex:this.menuIndex,seed:this.seed,biomeIndex:this.biomeIndex,biome:w?.biome.name||'',subtitle:w?.biome.subtitle||'',hp:p.hp,maxHp:p.maxHp,mana:Math.floor(p.mana),maxMana:p.maxMana,shield:p.shield,coins:p.coins,score:this.score,kills:this.kills,runes:w?.runes||0,progress:w?Math.floor(100*limit(p.x/w.length,0,1)):0,upgrades:{...p.upgrades},upgradeCosts:Object.fromEntries(UPGRADES.map(u=>[u.id,this.upgradeCost(u.id)])),boss:w?.enemies.find(e=>e.type==='boss'&&e.hp>0)?.hp||0,bossMax:46,banner:this.banner,elapsed:this.elapsed};}
  emit(){this.notify(this.snapshot());}
  makeSeed(){let next=randomSeed();if(next===this.seed)next=(next+0x9e3779b9)>>>0;return next;}
- newRun(){this.seed=this.makeSeed();this.biomeIndex=0;this.player=freshPlayer();this.score=0;this.kills=0;this.elapsed=0;this.time=0;this.held.clear();this.edge.clear();this.loadBiome(0);this.status='playing';this.emit();}
+ newRun(){this.equippedSpell='KeyQ';this.menuIndex=0;this.seed=this.makeSeed();this.biomeIndex=0;this.player=freshPlayer();this.score=0;this.kills=0;this.elapsed=0;this.time=0;this.held.clear();this.edge.clear();this.loadBiome(0);this.status='playing';this.emit();}
  loadBiome(index){this.biomeIndex=index;this.world=createWorld(index,this.seed);if(!validateWorld(this.world))throw Error('Procedural map not reachable');const p=this.player;p.x=100;p.y=FLOOR-p.h;p.vx=p.vy=0;p.grounded=false;p.jumps=0;p.shield=0;p.invuln=1;p.spawn=1.1;p.mana=p.maxMana;this.camera=0;this.projectiles=[];this.hostile=[];this.particles=[];this.status='playing';this.say(this.world.biome.subtitle,3.4);this.emit();}
+ openSpellMenu(){if(this.status!=='playing')return false;this.status='spell-menu';this.menuIndex=Math.max(0,SELECTABLE_SPELLS.findIndex(spell=>spell.key===this.equippedSpell));this.held.clear();this.edge.clear();this.emit();return true;}
+ navigateSpellMenu(direction){if(this.status!=='spell-menu')return false;const size=SELECTABLE_SPELLS.length;this.menuIndex=(this.menuIndex+direction%size+size)%size;this.emit();return true;}
+ selectSpell(key){if(this.status!=='spell-menu'||!SELECTABLE_SPELLS.some(spell=>spell.key===key))return false;this.equippedSpell=key;this.status='playing';this.held.clear();this.edge.clear();this.say('Hechizo equipado en W: '+SELECTABLE_SPELLS.find(spell=>spell.key===key).name,2);this.emit();return true;}
+ confirmSpellMenu(){if(this.status!=='spell-menu')return false;return this.selectSpell(SELECTABLE_SPELLS[this.menuIndex].key);}
+ closeSpellMenu(){if(this.status!=='spell-menu')return false;this.status='playing';this.held.clear();this.edge.clear();this.emit();return true;}
  togglePause(){if(this.status==='playing'){this.status='paused';this.held.clear();this.edge.clear();}else if(this.status==='paused')this.status='playing';this.emit();}
  setHeld(key,down){if(down){if(!this.held.has(key))this.edge.add(key);this.held.add(key);}else this.held.delete(key);}
  tap(key){this.edge.add(key);}
@@ -48,7 +55,10 @@ export class GameEngine{
  }
  explode(x,y,r,damage){this.shake=7;this.sparks(x,y,'#ffbd71',30,235);for(const e of this.nearbyEnemies(x,y,r))this.damageEnemy(e,damage,'fire');}
  fireEnemy(e){const p=this.player,dx=p.x-e.x,dy=p.y-e.y;if(Math.abs(dx)>740)return;const l=Math.hypot(dx,dy)||1;const speed=e.type==='boss'?390:e.type==='bomber'?310:270;this.hostile.push({x:e.x+e.w/2,y:e.y+e.h/2,w:17,h:17,vx:dx/l*speed,vy:dy/l*speed,life:3,kind:e.type==='boss'?'eclipse':e.type==='bomber'?'toxic':'dark'});this.sfx('enemy');}
- update(dt){dt=limit(dt,0,.05);this.time+=dt;
+ update(dt){dt=limit(dt,0,.05);
+ // Completely freeze physics, scenery animation, enemy AI, projectiles and timers in menus.
+ if(this.status==='spell-menu'||this.status==='paused'||this.status==='menu'||this.status==='victory'){this.edge.clear();return;}
+ this.time+=dt;
  if(this.status==='dead'){this.deadTimer-=dt;if(this.deadTimer<=0)this.newRun();this.edge.clear();return;}
  if(this.status!=='playing'){this.edge.clear();return;}
  const p=this.player,w=this.world,edge=this.edge,held=this.held;this.elapsed+=dt;
@@ -56,7 +66,7 @@ export class GameEngine{
  this.bannerTime-=dt;if(this.bannerTime<=0)this.banner='';
  this.shake=Math.max(0,this.shake-dt*35);
  p.mana=Math.min(p.maxMana,p.mana+p.regen*dt);
- const dir=Number(held.has('KeyD')||held.has('ArrowRight'))-Number(held.has('KeyA')||held.has('ArrowLeft'));
+ const dir=Number(held.has('ArrowRight'))-Number(held.has('ArrowLeft'));
  if(edge.has('Space')||edge.has('ArrowUp')||edge.has('KeyZ'))p.buffer=.16;
  if(p.grounded){p.coyote=.11;p.jumps=0;}
  if(p.buffer>0&&(p.coyote>0||p.jumps<2)){if(!p.grounded&&p.coyote===0&&p.jumps===0)p.jumps=1;p.vy=p.jumps===0?-650:-600;p.jumps++;p.grounded=false;p.coyote=0;p.buffer=0;this.sparks(p.x+22,p.y+p.h,'#e8e3c0',11,130);this.sfx('jump');}
@@ -76,8 +86,11 @@ export class GameEngine{
  }
  if(p.grounded){p.step+=Math.abs(p.vx)*dt/28;}
  if(p.y>HEIGHT+200){this.damagePlayer(1);p.x=limit(p.x-140,80,w.length-350);p.y=FLOOR-180;p.vy=0;p.invuln=Math.max(p.invuln,.7);}
- // Spells on the left-hand keyboard; Q can be held to fire repeatedly.
- for(const spell of SPELLS){if(edge.has(spell.key)||(spell.key==='KeyQ'&&held.has(spell.key)))this.cast(spell.key);}
+ // The left hand controls four abilities; W casts whichever offensive spell the player equipped.
+ if(edge.has('KeyW')||held.has('KeyW'))this.cast(this.equippedSpell);
+ if(edge.has('KeyA'))this.cast('KeyX'); // Nova
+ if(edge.has('KeyD'))this.cast('KeyR'); // Heal
+ if(edge.has('KeyR'))this.cast('KeyC'); // Shield
  for(const enemy of w.enemies){if(enemy.hp<=0)continue;enemy.hit=Math.max(0,enemy.hit-dt);enemy.slow=Math.max(0,enemy.slow-dt);enemy.attackTimer-=dt;const speed=enemy.slow>0?.43:1;const dx=p.x-enemy.x;
   if(enemy.type==='bat'){enemy.x+=Math.sign(dx)*Math.min(Math.abs(dx),62*dt*speed);enemy.y=FLOOR-171+Math.sin(this.time*3.2+enemy.phase)*38;}
   else if(enemy.type==='boss'){enemy.x=enemy.spawnX+Math.sin(this.time*.9)*110;enemy.dir=dx>0?1:-1;if(enemy.attackTimer<=0){for(let i=-1;i<=1;i++)this.hostile.push({x:enemy.x+enemy.w/2,y:enemy.y+enemy.h/2,w:20,h:20,vx:enemy.dir*(270+Math.abs(i)*30),vy:i*125,life:2.8,kind:'eclipse'});enemy.attackTimer=enemy.hp<enemy.maxHp*.5?1.05:1.75;this.shake=4;}}
