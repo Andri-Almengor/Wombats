@@ -97,3 +97,17 @@ test('W fires equipped ice, fire, lightning and spark; the menu persists between
  g.newRun();
  assert.equal(g.equippedSpell,'KeyQ','new adventures start on spark');
 });
+
+
+test('up arrow and Space both trigger first and double jumps',()=>{
+ for(const key of ['ArrowUp','Space']){
+  const g=new GameEngine();g.newRun();g.player.invuln=3;
+  g.tap(key);g.update(1/60);
+  assert.ok(g.player.vy<0, key+' triggers the initial jump');
+  assert.equal(g.player.jumps,1);
+  g.tap(key);g.update(1/60);
+  assert.equal(g.player.jumps,2, key+' triggers the double jump');
+  g.tap(key);g.update(1/60);
+  assert.equal(g.player.jumps,2,'third jump must not be allowed');
+ }
+});
