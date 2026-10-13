@@ -1,4 +1,5 @@
 import {WIDTH,HEIGHT,FLOOR} from './world.mjs';
+import {drawWombatSprite} from './wombat-sprites.mjs';
 const TAU=Math.PI*2;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 function ellipse(c,x,y,rx,ry,color){c.fillStyle=color;c.beginPath();c.ellipse(x,y,Math.max(.1,rx),Math.max(.1,ry),0,0,TAU);c.fill();}
@@ -40,7 +41,7 @@ function decorations(c,w,camera,t){for(const d of w.decor){if(d.x<camera-180||d.
  else if(d.type==='ruins'){round(c,d.x,(d.y||FLOOR)-105,38,105,2,'#adb5c1');round(c,d.x-25,(d.y||FLOOR)-115,89,16,2,'#dad9d0');}
  else if(d.type==='banners'){round(c,d.x,FLOOR-180,18,180,3,'#76617b');poly(c,[[d.x+18,FLOOR-172],[d.x+88,FLOOR-167],[d.x+63,FLOOR-122],[d.x+18,FLOOR-115]],'#ad738d');}
  }}
-function wombat(c,p,t,mode='playing',deathT=0){const hpFraction=p.hp/p.maxHp,hurt=hpFraction<.7,bad=hpFraction<.35;
+function proceduralWombat(c,p,t,mode='playing',deathT=0){const hpFraction=p.hp/p.maxHp,hurt=hpFraction<.7,bad=hpFraction<.35;
  c.save();c.translate(p.x+p.w/2,p.y+p.h*.56);c.scale(p.dir,1);
  if(p.spawn>0){c.translate(0,-p.spawn*42);c.globalAlpha*=clamp(1-p.spawn/1.25,.15,1);glow(c,0,0,90,'#e8f3c366');}
  if(mode==='dead'){c.rotate(clamp(deathT,0,1)*-.95);c.translate(0,clamp(deathT,0,1)*18);}
@@ -87,6 +88,10 @@ function wombat(c,p,t,mode='playing',deathT=0){const hpFraction=p.hp/p.maxHp,hur
   if(p.upgrades?.power>0)glow(c,32+swing,-47,24+p.upgrades.power*9,'#ffdca444');
  if(p.healFx<0){c.strokeStyle='#d9c6ff';c.lineWidth=6;c.beginPath();c.arc(0,0,(.6+p.healFx)*290,0,TAU);c.stroke();}
  c.restore();
+}
+function wombat(c,p,t,mode='playing',deathT=0){
+ if(drawWombatSprite(c,p,t,mode,deathT))return;
+ proceduralWombat(c,p,t,mode,deathT);
 }
 function enemy(c,e,t){if(e.hp<=0)return;c.save();c.translate(e.x+e.w/2,e.y+e.h/2);if(e.hit>0)c.globalAlpha=.58;
  const a=Math.sin(t*5+e.phase),dir=e.dir||1;
