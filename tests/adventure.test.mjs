@@ -107,3 +107,15 @@ test('eclipse phase volleys issue a visible warning before projectiles',()=>{
  for(let j=0;j<5;j++)g.update(.05);
  assert.equal(boss.telegraph,0);assert.ok(g.hostile.length>=3,'warning resolves into phase volley');
 });
+
+test('secret discovery grants essence once and reveals explored map only',()=>{
+ const g=new GameEngine();g.newRun();const world=g.world;
+ const secret=world.platforms.find(p=>p.secret);assert.ok(secret);
+ const hiddenBefore=g.snapshot().map.nodes.length;
+ assert.ok(hiddenBefore<world.platforms.length);
+ const oldCoins=g.player.coins;g.player.invuln=100;g.player.x=secret.x+secret.w/2;g.player.y=secret.y-68;
+ g.update(1/60);assert.ok(g.player.coins>=oldCoins+30);
+ const rewarded=g.player.coins;
+ g.update(1/60);assert.equal(g.player.coins,rewarded,'no reward for revisiting');
+ assert.ok(g.snapshot().map.nodes.some(n=>n.id===secret.id));
+});
