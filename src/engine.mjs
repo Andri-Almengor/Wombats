@@ -17,14 +17,14 @@ export const UPGRADES=[
  {id:'regen',label:'Recarga',icon:'◈',description:'Regenera magia antes'}
 ];
 const randomSeed=()=>((Date.now()^Math.floor(Math.random()*4294967296))>>>0)||1;
-export function freshPlayer(){return{x:100,y:FLOOR-70,w:45,h:68,vx:0,vy:0,dir:1,hp:5,maxHp:5,mana:100,maxMana:100,power:1,regen:10,grounded:false,jumps:0,coyote:0,buffer:0,dash:0,dashCd:0,invuln:0,shield:0,cast:0,hit:0,healFx:0,step:0,coins:0,earned:0,upgrades:{health:0,mana:0,power:0,regen:0}};}
+export function freshPlayer(){return{x:100,y:FLOOR-70,w:45,h:68,vx:0,vy:0,dir:1,hp:5,maxHp:5,mana:100,maxMana:100,power:1,regen:10,grounded:false,jumps:0,coyote:0,buffer:0,dash:0,dashCd:0,invuln:0,shield:0,cast:0,hit:0,healFx:0,step:0,coins:0,earned:0,spawn:0,upgrades:{health:0,mana:0,power:0,regen:0}};}
 export class GameEngine{
  constructor(notify=()=>{}){this.notify=notify;this.status='menu';this.held=new Set();this.edge=new Set();this.world=null;this.player=freshPlayer();this.biomeIndex=0;this.seed=0;this.elapsed=0;this.kills=0;this.score=0;this.time=0;this.camera=0;this.shake=0;this.projectiles=[];this.hostile=[];this.particles=[];this.banner='';this.bannerTime=0;this.deadTimer=0;this.sfx=()=>{};this.lastPublish=0;}
  snapshot(){const p=this.player,w=this.world;return{status:this.status,seed:this.seed,biomeIndex:this.biomeIndex,biome:w?.biome.name||'',subtitle:w?.biome.subtitle||'',hp:p.hp,maxHp:p.maxHp,mana:Math.floor(p.mana),maxMana:p.maxMana,shield:p.shield,coins:p.coins,score:this.score,kills:this.kills,runes:w?.runes||0,progress:w?Math.floor(100*limit(p.x/w.length,0,1)):0,upgrades:{...p.upgrades},upgradeCosts:Object.fromEntries(UPGRADES.map(u=>[u.id,this.upgradeCost(u.id)])),boss:w?.enemies.find(e=>e.type==='boss'&&e.hp>0)?.hp||0,bossMax:46,banner:this.banner,elapsed:this.elapsed};}
  emit(){this.notify(this.snapshot());}
  makeSeed(){let next=randomSeed();if(next===this.seed)next=(next+0x9e3779b9)>>>0;return next;}
  newRun(){this.seed=this.makeSeed();this.biomeIndex=0;this.player=freshPlayer();this.score=0;this.kills=0;this.elapsed=0;this.time=0;this.held.clear();this.edge.clear();this.loadBiome(0);this.status='playing';this.emit();}
- loadBiome(index){this.biomeIndex=index;this.world=createWorld(index,this.seed);if(!validateWorld(this.world))throw Error('Procedural map not reachable');const p=this.player;p.x=100;p.y=FLOOR-p.h;p.vx=p.vy=0;p.grounded=false;p.jumps=0;p.shield=0;p.invuln=1;p.mana=p.maxMana;this.camera=0;this.projectiles=[];this.hostile=[];this.particles=[];this.status='playing';this.say(this.world.biome.subtitle,3.4);this.emit();}
+ loadBiome(index){this.biomeIndex=index;this.world=createWorld(index,this.seed);if(!validateWorld(this.world))throw Error('Procedural map not reachable');const p=this.player;p.x=100;p.y=FLOOR-p.h;p.vx=p.vy=0;p.grounded=false;p.jumps=0;p.shield=0;p.invuln=1;p.spawn=1.1;p.mana=p.maxMana;this.camera=0;this.projectiles=[];this.hostile=[];this.particles=[];this.status='playing';this.say(this.world.biome.subtitle,3.4);this.emit();}
  togglePause(){if(this.status==='playing'){this.status='paused';this.held.clear();this.edge.clear();}else if(this.status==='paused')this.status='playing';this.emit();}
  setHeld(key,down){if(down){if(!this.held.has(key))this.edge.add(key);this.held.add(key);}else this.held.delete(key);}
  tap(key){this.edge.add(key);}
@@ -52,7 +52,7 @@ export class GameEngine{
  if(this.status==='dead'){this.deadTimer-=dt;if(this.deadTimer<=0)this.newRun();this.edge.clear();return;}
  if(this.status!=='playing'){this.edge.clear();return;}
  const p=this.player,w=this.world,edge=this.edge,held=this.held;this.elapsed+=dt;
- for(const key of ['invuln','shield','hit','cast','dash','dashCd','coyote','buffer','healFx']){if(key==='healFx'){p.healFx+=(p.healFx>0?-1:1)*dt;if(Math.abs(p.healFx)<dt)p.healFx=0;}else p[key]=Math.max(0,p[key]-dt);}
+ for(const key of ['invuln','shield','hit','cast','dash','dashCd','coyote','buffer','spawn','healFx']){if(key==='healFx'){p.healFx+=(p.healFx>0?-1:1)*dt;if(Math.abs(p.healFx)<dt)p.healFx=0;}else p[key]=Math.max(0,p[key]-dt);}
  this.bannerTime-=dt;if(this.bannerTime<=0)this.banner='';
  this.shake=Math.max(0,this.shake-dt*35);
  p.mana=Math.min(p.maxMana,p.mana+p.regen*dt);
@@ -65,6 +65,7 @@ export class GameEngine{
  if(p.dash===0){const target=dir*310;p.vx+=(target-p.vx)*Math.min(1,dt*(p.grounded?16:7));}
  p.vy+=w.biome.gravity*dt;
  if(w.biome.wind&&p.dash===0&&!p.grounded)p.vx+=Math.sin(this.time*1.5+w.seed)*w.biome.wind*dt;
+ for(const platform of w.platforms)if(platform.kind!=='ground'&&platform.move)platform.y=platform.baseY+Math.sin(this.time*1.3+platform.phase)*platform.move;
  const oldBottom=p.y+p.h,oldTop=p.y;
  p.x=limit(p.x+p.vx*dt,0,w.length-p.w);p.y+=p.vy*dt;p.grounded=false;
  // Solid ground and moving platforms. Upward movement passes through platform undersides.
