@@ -135,8 +135,17 @@ export class GameEngine{
  p.vy+=w.biome.gravity*dt;
  if(w.biome.wind&&p.dash===0&&!p.grounded)p.vx+=Math.sin(this.time*1.5+w.seed)*w.biome.wind*dt;
  for(const platform of w.platforms)if(platform.kind!=='ground'&&platform.move)platform.y=platform.baseY+Math.sin(this.time*1.3+platform.phase)*platform.move;
- const oldBottom=p.y+p.h,oldTop=p.y;
+ const oldBottom=p.y+p.h,oldTop=p.y,oldX=p.x;
  p.x=limit(p.x+p.vx*dt,0,w.length-p.w);p.y+=p.vy*dt;p.grounded=false;
+ // Solid cave barriers close off non-connected passages and have real side collision.
+ for(const wall of w.walls||[]){
+  if(!touches(p,wall))continue;
+  if(p.vx>0&&oldX+p.w<=wall.x+4){p.x=wall.x-p.w;p.vx=0;}
+  else if(p.vx<0&&oldX>=wall.x+wall.w-4){p.x=wall.x+wall.w;p.vx=0;}
+  else if(p.vy>=0&&oldBottom<=wall.y+5){p.y=wall.y-p.h;p.vy=0;p.grounded=true;}
+  else if(p.vy<0&&oldTop>=wall.y+wall.h-5){p.y=wall.y+wall.h;p.vy=0;}
+  else{p.x=oldX;p.vx=0;}
+ }
  // Solid ground and moving platforms. Upward movement passes through platform undersides.
  for(const platform of w.platforms){if(p.x+p.w<=platform.x+5||p.x>=platform.x+platform.w-5)continue;
   const wasTop=oldBottom<=platform.y+11,willLand=p.vy>=0&&wasTop&&p.y+p.h>=platform.y&&p.y+p.h<=platform.y+45;
@@ -157,11 +166,16 @@ export class GameEngine{
   const locked=enemy.freeze>0||enemy.stun>0;enemy.attackTimer-=locked?0:dt*(enemy.slow>0?.55:1);
   const speed=locked?0:enemy.slow>0?Math.max(.16,.43-p.upgrades.ice*.045):1;const dx=p.x-enemy.x;
   if(enemy.type==='bat'){enemy.x+=Math.sign(dx)*Math.min(Math.abs(dx),62*dt*speed);enemy.y=enemy.spawnY+Math.sin(this.time*3.2+enemy.phase)*38;}
-  else if(enemy.type==='boss'){enemy.x=enemy.spawnX+Math.sin(this.time*.9)*110;enemy.dir=dx>0?1:-1;if(enemy.attackTimer<=0&&!locked){
-   const phase=enemy.hp/enemy.maxHp<.33?3:enemy.hp/enemy.maxHp<.67?2:1;
-   for(let i=-phase;i<=phase;i++)this.hostile.push({x:enemy.x+enemy.w/2,y:enemy.y+enemy.h/2,w:20,h:20,vx:enemy.dir*(250+Math.abs(i)*30),vy:i*92,life:2.8,kind:'eclipse'});
-   enemy.attackTimer=phase===3?.9:phase===2?1.25:1.75;enemy.telegraph=.2;this.shake=4;
-  }}
+  else if(enemy.type==='boss'){enemy.x=enemy.spawnX+Math.sin(this.time*.9)*110;enemy.dir=dx>0?1:-1;
+   if(enemy.telegraph>0){
+    enemy.telegraph=Math.max(0,enemy.telegraph-dt);
+    if(enemy.telegraph===0){const phase=enemy.queuedPhase||1;for(let i=-phase;i<=phase;i++)this.hostile.push({x:enemy.x+enemy.w/2,y:enemy.y+enemy.h/2,w:20,h:20,vx:enemy.dir*(250+Math.abs(i)*30),vy:i*92,life:2.8,kind:'eclipse'});this.shake=4;this.sfx('enemy');}
+   }
+   if(enemy.attackTimer<=0&&!locked&&enemy.telegraph===0){
+    const phase=enemy.hp/enemy.maxHp<.33?3:enemy.hp/enemy.maxHp<.67?2:1;
+    enemy.queuedPhase=phase;enemy.telegraph=.55;enemy.attackTimer=phase===3?.9:phase===2?1.25:1.75;
+   }
+  }
   else{enemy.dir=dx>0?1:-1;const chase=Math.abs(dx)<300;enemy.x+=((chase?enemy.dir:Math.sin(this.time+enemy.phase)>0?1:-1)*(enemy.type==='wolf'?112:enemy.type==='golem'?45:70)*speed*dt);enemy.x=limit(enemy.x,enemy.spawnX-enemy.range,enemy.spawnX+enemy.range);
    if(enemy.type==='wolf')enemy.y=enemy.spawnY+Math.sin(this.time*8+enemy.phase)*6;
    if(enemy.type==='mushroom'||enemy.type==='slime')enemy.y=enemy.spawnY+Math.abs(Math.sin(this.time*4+enemy.phase))*-10;
