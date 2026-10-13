@@ -1,92 +1,111 @@
-# WOMBAT — El último hechicero
+# WOMBAT — El último hechicero (versión 2.0)
 
-Un pequeño héroe. Cinco mundos. Mucha magia.
+Una aventura de plataformas 2D con **React**, **Canvas**, **siete hechizos**, cinco biomas realmente diferentes, generación procedural y progresión por esencias. La partida se genera con una semilla aleatoria nueva **al comenzar, al reiniciar y al perder todos los corazones**. Los mundos ya no repiten un mapa fijo.
 
-Plataformas 2D original en **HTML, CSS y JavaScript con Canvas**, sin frameworks, dependencias de ejecución, imágenes remotas ni cuentas. Toda la ilustración se dibuja por código y el sonido se sintetiza con Web Audio.
+## Arranque rápido
 
-## Jugar
-
-Descarga o clona el repositorio y abre **`index.html`** en un navegador moderno. No necesitas instalar paquetes ni compilar. Después de descargar los archivos, funciona sin conexión.
-
-También puedes servirlo con Node.js 18 o superior:
+Necesitas **Node.js 20.19+** y npm.
 
 ```bash
 git clone https://github.com/Andri-Almengor/Wombats.git
 cd Wombats
-npm start
+npm install
+npm run dev
 ```
 
-Abre `http://localhost:8080`. El servidor solo entrega los tres archivos públicos del juego.
+Abre la dirección que indica Vite (normalmente `http://localhost:5173`). Para preparar una versión publicable: `npm run build`; para probarla: `npm run preview`. La carpeta `dist/` es un sitio estático y, una vez compilado, puede alojarse sin backend.
+
+> **Importante:** la versión 2 usa módulos y React. Abrir `index.html` directamente con `file://` ya no es el modo correcto. Usa Vite o publica el contenido generado en `dist/`.
 
 ## Controles
 
-| Acción | Teclas |
-| --- | --- |
-| Moverse | A / D o flechas izquierda / derecha |
-| Saltar y hacer doble salto | Espacio, W o flecha arriba |
-| Lanzar hechizo | J o Z; puedes mantener pulsada la tecla |
-| Nova de área | K o X |
-| Esquiva rápida con invulnerabilidad | Shift |
-| Pausar / continuar | Esc o P |
+| Acción | Tecla |
+|---|---|
+| Mover | **A / D** o flechas |
+| Saltar / doble salto | **Espacio**, **Z** o flecha arriba |
+| Esquivar | **Shift** |
+| Chispa, disparo continuo | **Q** |
+| Escarcha, ralentiza enemigos | **W** |
+| Fuego, proyectil explosivo | **E** |
+| Sanación, recupera dos corazones | **R** |
+| Relámpago, golpea enemigos cercanos | **F** |
+| Escudo temporal | **C** |
+| Nova, gran daño de área | **X** |
+| Comprar mejoras | **1 / 2 / 3 / 4** o botones |
+| Pausa | **P** o **Esc** |
 
-Incluye botones táctiles en dispositivos con pantalla táctil. En teléfono, la orientación horizontal ofrece más espacio. La barra superior permite activar sonido, pausar y entrar en pantalla completa cuando el navegador lo admite.
+Las teclas para hechizos están a la izquierda del teclado. En pantalla táctil, aparecen botones de movimiento, salto y esquiva; los siete hechizos se activan tocando sus tarjetas.
 
-## La aventura
+## Magia y progresión
 
-La noche robó las estrellas. Un wombat con sombrero de mago debe atravesar cinco mundos y derrotar al Rey del Eclipse.
+- **Q: Chispa:** ataque de bajo daño sin costo, se puede mantener pulsado.
+- **W: Escarcha:** consume 12 de energía y ralentiza el objetivo.
+- **E: Fuego:** consume 18 y explota dañando enemigos alrededor.
+- **R: Sanar:** consume 28 y recupera 2 puntos de vida (hasta el máximo).
+- **F: Rayo:** consume 35 y golpea hasta cuatro enemigos cercanos.
+- **C: Escudo:** consume 25 y concede protección por tiempo limitado.
+- **X: Nova:** consume 50 y golpea en un radio de 250 píxeles, eliminando proyectiles enemigos cercanos.
 
-1. **Bosque del despertar:** introducción al salto y al combate; hongos hostiles y murciélagos.
-2. **Grutas de cristal:** plataformas móviles, cristales y enemigos que disparan.
-3. **Pantano de los susurros:** espinas y rutas elevadas.
-4. **Cumbres de la luna:** enemigos adicionales y mayor dificultad.
-5. **La torre del eclipse:** el encuentro final contra un jefe con dos ritmos de ataque.
+Derrotar enemigos otorga **45 esencias** (150 por el jefe). Recoger cristales aporta 5. Las esencias permiten mejoras durante la aventura:
 
-Cada nivel tiene una ruta larga, plataformas elevadas, coleccionables y **tres runas**. Las runas son obligatorias para abrir el portal al final; puedes regresar a buscarlas. El último portal también exige derrotar al jefe.
+1. **Corazones:** +1 a la salud máxima (hasta 10), con curación parcial.
+2. **Magia:** +30 al maná máximo (hasta 220).
+3. **Poder:** +0.5 al multiplicador de daño (hasta 4).
+4. **Recarga:** +4 a regeneración de maná por segundo (hasta 30; la última mejora llega a 30).
 
-### Vida y reinicio
+El precio inicial es 100 esencias y sube 85 por cada compra de la misma categoría. Se conservan las mejoras y esencias al entrar en el siguiente mundo. Al perder todos los corazones, empieza una partida nueva con atributos iniciales y semilla diferente.
 
-- Comienzas con **cinco corazones**. Un golpe o una caída cuesta uno.
-- Después de recibir daño hay un breve período de invulnerabilidad.
-- Una caída te devuelve al último suelo seguro, descontando un corazón.
-- Al perder el quinto corazón aparece una transición de carga y **toda la partida se reinicia automáticamente desde el nivel 1**, con cinco corazones, cero puntos y cero runas. No hay puntos de control que eviten este reinicio.
-- Los corazones que encuentres restauran una unidad, hasta un máximo de cinco.
-- Al cambiar de mundo recuperas un corazón y toda la energía.
+## Los cinco mundos
 
-### Combate y recompensas
+1. **Bosque de los espíritus:** ramas y árboles, hongos saltarines, lobos y murciélagos.
+2. **Minas de luz perdida:** cristales y plataformas elevadas, gólems y enemigos a distancia.
+3. **Islas del veneno:** fango, espinas tóxicas, islas de vegetación y bombarderos.
+4. **Ruinas entre las nubes:** plataformas flotantes y empuje variable del viento.
+5. **Ciudadela del eclipse:** estandartes, guardianes y batalla contra el Rey del Eclipse.
 
-- El ataque básico es ilimitado, con un pequeño intervalo entre disparos.
-- Cada enemigo tiene vida propia. Su barra aparece después del primer golpe.
-- La nova daña enemigos en un radio de 240 píxeles y elimina proyectiles cercanos. Consume 45 puntos de energía, que se regenera automáticamente.
-- Derrotar enemigos recupera 12 puntos de energía.
-- La esquiva ofrece 0,19 segundos de invulnerabilidad y se recarga en 1,2 segundos.
-- Cristal: 10 puntos. Runa: 100. Enemigo: 50. Jefe: 500. Portal: 250. Victoria: 1.000 adicionales.
-- Solo el récord se guarda en `localStorage`; la partida actual no se guarda. Si el navegador bloquea el almacenamiento, el juego continúa funcionando.
+Cada mundo tiene plataformas, enemigos, cristales y peligros colocados según una semilla, con rutas principales que mantienen saltos alcanzables. Recoge **tres runas** para abrir el portal de salida. En el quinto mundo también debes derrotar al jefe.
 
-## Archivos y cambios
+La animación del héroe muestra caminar, saltar, esquivar, lanzar hechizos, daño, muerte y curación; la capa y el rostro se deterioran a medida que disminuye la vida. Los enemigos tienen animaciones propias y comportamientos de patrulla, persecución o disparo.
 
-| Archivo | Responsabilidad |
-| --- | --- |
-| `index.html` | Pantalla inicial, interfaz, controles, pausa, carga y victoria |
-| `styles.css` | Diseño, adaptación de pantalla y controles táctiles |
-| `game.js` | Física, mapas, combate, dibujo, sonido y estados de la partida |
-| `server.cjs` | Servidor local opcional sin dependencias |
-| `tests/game.test.cjs` | Pruebas de reglas y transiciones |
-| `.github/workflows/test.yml` | Verificación automática con GitHub Actions |
+## Arquitectura
 
-En `game.js`, `themes` define las paletas y nombres. `makeWorld(index)` construye los niveles de forma determinista. `update(dt)` avanza la simulación a 60 pasos por segundo; `draw()` dibuja con Canvas. `newGame()`, `loadLevel()`, `startTransition()` y `win()` controlan la aventura. Los escenarios comparten módulos de plataformas con diferencias de ambientación, enemigos, peligros y movimiento.
+| Archivo | Función |
+|---|---|
+| `src/App.jsx` | Componentes React: menú, pausa, HUD, grimorio, tienda, controles táctiles y sonido |
+| `src/main.jsx` | Entrada React |
+| `src/engine.mjs` | Física, animaciones de estado, hechizos, combate, IA enemiga, mejoras, transiciones |
+| `src/world.mjs` | Semillas, cinco biomas, generación y validación de rutas |
+| `src/render.mjs` | Dibujo del mundo, personajes, partículas y efectos con Canvas |
+| `src/style.css` | Diseño adaptable y paneles |
+| `tests/*.test.mjs` | Pruebas de generación, reglas, combate y progresión |
+| `vite.config.js` | Build y base path para GitHub Pages |
+| `.github/workflows/test.yml` | Tests y build en GitHub Actions |
+| `.github/workflows/deploy.yml` | Despliegue estático a GitHub Pages desde main |
 
-Para modificar dificultad: ajusta corazones en `newPlayer`, velocidad/gravedad en `update`, vida de enemigos en `makeWorld`, y costo/daño de la nova en `nova`. Mantén las tres runas accesibles y el portal sobre suelo seguro.
+Para añadir un enemigo: amplía los tipos en `BIOMES[*].enemy` (en `world.mjs`), define sus estadísticas y comportamiento en `engine.mjs`, y su dibujo en `render.mjs`.
+
+Para modificar el balance: en `engine.mjs`, ajusta `SPELLS`, `UPGRADES`, `upgradeCost`, `cast`, `damageEnemy` o `freshPlayer`. Cambia la estructura de biomas desde `createWorld` en `world.mjs` y conserva `validateWorld` y los tests.
 
 ## Pruebas
 
 ```bash
 npm test
+npm run build
 ```
 
-Las pruebas usan el ejecutor integrado de Node, sin instalar paquetes. Verifican cinco niveles, runas, doble salto, daño e invulnerabilidad, muerte y reinicio, proyectiles, nova, esquiva, portales, jefe, caídas y pausa. La instrumentación de pruebas se inserta en memoria y no crea atajos en el juego publicado. `window.wombatDebug` solo expone consultas de diagnóstico de lectura.
+Los tests generan **1.000 mapas** (200 semillas por cinco biomas) y verifican geometría, ubicación de runas, portal, cambios de semilla, sanación, escudos, mejoras, combate y reinicio automático después de morir.
 
 ## Publicar en GitHub Pages
 
-En el repositorio: **Settings → Pages → Deploy from a branch → main → / (root) → Save**. Cuando GitHub termine de publicar, la dirección habitual será `https://andri-almengor.github.io/Wombats/`. Esta configuración se realiza en GitHub; subir el código por sí solo no activa Pages.
+1. En GitHub abre **Settings → Pages**.
+2. Selecciona **GitHub Actions** en Build and deployment.
+3. Integra el pull request en `main`.
+4. El workflow `Deploy Wombat` instalará dependencias, probará y compilará el juego, y publicará `dist/` en Pages.
 
-No requiere backend, variables de entorno, claves API, base de datos ni proceso de build.
+Dirección esperada después de configurar Pages: https://andri-almengor.github.io/Wombats/
+
+No necesita servidor de API, base de datos ni variables secretas. El mejor récord se guarda en `localStorage`. La construcción de React necesita instalar dependencias una vez; el sitio compilado usa todos los gráficos y la lógica del juego localmente (sin descargar sprites).
+
+---
+
+**Nota de migración:** Los antiguos archivos `game.js`, `styles.css` y `server.cjs` pertenecían al prototipo original. No forman parte del runtime React 2.0.
