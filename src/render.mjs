@@ -39,8 +39,10 @@ function decorations(c,w,camera,t){for(const d of w.decor){if(d.x<camera-180||d.
  else if(d.type==='ruins'){round(c,d.x,FLOOR-105,38,105,2,'#adb5c1');round(c,d.x-25,FLOOR-115,89,16,2,'#dad9d0');}
  else if(d.type==='banners'){round(c,d.x,FLOOR-180,18,180,3,'#76617b');poly(c,[[d.x+18,FLOOR-172],[d.x+88,FLOOR-167],[d.x+63,FLOOR-122],[d.x+18,FLOOR-115]],'#ad738d');}
  }}
-function wombat(c,p,t){const hpFraction=p.hp/p.maxHp,hurt=hpFraction<.7,bad=hpFraction<.35;
+function wombat(c,p,t,mode='playing',deathT=0){const hpFraction=p.hp/p.maxHp,hurt=hpFraction<.7,bad=hpFraction<.35;
  c.save();c.translate(p.x+p.w/2,p.y+p.h*.56);c.scale(p.dir,1);
+ if(p.spawn>0){c.translate(0,-p.spawn*42);c.globalAlpha*=clamp(1-p.spawn/1.25,.15,1);glow(c,0,0,90,'#e8f3c366');}
+ if(mode==='dead'){c.rotate(clamp(deathT,0,1)*-.95);c.translate(0,clamp(deathT,0,1)*18);}
  if(p.invuln>0&&Math.floor(t*13)%3===0)c.globalAlpha=.55;
  const run=p.grounded?Math.sin(p.step*1.8)*clamp(Math.abs(p.vx)/250,0,1):0;
  const dodge=p.dash>0,fall=!p.grounded;
@@ -117,7 +119,7 @@ export function drawGame(c,engine){const {world:w,player:p,status,t}= {world:eng
  for(const e of w.enemies)if(e.x>camera-120&&e.x<camera+WIDTH+120)enemy(c,e,t);
  for(const s of engine.projectiles){const col={spark:'#caf6bf',ice:'#c6edff',fire:'#ffc077'}[s.kind];glow(c,s.x,s.y,32,col+'66');ellipse(c,s.x,s.y,s.w*.65,s.h*.5,col);ellipse(c,s.x-s.vx*.015,s.y,s.w*.4,s.h*.3,col+'77');}
  for(const s of engine.hostile){glow(c,s.x,s.y,26,s.kind==='toxic'?'#b0e97a88':'#f39ac777');ellipse(c,s.x,s.y,s.w/2,s.h/2,s.kind==='toxic'?'#c4eb94':'#e4a1cb');}
- wombat(c,p,t);
+ wombat(c,p,t,status,2.5-engine.deadTimer);
  for(const v of engine.particles){c.globalAlpha=clamp(v.life*2,0,1);if(v.bolt){glow(c,v.x,v.y,30,'#c2eeff88');line(c,[[v.x-18,v.y-25],[v.x+5,v.y-5],[v.x-7,v.y+3],[v.x+15,v.y+24]],'#e0f5ff',4);}else ellipse(c,v.x,v.y,v.size,v.size,v.color);}c.globalAlpha=1;
  c.restore();
  const vignette=c.createRadialGradient(WIDTH/2,HEIGHT/2,250,WIDTH/2,HEIGHT/2,850);vignette.addColorStop(0,'transparent');vignette.addColorStop(1,'#0a15216b');c.fillStyle=vignette;c.fillRect(0,0,WIDTH,HEIGHT);c.restore();
