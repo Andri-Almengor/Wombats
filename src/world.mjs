@@ -13,7 +13,7 @@ const dist=(a,b)=>Math.hypot(a.x+a.w/2-b.x-b.w/2,a.y-b.y);
 export function createWorld(biomeIndex,runSeed){
  if(!Number.isInteger(biomeIndex)||biomeIndex<0||biomeIndex>=BIOMES.length)throw Error('Unknown world');
  const biome=BIOMES[biomeIndex],rng=randomFromSeed((runSeed^(0x9e3779b9*(biomeIndex+1)))>>>0);
- const platforms=[],enemies=[],items=[],hazards=[],decor=[],links=[],rooms=[];
+ const platforms=[],enemies=[],items=[],hazards=[],decor=[],links=[],rooms=[],walls=[];
  let serial=0;const id=()=>++serial;
  function node(x,y,w=240,kind='ground',move=0,secret=false){
   const p={id:id(),x:Math.round(x),y:Math.round(y),w:Math.round(w),h:kind==='ground'?40:22,kind,baseY:Math.round(y),move,phase:rng()*Math.PI*2,secret};
@@ -79,7 +79,7 @@ export function createWorld(biomeIndex,runSeed){
   cells.forEach((p,i)=>{rooms.push({x:p.x,y:p.y,w:p.w,h:150,nodeId:p.id,secret:distance[i]>14});if(i>0&&i%3===0)collect(p,'crystal');});
   // Dungeon passage bars only where the maze has no horizontal connector.
   for(let i=0;i<25;i++)if(i%5!==4&&!edges.some(([a,b])=>(a===i&&b===i+1)||(b===i&&a===i+1))){
-   const p=cells[i];hazards.push({id:id(),x:p.x+p.w+13,y:p.y-52,w:15,h:52,type:'crystal-bar',decorative:true});
+   const p=cells[i];walls.push({id:id(),x:p.x+p.w+12,y:p.y-135,w:20,h:156,kind:'sealed-stone'});
   }
  }else if(biomeIndex===3){
   // Floating archipelago: air between every island, wind and moving bridges.
@@ -124,11 +124,12 @@ export function createWorld(biomeIndex,runSeed){
  const spawn={x:start.x+38,y:start.y-68};
  const length=Math.max(...platforms.map(p=>p.x+p.w))+175;
  const minY=Math.min(...platforms.map(p=>p.y))-360,maxY=Math.max(HEIGHT+220,...platforms.map(p=>p.y+160));
- return {seed:runSeed,biomeIndex,biome,length,minY,maxY,platforms,enemies,items,hazards,decor,links,rooms,spawn,portal,bookRequired,bookCollected:false,runes:0,requiredRunes:3};
+ return {seed:runSeed,biomeIndex,biome,length,minY,maxY,platforms,enemies,items,hazards,decor,links,rooms,walls,spawn,portal,bookRequired,bookCollected:false,runes:0,requiredRunes:3};
 }
 export function validateWorld(w){
  if(!w||w.platforms.length<15||w.items.filter(i=>i.type==='rune').length!==3)return false;
  if(!w.platforms.every(p=>p.w>=150&&Number.isFinite(p.x)&&Number.isFinite(p.y)))return false;
+ if(!w.walls.every(bar=>bar.w>0&&bar.h>0))return false;
  const map=new Map(w.platforms.map(p=>[p.id,p])),seen=new Set(),queue=[w.platforms[0].id];seen.add(queue[0]);
  for(let i=0;i<queue.length;i++)for(const [a,b] of w.links){
   if(a!==queue[i]&&b!==queue[i])continue;
