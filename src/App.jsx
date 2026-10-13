@@ -1,20 +1,57 @@
 import React,{useEffect,useRef,useState} from 'react';
-import {GameEngine,SPELLS,UPGRADES} from './engine.mjs';
+import {GameEngine,SPELLS,SELECTABLE_SPELLS,UPGRADES} from './engine.mjs';
 import {WIDTH,HEIGHT} from './world.mjs';
 import {drawGame} from './render.mjs';
 const bestSaved=()=>{try{return Number(localStorage.getItem('wombat-best-v2'))||0;}catch{return 0;}};
 function Bar({current,max,type}){return <div className={'bar '+type}><i style={{width:Math.max(0,Math.min(100,current/max*100))+'%'}}/></div>;}
 function HUD({s}){return <div className="hud"><div className="hud-vitals"><div className="heart-row">{Array.from({length:s.maxHp},(_,i)=><span key={i} className={i>=s.hp?'dim':''}>♥</span>)}</div><label>VIDA <b>{s.hp}/{s.maxHp}</b></label><Bar current={s.hp} max={s.maxHp} type="health"/><label>ENERGÍA ARCANA <b>{s.mana}/{s.maxMana}</b></label><Bar current={s.mana} max={s.maxMana} type="mana"/></div><div className="hud-world"><small>MUNDO {String(s.biomeIndex+1).padStart(2,'0')} / 05</small><strong>{s.biome}</strong><Bar current={s.progress} max={100} type="progress"/></div><div className="hud-score"><b>✧ {s.runes}/3 <small>RUNAS</small></b><b>◆ {s.coins} <small>ESENCIAS</small></b><b>{s.score} <small>PUNTOS</small></b></div></div>;}
-function Overlay({s,engine,best}){if(s.status==='playing')return null;return <div className="overlay"><div className="panel"><span className="eyebrow">✦ PEQUEÑO HÉROE. GRAN MAGIA.</span>{s.status==='menu'?<><h1>WOMBAT</h1><div className="subtitle">EL ÚLTIMO HECHICERO</div><p>Un pequeño mago. Cinco mundos que nunca son iguales. Siete hechizos para devolver la luz.</p><button className="primary" onClick={()=>engine.newRun()}>Comenzar aventura ↗</button><p className="mini">✧ 5 biomas &nbsp; ◈ 7 hechizos &nbsp; ∞ mundos nuevos</p><p className="note">Recoge 3 runas para abrir cada portal. Al morir, todo comienza en un mundo distinto.</p></>:s.status==='paused'?<><h2>Aventura en pausa</h2><p>Recupera tus fuerzas antes de continuar.</p><button className="primary" onClick={()=>engine.togglePause()}>Continuar ▶</button><button className="secondary" onClick={()=>engine.newRun()}>Nuevo mundo ↻</button></>:s.status==='dead'?<><h2>La magia renace</h2><p>Has caído en batalla. Se está creando una nueva aventura.</p><div className="spinner">✦</div></>:<><h2>¡Vuelven las estrellas!</h2><p>Derrotaste al Rey del Eclipse y liberaste cinco mundos.</p><div className="big-score">{s.score.toLocaleString('es-CR')}</div><p className="mini">{s.kills} enemigos · {Math.floor(s.elapsed/60)}m {Math.floor(s.elapsed%60)}s · récord {Math.max(s.score,best)}</p><button className="primary" onClick={()=>engine.newRun()}>Jugar en mundos nuevos ↗</button></>}</div></div>;}
-function SpellBar({s,engine}){return <div className="spells">{SPELLS.map(sp=><button key={sp.key} disabled={s.status!=='playing'} title={sp.description+' ('+sp.cost+' magia)'} className={s.mana<sp.cost?'insufficient':''} onPointerDown={e=>{e.preventDefault();engine.tap(sp.key);}}><span className="spell-key">{sp.key.slice(-1)}</span><span className="spell-icon">{sp.icon}</span><strong>{sp.name}</strong><small>{sp.cost?sp.cost+' MP':'GRATIS'}</small></button>)}</div>;}
+function Overlay({s,engine,best}){
+ if(s.status==='playing')return null;
+ if(s.status==='spell-menu')return <div className="overlay quick-menu-overlay" role="dialog" aria-modal="true" aria-label="Elegir hechizo para W">
+  <div className="quick-menu">
+   <span className="eyebrow">✦ GRIMORIO RÁPIDO · JUEGO CONGELADO</span>
+   <h2>Elige tu hechizo</h2>
+   <p>Usa las flechas para elegir qué lanzar con <kbd>W</kbd> y presiona <kbd>ENTER</kbd> para equiparlo.</p>
+   <div className="quick-spell-list">{SELECTABLE_SPELLS.map((spell,i)=><button type="button" key={spell.key} className={'quick-spell-option '+(s.menuIndex===i?'highlighted ':'')+(s.equippedSpell===spell.key?'equipped':'')} onMouseEnter={()=>engine.setMenuIndex(i)} onClick={()=>engine.selectSpell(spell.key)} aria-current={s.menuIndex===i?'true':undefined}>
+    <span className="quick-spell-icon">{spell.icon}</span><span className="quick-spell-info"><strong>{spell.name}</strong><small>{spell.description}</small></span><span className="quick-spell-cost">{spell.cost?spell.cost+' MP':'GRATIS'}</span>{s.equippedSpell===spell.key&&<span className="quick-equipped">EQUIPADO</span>}
+   </button>)}</div>
+   <div className="quick-menu-actions"><button className="primary" onClick={()=>engine.confirmSpellMenu()}>Equipar en W ↵</button><button className="secondary" onClick={()=>engine.closeSpellMenu()}>Cancelar · S / Esc</button></div>
+   <div className="quick-menu-hint">↑ ↓ ← → ELEGIR · ENTER CONFIRMAR · S / ESC VOLVER</div>
+  </div></div>;
+ return <div className="overlay"><div className="panel"><span className="eyebrow">✦ PEQUEÑO HÉROE. GRAN MAGIA.</span>{s.status==='menu'?<><h1>WOMBAT</h1><div className="subtitle">EL ÚLTIMO HECHICERO</div><p>Un pequeño mago. Cinco mundos que nunca son iguales. Siete hechizos para devolver la luz.</p><button className="primary" onClick={()=>engine.newRun()}>Comenzar aventura ↗</button><p className="mini">✧ 5 biomas &nbsp; ◈ 7 hechizos &nbsp; ∞ mundos nuevos</p><p className="note">Recoge 3 runas para abrir cada portal. Al morir, todo comienza en un mundo distinto.</p></>:s.status==='paused'?<><h2>Aventura en pausa</h2><p>Recupera tus fuerzas antes de continuar.</p><button className="primary" onClick={()=>engine.togglePause()}>Continuar ▶</button><button className="secondary" onClick={()=>engine.newRun()}>Nuevo mundo ↻</button></>:s.status==='dead'?<><h2>La magia renace</h2><p>Has caído en batalla. Se está creando una nueva aventura.</p><div className="spinner">✦</div></>:<><h2>¡Vuelven las estrellas!</h2><p>Derrotaste al Rey del Eclipse y liberaste cinco mundos.</p><div className="big-score">{s.score.toLocaleString('es-CR')}</div><p className="mini">{s.kills} enemigos · {Math.floor(s.elapsed/60)}m {Math.floor(s.elapsed%60)}s · récord {Math.max(s.score,best)}</p><button className="primary" onClick={()=>engine.newRun()}>Jugar en mundos nuevos ↗</button></>}</div></div>;}
+function SpellBar({s,engine}){
+ const selected=SPELLS.find(spell=>spell.key===s.equippedSpell)||SELECTABLE_SPELLS[0];
+ const actions=[{code:'KeyW',spell:selected},{code:'KeyA',spell:SPELLS.find(x=>x.key==='KeyX')},{code:'KeyD',spell:SPELLS.find(x=>x.key==='KeyR')},{code:'KeyR',spell:SPELLS.find(x=>x.key==='KeyC')}];
+ return <div className="spells action-spells">{actions.map(({code,spell})=><button key={code} type="button" disabled={s.status!=='playing'} title={spell.name+' — '+spell.description+' ('+spell.cost+' magia)'} className={s.mana<spell.cost?'insufficient':''} onPointerDown={e=>{e.preventDefault();engine.tap(code);}}>
+ <span className="spell-key">{code.slice(-1)}</span><span className="spell-icon">{spell.icon}</span><strong>{spell.name}</strong><small>{spell.cost?spell.cost+' MP':'GRATIS'}</small></button>)}
+ <button type="button" disabled={s.status!=='playing'} onClick={()=>engine.openSpellMenu()} title="Abrir menú de hechizos (S)"><span className="spell-key">S</span><span className="spell-icon">☷</span><strong>Cambiar W</strong><small>PAUSA</small></button>
+ </div>;
+}
 function Shop({s,engine}){return <section className="shop"><div className="shop-intro"><strong>✧ MEJORA A TU HÉROE</strong><small>Derrota enemigos para ganar esencias y comprar mejoras.</small></div><div className="upgrades">{UPGRADES.map((u,i)=>{const max=u.id==='health'?s.maxHp>=10:u.id==='mana'?s.maxMana>=220:u.id==='power'?s.upgrades.power>=6:s.upgrades.regen>=5;return <button key={u.id} disabled={s.status!=='playing'||s.coins<s.upgradeCosts[u.id]||max} onClick={()=>engine.upgrade(u.id)} title={u.description}><span className="up-icon">{u.icon}</span><span><b>{u.label} <em>+{s.upgrades[u.id]}</em></b><small>{u.description}</small></span><span className="price">{max?'MAX':'◆ '+s.upgradeCosts[u.id]}</span><kbd>{i+1}</kbd></button>;})}</div></section>;}
-function Touch({engine}){const buttons=[['KeyA','◀','Izquierda'],['KeyD','▶','Derecha'],['ShiftLeft','➜','Esquivar'],['Space','⬆','Saltar']];return <div className="touch"><div>{buttons.slice(0,2).map(([code,icon,label])=><button key={code} aria-label={label} onPointerDown={e=>{e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);engine.setHeld(code,true);}} onPointerUp={()=>engine.setHeld(code,false)} onPointerCancel={()=>engine.setHeld(code,false)} onLostPointerCapture={()=>engine.setHeld(code,false)}>{icon}</button>)}</div><div>{buttons.slice(2).map(([code,icon,label])=><button key={code} aria-label={label} onPointerDown={e=>{e.preventDefault();engine.tap(code);}}>{icon}<small>{label}</small></button>)}</div></div>;}
+function Touch({engine}){const buttons=[['ArrowLeft','◀','Izquierda'],['ArrowRight','▶','Derecha'],['ShiftLeft','➜','Esquivar'],['Space','⬆','Saltar']];return <div className="touch"><div>{buttons.slice(0,2).map(([code,icon,label])=><button key={code} aria-label={label} onPointerDown={e=>{e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);engine.setHeld(code,true);}} onPointerUp={()=>engine.setHeld(code,false)} onPointerCancel={()=>engine.setHeld(code,false)} onLostPointerCapture={()=>engine.setHeld(code,false)}>{icon}</button>)}</div><div>{buttons.slice(2).map(([code,icon,label])=><button key={code} aria-label={label} onPointerDown={e=>{e.preventDefault();engine.tap(code);}}>{icon}<small>{label}</small></button>)}</div></div>;}
 export default function App(){
  const ref=useRef(null),engineRef=useRef(null),raf=useRef(0),last=useRef(0),acc=useRef(0),soundRef=useRef(false),audio=useRef(null);
  if(!engineRef.current)engineRef.current=new GameEngine();const engine=engineRef.current;
  const [s,setS]=useState(()=>engine.snapshot()),[best,setBest]=useState(bestSaved),[sound,setSound]=useState(false);soundRef.current=sound;
- useEffect(()=>{engine.notify=setS;engine.emit();const keys=new Set(['KeyA','KeyD','ArrowLeft','ArrowRight','Space','ArrowUp','KeyZ','ShiftLeft','ShiftRight',...SPELLS.map(x=>x.key)]);
- const down=e=>{if(e.target?.tagName==='BUTTON')return;if(keys.has(e.code)){e.preventDefault();if(!e.repeat)engine.setHeld(e.code,true);}else if(['Escape','KeyP'].includes(e.code)&&!e.repeat){e.preventDefault();engine.togglePause();}else if(/^Digit[1-4]$/.test(e.code)&&!e.repeat&&engine.status==='playing')engine.upgrade(UPGRADES[Number(e.code.slice(-1))-1].id);};
+ useEffect(()=>{engine.notify=setS;engine.emit();const keys=new Set(['ArrowLeft','ArrowRight','Space','ArrowUp','KeyZ','ShiftLeft','ShiftRight','KeyA','KeyD','KeyR','KeyW']);
+ const down=e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)||e.isComposing)return;
+  const code=e.code;
+  if(engine.status==='spell-menu'){
+   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Enter','NumpadEnter','Escape','KeyS'].includes(code)){
+    e.preventDefault();if(e.repeat)return;
+    if(code==='ArrowUp'||code==='ArrowLeft')engine.navigateSpellMenu(-1);
+    else if(code==='ArrowDown'||code==='ArrowRight')engine.navigateSpellMenu(1);
+    else if(code==='Enter'||code==='NumpadEnter')engine.confirmSpellMenu();
+    else engine.closeSpellMenu();
+   }
+   return;
+  }
+  if(code==='KeyS'&&engine.status==='playing'){e.preventDefault();if(!e.repeat)engine.openSpellMenu();return;}
+  if(keys.has(code)&&engine.status==='playing'){e.preventDefault();if(!e.repeat)engine.setHeld(code,true);}
+  else if(['Escape','KeyP'].includes(code)&&!e.repeat){e.preventDefault();engine.togglePause();}
+  else if(/^Digit[1-4]$/.test(code)&&!e.repeat&&engine.status==='playing'){e.preventDefault();engine.upgrade(UPGRADES[Number(code.slice(-1))-1].id);}
+ };
  const up=e=>engine.setHeld(e.code,false);
  const blur=()=>{engine.held.clear();engine.edge.clear();if(engine.status==='playing')engine.togglePause();};
  const visibility=()=>{if(document.hidden)blur();};window.addEventListener('keydown',down);window.addEventListener('keyup',up);window.addEventListener('blur',blur);document.addEventListener('visibilitychange',visibility);
@@ -29,7 +66,7 @@ export default function App(){
  {s.status==='playing'&&s.banner&&<div className="toast">{s.banner}</div>}
  {s.boss>0&&<div className="boss"><span>☽ REY DEL ECLIPSE</span><div><i style={{width:(100*s.boss/s.bossMax)+'%'}}/></div></div>}
  {s.status==='playing'&&<Touch engine={engine}/>}<Overlay s={s} engine={engine} best={best}/></section>
- <div className="grimoire"><div><b>GRIMORIO</b><small>7 hechizos</small></div><SpellBar s={s} engine={engine}/></div><Shop s={s} engine={engine}/>
- <div className="instructions"><span><kbd>A</kbd><kbd>D</kbd> Mover</span><span><kbd>ESPACIO</kbd> Salto doble</span><span><kbd>SHIFT</kbd> Esquiva</span><span><kbd>Q</kbd> Disparo continuo</span><span><kbd>1</kbd>–<kbd>4</kbd> Mejoras</span><span><kbd>ESC</kbd> Pausa</span></div>
+ <div className="grimoire"><div><b>GRIMORIO</b><small>S cambia el hechizo W</small></div><SpellBar s={s} engine={engine}/></div><Shop s={s} engine={engine}/>
+ <div className="instructions"><span><kbd>←</kbd><kbd>→</kbd> Mover</span><span><kbd>ESPACIO</kbd> Salto doble</span><span><kbd>SHIFT</kbd> Esquiva</span><span><kbd>W</kbd> Hechizo elegido</span><span><kbd>A</kbd> Nova</span><span><kbd>D</kbd> Sanar</span><span><kbd>R</kbd> Escudo</span><span><kbd>S</kbd> Cambiar hechizo</span><span><kbd>1</kbd>–<kbd>4</kbd> Mejoras</span><span><kbd>ESC</kbd> Pausa</span></div>
  <footer><span>CADA DERROTA ABRE UN MUNDO DIFERENTE.</span><span>React + Canvas · 5 biomas · 7 hechizos</span></footer></main></div>;
 }

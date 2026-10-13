@@ -17,34 +17,37 @@ Abre la dirección que indica Vite (normalmente `http://localhost:5173`). Para p
 
 > **Importante:** la versión 2 usa módulos y React. Abrir `index.html` directamente con `file://` ya no es el modo correcto. Usa Vite o publica el contenido generado en `dist/`.
 
-## Controles
+## Controles actualizados
 
 | Acción | Tecla |
 |---|---|
-| Mover | **A / D** o flechas |
-| Saltar / doble salto | **Espacio**, **Z** o flecha arriba |
+| Mover izquierda y derecha | **← / →** |
+| Saltar / doble salto | **Espacio**, **Z** o **↑** |
 | Esquivar | **Shift** |
-| Chispa, disparo continuo | **Q** |
-| Escarcha, ralentiza enemigos | **W** |
-| Fuego, proyectil explosivo | **E** |
-| Sanación, recupera dos corazones | **R** |
-| Relámpago, golpea enemigos cercanos | **F** |
-| Escudo temporal | **C** |
-| Nova, gran daño de área | **X** |
+| Lanzar el hechizo elegido | **W** (se puede mantener pulsada) |
+| Nova de área | **A** |
+| Sanar 2 corazones | **D** |
+| Escudo | **R** |
+| Abrir selector rápido de hechizos | **S** |
+| Cambiar selección dentro del selector | **↑ / ↓ / ← / →** |
+| Confirmar el hechizo para W | **Enter** |
+| Cancelar el selector sin cambiar el hechizo | **S** o **Esc** |
 | Comprar mejoras | **1 / 2 / 3 / 4** o botones |
-| Pausa | **P** o **Esc** |
+| Pausar fuera del selector | **P** o **Esc** |
 
-Las teclas para hechizos están a la izquierda del teclado. En pantalla táctil, aparecen botones de movimiento, salto y esquiva; los siete hechizos se activan tocando sus tarjetas.
+Cuando presionas **S** durante la aventura, **el juego se congela completamente**: ni enemigos, ni físicas, ni proyectiles, ni tiempos avanzan. Las flechas pasan a navegar una selección de cuatro hechizos ofensivos. **Enter** equipa el hechizo marcado en **W** y reanuda la acción. También puedes hacer clic directamente en el hechizo para equiparlo. **S** o **Esc** cancela y vuelve al juego sin cambiar el anterior.
+
+**W** comienza asignada a **Chispa**. Puedes asignar **Chispa, Escarcha, Fuego o Rayo**. La selección se conserva al cambiar de mundo y vuelve a Chispa al empezar una aventura nueva. **A / D / R** permanecen asignadas a Nova / Sanar / Escudo respectivamente; ya no sirven para desplazarse. En móvil, se puede usar el botón **Cambiar W** y elegir el hechizo tocándolo.
 
 ## Magia y progresión
 
-- **Q: Chispa:** ataque de bajo daño sin costo, se puede mantener pulsado.
-- **W: Escarcha:** consume 12 de energía y ralentiza el objetivo.
-- **E: Fuego:** consume 18 y explota dañando enemigos alrededor.
-- **R: Sanar:** consume 28 y recupera 2 puntos de vida (hasta el máximo).
-- **F: Rayo:** consume 35 y golpea hasta cuatro enemigos cercanos.
-- **C: Escudo:** consume 25 y concede protección por tiempo limitado.
-- **X: Nova:** consume 50 y golpea en un radio de 250 píxeles, eliminando proyectiles enemigos cercanos.
+- **W (Chispa, predeterminado):** ataque de bajo daño sin costo; se puede mantener pulsado.
+- **W (Escarcha, seleccionable con S):** consume 12 de energía y ralentiza el objetivo.
+- **W (Fuego, seleccionable con S):** consume 18 y explota dañando enemigos alrededor.
+- **W (Rayo, seleccionable con S):** consume 35 y golpea hasta cuatro enemigos cercanos.
+- **D (Sanar):** consume 28 y recupera 2 puntos de vida (hasta el máximo).
+- **R (Escudo):** consume 25 y concede protección por tiempo limitado.
+- **A (Nova):** consume 50 y golpea en un radio de 250 píxeles, eliminando proyectiles enemigos cercanos.
 
 Derrotar enemigos otorga **45 esencias** (150 por el jefe). Recoger cristales aporta 5. Las esencias permiten mejoras durante la aventura:
 
