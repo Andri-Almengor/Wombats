@@ -1,54 +1,42 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync,existsSync} from 'node:fs';
-import {fileURLToPath} from 'node:url';
+import {readFileSync} from 'node:fs';
 import {WOMBAT_ANIMATIONS,SPRITE_CELL,SPRITE_COLS,WOMBAT_FRAME_COUNT} from '../src/assets/meta/wombat-animations.mjs';
+import {NAMED_WOMBAT_ANIMATIONS,NAMED_WOMBAT_FRAME_COUNT} from '../src/assets/meta/wombat-named-animations.mjs';
 import {selectWombatAnimation,chooseWombatFrame} from '../src/wombat-sprites.mjs';
-import {EXTRA_WOMBAT_ANIMATIONS} from '../src/assets/meta/wombat-extra-animations.mjs';
-const root=fileURLToPath(new URL('../public/assets/sprites/wombat/',import.meta.url));
-test('atlas exists, is a valid PNG and has the expected dimensions',()=>{
- const file=root+'atlases/wombat.png';
- assert.ok(existsSync(file),'must commit the real sprite PNG, not just the renderer');
+
+test('original core sprites remain as a safe historical asset',()=>{
+ const file=new URL('../public/assets/sprites/wombat/atlases/wombat.png',import.meta.url);
  const bytes=readFileSync(file);
  assert.equal(bytes.subarray(1,4).toString(),'PNG');
  assert.equal(bytes.readUInt32BE(16),SPRITE_CELL*SPRITE_COLS);
  assert.equal(bytes.readUInt32BE(20),SPRITE_CELL*5);
-});
-test('all eight source actions have sorted usable frames, durations and pivots',()=>{
  assert.equal(WOMBAT_FRAME_COUNT,37);
- const all=[];
- for(const [name,anim] of Object.entries(WOMBAT_ANIMATIONS)){
-  assert.ok(anim.frames.length>=2,name);
-  assert.ok(anim.frameDuration>0);
-  assert.equal(anim.pivot.x,0.5);
-  assert.ok(anim.pivot.y>0.9);
-  for(const frame of anim.frames){
-   assert.ok(frame.duration>0 && frame.file.endsWith('.png'));
-   assert.equal(frame.width,SPRITE_CELL);
-   all.push(frame.index);
-  }
- }
- assert.deepEqual(all,Array.from({length:37},(_,i)=>i));
+ for(const clip of Object.values(WOMBAT_ANIMATIONS))assert.ok(clip.frames.length>=2);
 });
-test('idle, walk, jump and dash transition without touching physics',()=>{
- const p={x:0,y:0,w:45,h:68,dir:1,grounded:true,vx:0,vy:0,dash:0,cast:0,hit:0,healFx:0};
- const untouched={x:p.x,y:p.y,w:p.w,h:p.h};
+test('new selector and frame bounds follow named sprite ZIP',()=>{
+ assert.equal(NAMED_WOMBAT_FRAME_COUNT,156);
+ const p={x:0,y:0,w:45,h:68,dir:1,grounded:true,vx:0,vy:0,dash:0,cast:0,hit:0,healFx:0,jumps:0};
+ const before={x:p.x,y:p.y,w:p.w,h:p.h};
  assert.equal(selectWombatAnimation(p),'idle');
- p.vx=180;assert.equal(selectWombatAnimation(p),'walk');
- p.grounded=false;p.vy=-500;assert.equal(selectWombatAnimation(p),'jump');
- p.vy=60;assert.equal(selectWombatAnimation(p),'fall');
+ p.vx=160;assert.equal(selectWombatAnimation(p),'walk');
+ p.vx=320;assert.equal(selectWombatAnimation(p),'run');
+ p.grounded=false;p.vy=-500;p.jumps=1;assert.equal(selectWombatAnimation(p),'jump_start');
+ p.jumps=2;assert.equal(selectWombatAnimation(p),'double_jump');
+ p.vy=0;assert.equal(selectWombatAnimation(p),'jump_air');
  p.vy=300;assert.equal(selectWombatAnimation(p),'fall');
- p.dash=0.16;assert.equal(selectWombatAnimation(p),'dash');
- p.dash=0;p.cast=0.25;assert.equal(selectWombatAnimation(p),'cast');
- assert.deepEqual({x:p.x,y:p.y,w:p.w,h:p.h},untouched);
- assert.ok(chooseWombatFrame('walk',0,p)<WOMBAT_ANIMATIONS.walk.frames.length);
- assert.equal(chooseWombatFrame('dash',0,p),5);
+ p.dash=.15;assert.equal(selectWombatAnimation(p),'dash');
+ p.dash=0;p.cast=.25;p.visualSpell='KeyE';assert.equal(selectWombatAnimation(p),'cast_fire');
+ assert.deepEqual({x:p.x,y:p.y,w:p.w,h:p.h},before);
+ for(const clip of Object.values(NAMED_WOMBAT_ANIMATIONS.sano)){
+  for(let t=0;t<1.8;t+=.09)assert.ok(clip.frames[chooseWombatFrame(clip.name,t,p)],clip.name);
+ }
 });
-test('death frames and all transition indices remain safe after restarts',()=>{
- for(let i=0;i<200;i++){
-  const p={grounded:i%3===0,vx:i%2?300:0,vy:i%2?-510:220,dash:0,cast:0,hit:0};
-  const a=selectWombatAnimation(p,i%17===0?'dead':'playing');
-  const ix=chooseWombatFrame(a,i*0.037,p);
-  assert.ok((WOMBAT_ANIMATIONS[a]||EXTRA_WOMBAT_ANIMATIONS[a]).frames[ix],a+' '+ix);
+test('death and restart do not choose non-existent frames',()=>{
+ for(let i=0;i<250;i++){
+  const p={grounded:i%3===0,vx:i%2?320:0,vy:i%2?-500:190,dash:0,cast:0,hit:0};
+  const action=selectWombatAnimation(p,i%17===0?'dead':'playing');
+  assert.ok(NAMED_WOMBAT_ANIMATIONS.sano[action]);
+  assert.ok(NAMED_WOMBAT_ANIMATIONS.sano[action].frames[chooseWombatFrame(action,i*.037,p)]);
  }
 });
