@@ -62,7 +62,7 @@ export default function App(){
  const ref=useRef(null),engineRef=useRef(null),raf=useRef(0),last=useRef(0),acc=useRef(0),soundRef=useRef(false),audio=useRef(null);
  if(!engineRef.current)engineRef.current=new GameEngine();const engine=engineRef.current;
  const [s,setS]=useState(()=>engine.snapshot()),[best,setBest]=useState(bestSaved),[sound,setSound]=useState(false);soundRef.current=sound;
- useEffect(()=>{engine.notify=setS;engine.emit();const keys=new Set(['ArrowLeft','ArrowRight','Space','ShiftLeft','ShiftRight','KeyA','KeyD','KeyR','KeyW']);
+ useEffect(()=>{engine.notify=setS;engine.emit();const keys=new Set(['ArrowLeft','ArrowRight','ArrowUp','Space','ShiftLeft','ShiftRight','KeyA','KeyD','KeyR','KeyW']);
  const down=e=>{
   if(['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)||e.isComposing)return;
   const code=e.code;
