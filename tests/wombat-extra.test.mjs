@@ -13,6 +13,24 @@ test('the additional sprite atlas has 121 frames and correct PNG dimensions',()=
  let n=0;for(const a of Object.values(EXTRA_WOMBAT_ANIMATIONS))for(const frame of a.frames){assert.equal(frame.index,n++);assert.ok(frame.duration>0);}
  assert.equal(n,121);
 });
+test('JSON metadata matches the supplemental atlas positions and source sheets',()=>{
+ const metadata=JSON.parse(readFileSync(new URL('../public/assets/sprites/wombat/atlas-extra.json',import.meta.url),'utf8'));
+ let total=0;
+ for(const [name,clip] of Object.entries(EXTRA_WOMBAT_ANIMATIONS)){
+  const data=metadata.animations[name];assert.ok(data,name);
+  assert.equal(data.frames.length,clip.frames.length,name);
+  for(let i=0;i<clip.frames.length;i++){
+   const expected=clip.frames[i],actual=data.frames[i];
+   assert.equal(expected.index,actual.index);
+   assert.deepEqual(actual.rect,[expected.x,expected.y,expected.width,expected.height]);
+   assert.ok(actual.usefulRect[2]>actual.usefulRect[0]);
+   assert.ok(actual.usefulRect[3]>actual.usefulRect[1]);
+   total++;
+  }
+ }
+ assert.equal(total,121);
+ assert.equal(new Set(Object.values(metadata.animations).map(a=>a.sourceSheet)).size,9);
+});
 test('ordinary jumps do not incorrectly use levitation and aerial sprites',()=>{
  const p={grounded:false,vy:-570,jumps:1,vx:200,dash:0,cast:0,hit:0};
  assert.equal(selectWombatAnimation(p),'jump');

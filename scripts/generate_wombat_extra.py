@@ -33,6 +33,30 @@ DURATIONS={
 
 LOOPS={'run_fast','jump_staff','book','book_hold'}
 
+def choose_row_edges(original, rows):
+    """Find actual transparent gutters instead of splitting irregular sheets equally."""
+    alpha=original.getchannel('A').point(lambda a: 255 if a>20 else 0)
+    w,h=original.size
+    quiet=[]
+    threshold=max(3,int(w*.006))
+    start=None
+    for y in range(h):
+        count=alpha.crop((0,y,w,y+1)).histogram()[255]
+        if count<=threshold and start is None: start=y
+        elif count>threshold and start is not None:
+            if y-start>=4: quiet.append((start,y))
+            start=None
+    if start is not None and h-start>=4: quiet.append((start,h))
+    edges=[0]
+    for idx in range(1,rows):
+        ideal=round(idx*h/rows)
+        candidates=[(abs((a+b)//2-ideal),(a+b)//2) for a,b in quiet
+                    if (a+b)//2>edges[-1]+h/(2*rows) and (a+b)//2<h-(rows-idx)*h/(2*rows)]
+        edges.append(min(candidates)[1] if candidates else ideal)
+    edges.append(h)
+    return edges
+
+
 def main():
     (OUT/'atlases').mkdir(parents=True,exist_ok=True)
     frames=[]; meta={'schemaVersion':2,'atlas':{'path':'atlases/wombat-extra.png','cell':CELL,'columns':COLS},'animations':{}}
@@ -43,10 +67,12 @@ def main():
         original=Image.open(paths[0]).convert('RGBA')
         pieces=[]
         rows=len(row_cells)
-        y_edges=[0,round(355*original.height/971),round(720*original.height/971),original.height] if sheet=='damage' else [round(i*original.height/rows) for i in range(rows+1)]
+        y_edges=choose_row_edges(original,rows)
+        print(sheet, 'row edges', y_edges)
         for r, count in enumerate(row_cells):
             for c in range(count):
-                crop=original.crop((round(c*original.width/count),y_edges[r],round((c+1)*original.width/count),y_edges[r+1]))
+                grid_columns = 5 if sheet=='damage' and r==0 else 4 if (sheet=='nova' and r==2) or (sheet=='victory' and r==3) else count
+                crop=original.crop((round(c*original.width/grid_columns),y_edges[r],round((c+1)*original.width/grid_columns),y_edges[r+1]))
                 pixels=crop.getchannel('A').point(lambda x:255 if x>20 else 0)
                 bounds=pixels.getbbox()
                 pieces.append(crop.crop(bounds) if bounds else None)
