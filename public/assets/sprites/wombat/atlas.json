@@ -1,0 +1,1139 @@
+{
+  "schemaVersion": 1,
+  "source": "8 user-supplied original PNG sheets",
+  "atlas": {
+    "path": "atlases/wombat.png",
+    "width": 768,
+    "height": 480,
+    "columns": 8,
+    "rows": 5,
+    "cellSize": [
+      96,
+      96
+    ],
+    "filter": "nearest"
+  },
+  "animations": {
+    "idle": {
+      "sourceSheet": "raw/sheet_01.png",
+      "loop": true,
+      "frames": [
+        {
+          "file": "frames/idle_01.png",
+          "index": 0,
+          "rect": [
+            0,
+            0,
+            96,
+            96
+          ],
+          "frameMs": 135,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            17,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            423,
+            367
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 17
+          }
+        },
+        {
+          "file": "frames/idle_02.png",
+          "index": 1,
+          "rect": [
+            96,
+            0,
+            96,
+            96
+          ],
+          "frameMs": 135,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            14,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            414,
+            369
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 14
+          }
+        },
+        {
+          "file": "frames/idle_03.png",
+          "index": 2,
+          "rect": [
+            192,
+            0,
+            96,
+            96
+          ],
+          "frameMs": 135,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            21,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            443,
+            362
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 21
+          }
+        },
+        {
+          "file": "frames/idle_04.png",
+          "index": 3,
+          "rect": [
+            288,
+            0,
+            96,
+            96
+          ],
+          "frameMs": 135,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            20,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            444,
+            369
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 20
+          }
+        },
+        {
+          "file": "frames/idle_05.png",
+          "index": 4,
+          "rect": [
+            384,
+            0,
+            96,
+            96
+          ],
+          "frameMs": 135,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            18,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            427,
+            365
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 18
+          }
+        },
+        {
+          "file": "frames/idle_06.png",
+          "index": 5,
+          "rect": [
+            480,
+            0,
+            96,
+            96
+          ],
+          "frameMs": 135,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            20,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            443,
+            365
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 20
+          }
+        },
+        {
+          "file": "frames/idle_07.png",
+          "index": 6,
+          "rect": [
+            576,
+            0,
+            96,
+            96
+          ],
+          "frameMs": 135,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            19,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            443,
+            370
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 19
+          }
+        },
+        {
+          "file": "frames/idle_08.png",
+          "index": 7,
+          "rect": [
+            672,
+            0,
+            96,
+            96
+          ],
+          "frameMs": 135,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            20,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            444,
+            370
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 20
+          }
+        }
+      ]
+    },
+    "walk": {
+      "sourceSheet": "raw/sheet_02.png",
+      "loop": true,
+      "frames": [
+        {
+          "file": "frames/walk_01.png",
+          "index": 8,
+          "rect": [
+            0,
+            96,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            14,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            417,
+            373
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 14
+          }
+        },
+        {
+          "file": "frames/walk_02.png",
+          "index": 9,
+          "rect": [
+            96,
+            96,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            15,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            422,
+            373
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 15
+          }
+        },
+        {
+          "file": "frames/walk_03.png",
+          "index": 10,
+          "rect": [
+            192,
+            96,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            14,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            421,
+            377
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 14
+          }
+        },
+        {
+          "file": "frames/walk_04.png",
+          "index": 11,
+          "rect": [
+            288,
+            96,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            12,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            416,
+            384
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 12
+          }
+        },
+        {
+          "file": "frames/walk_05.png",
+          "index": 12,
+          "rect": [
+            384,
+            96,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            14,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            423,
+            379
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 14
+          }
+        },
+        {
+          "file": "frames/walk_06.png",
+          "index": 13,
+          "rect": [
+            480,
+            96,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            15,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            428,
+            378
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 15
+          }
+        },
+        {
+          "file": "frames/walk_07.png",
+          "index": 14,
+          "rect": [
+            576,
+            96,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            14,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            425,
+            379
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 14
+          }
+        },
+        {
+          "file": "frames/walk_08.png",
+          "index": 15,
+          "rect": [
+            672,
+            96,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            11,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            408,
+            378
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 11
+          }
+        }
+      ]
+    },
+    "jump": {
+      "sourceSheet": "raw/sheet_03.png",
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/jump_01.png",
+          "index": 16,
+          "rect": [
+            0,
+            192,
+            96,
+            96
+          ],
+          "frameMs": 125,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            28,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            638,
+            472
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 28
+          }
+        },
+        {
+          "file": "frames/jump_02.png",
+          "index": 17,
+          "rect": [
+            96,
+            192,
+            96,
+            96
+          ],
+          "frameMs": 125,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            42,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            673,
+            386
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 42
+          }
+        },
+        {
+          "file": "frames/jump_03.png",
+          "index": 18,
+          "rect": [
+            192,
+            192,
+            96,
+            96
+          ],
+          "frameMs": 125,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            17,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            659,
+            570
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 17
+          }
+        }
+      ]
+    },
+    "jump_air": {
+      "sourceSheet": "raw/sheet_04.png",
+      "loop": true,
+      "frames": [
+        {
+          "file": "frames/jump_air_01.png",
+          "index": 19,
+          "rect": [
+            288,
+            192,
+            96,
+            96
+          ],
+          "frameMs": 130,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            23,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            802,
+            634
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 23
+          }
+        },
+        {
+          "file": "frames/jump_air_02.png",
+          "index": 20,
+          "rect": [
+            384,
+            192,
+            96,
+            96
+          ],
+          "frameMs": 130,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            40,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            866,
+            522
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 40
+          }
+        }
+      ]
+    },
+    "levitate": {
+      "sourceSheet": "raw/sheet_05.png",
+      "loop": true,
+      "frames": [
+        {
+          "file": "frames/levitate_01.png",
+          "index": 21,
+          "rect": [
+            480,
+            192,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            25,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            442,
+            341
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 25
+          }
+        },
+        {
+          "file": "frames/levitate_02.png",
+          "index": 22,
+          "rect": [
+            576,
+            192,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            12,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            494,
+            455
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 12
+          }
+        },
+        {
+          "file": "frames/levitate_03.png",
+          "index": 23,
+          "rect": [
+            672,
+            192,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            7,
+            4,
+            89,
+            92
+          ],
+          "sourceDimensions": [
+            453,
+            489
+          ],
+          "trimOffset": {
+            "x": 7,
+            "y": 4
+          }
+        },
+        {
+          "file": "frames/levitate_04.png",
+          "index": 24,
+          "rect": [
+            0,
+            288,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            5,
+            4,
+            90,
+            92
+          ],
+          "sourceDimensions": [
+            416,
+            432
+          ],
+          "trimOffset": {
+            "x": 5,
+            "y": 4
+          }
+        },
+        {
+          "file": "frames/levitate_05.png",
+          "index": 25,
+          "rect": [
+            96,
+            288,
+            96,
+            96
+          ],
+          "frameMs": 95,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            29,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            473,
+            345
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 29
+          }
+        }
+      ]
+    },
+    "fall": {
+      "sourceSheet": "raw/sheet_06.png",
+      "loop": true,
+      "frames": [
+        {
+          "file": "frames/fall_01.png",
+          "index": 26,
+          "rect": [
+            192,
+            288,
+            96,
+            96
+          ],
+          "frameMs": 140,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            23,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            770,
+            615
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 23
+          }
+        },
+        {
+          "file": "frames/fall_02.png",
+          "index": 27,
+          "rect": [
+            288,
+            288,
+            96,
+            96
+          ],
+          "frameMs": 140,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            24,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            841,
+            657
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 24
+          }
+        }
+      ]
+    },
+    "cast": {
+      "sourceSheet": "raw/sheet_07.png",
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/cast_01.png",
+          "index": 28,
+          "rect": [
+            384,
+            288,
+            96,
+            96
+          ],
+          "frameMs": 100,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            25,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            638,
+            489
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 25
+          }
+        },
+        {
+          "file": "frames/cast_02.png",
+          "index": 29,
+          "rect": [
+            480,
+            288,
+            96,
+            96
+          ],
+          "frameMs": 100,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            37,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            682,
+            435
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 37
+          }
+        },
+        {
+          "file": "frames/cast_03.png",
+          "index": 30,
+          "rect": [
+            576,
+            288,
+            96,
+            96
+          ],
+          "frameMs": 100,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            22,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            650,
+            523
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 22
+          }
+        }
+      ]
+    },
+    "dash": {
+      "sourceSheet": "raw/sheet_08.png",
+      "loop": false,
+      "frames": [
+        {
+          "file": "frames/dash_01.png",
+          "index": 31,
+          "rect": [
+            672,
+            288,
+            96,
+            96
+          ],
+          "frameMs": 60,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            43,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            497,
+            279
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 43
+          }
+        },
+        {
+          "file": "frames/dash_02.png",
+          "index": 32,
+          "rect": [
+            0,
+            384,
+            96,
+            96
+          ],
+          "frameMs": 60,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            39,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            500,
+            304
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 39
+          }
+        },
+        {
+          "file": "frames/dash_03.png",
+          "index": 33,
+          "rect": [
+            96,
+            384,
+            96,
+            96
+          ],
+          "frameMs": 60,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            48,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            512,
+            257
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 48
+          }
+        },
+        {
+          "file": "frames/dash_04.png",
+          "index": 34,
+          "rect": [
+            192,
+            384,
+            96,
+            96
+          ],
+          "frameMs": 60,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            43,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            480,
+            269
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 43
+          }
+        },
+        {
+          "file": "frames/dash_05.png",
+          "index": 35,
+          "rect": [
+            288,
+            384,
+            96,
+            96
+          ],
+          "frameMs": 60,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            42,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            512,
+            292
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 42
+          }
+        },
+        {
+          "file": "frames/dash_06.png",
+          "index": 36,
+          "rect": [
+            384,
+            384,
+            96,
+            96
+          ],
+          "frameMs": 60,
+          "pivot": [
+            0.5,
+            0.957
+          ],
+          "usefulRect": [
+            4,
+            41,
+            91,
+            92
+          ],
+          "sourceDimensions": [
+            512,
+            299
+          ],
+          "trimOffset": {
+            "x": 4,
+            "y": 41
+          }
+        }
+      ]
+    }
+  }
+}
