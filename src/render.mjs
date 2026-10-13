@@ -98,6 +98,7 @@ function enemy(c,e,t){if(e.hp<=0)return;c.save();c.translate(e.x+e.w/2,e.y+e.h/2
  else if(e.type==='bomber'){ellipse(c,0,4+a*3,24,21,'#bb7d93');poly(c,[[-23,-6],[0,-36],[24,-8]],'#7e5374');ellipse(c,-8,1,4,4,'#ffeb9d');ellipse(c,8,1,4,4,'#ffeb9d');glow(c,0,22,25,'#ef9aa688');}
  else if(e.type==='guardian'){round(c,-35,-45,70,86,9,'#423d61');ellipse(c,0,-19,25,24,'#ac9aba');poly(c,[[-37,-36],[-24,-73],[0,-52],[22,-75],[37,-36]],'#817caa');ellipse(c,-11,-18,5,7,'#ffe0ad');ellipse(c,12,-18,5,7,'#ffe0ad');glow(c,0,21,31,'#bea7ff66');}
   else if(e.type==='boss'){ellipse(c,0,59,68,12,'#16132c99');poly(c,[[-54,59],[-41,-31],[0,-63],[44,-31],[59,59]],'#856579');poly(c,[[-31,51],[-29,-26],[0,-43],[31,-26],[34,51]],'#37324c');ellipse(c,0,-25,34,33,'#c1a4b2');poly(c,[[-36,-40],[-38,-77],[-16,-64],[0,-92],[17,-64],[37,-79],[35,-40]],'#e7c48c');ellipse(c,-12,-26,6,8,'#fddba2');ellipse(c,13,-26,6,8,'#fddba2');glow(c,0,18,52,'#ed9edb66');ellipse(c,0,18,14,18,'#f6bde0');}
+ if(e.telegraph>0){c.strokeStyle='#ffabbd';c.lineWidth=4+Math.sin(t*30)*2;c.beginPath();c.arc(0,0,Math.max(e.w,e.h)*.72+e.telegraph*28,0,TAU);c.stroke();glow(c,0,0,e.w,'#ff69794c');}
  if(e.burn>0){for(let j=0;j<4;j++){const fx=Math.sin(t*8+j*2)*e.w*.3,fy=-e.h*.5-10-j*7;glow(c,fx,fy,11,'#ff9c4c99');ellipse(c,fx,fy,4,9,'#ffc678aa');}}
  if(e.slow>0||e.freeze>0){c.strokeStyle=e.freeze>0?'#d7f9ff':'#8dd7ff';c.lineWidth=e.freeze>0?5:2;c.strokeRect(-e.w*.55,-e.h*.55,e.w*1.1,e.h*1.1);}
  if(e.stun>0){for(let j=0;j<3;j++){const a=j*TAU/3+t*9;ellipse(c,Math.cos(a)*27,Math.sin(a)*22-e.h*.65,5,5,'#fcf5b0');}}
@@ -124,6 +125,7 @@ export function drawGame(c,engine){const {world:w,player:p,status,t}= {world:eng
  if(w.biome.id==='cave'){c.save();c.strokeStyle='#a6a3d030';c.lineWidth=38;c.lineCap='round';
    const byId=new Map(w.platforms.map(p=>[p.id,p]));for(const [a,b] of w.links){const n=byId.get(a),m=byId.get(b);if(n&&m){c.beginPath();c.moveTo(n.x+n.w/2,n.y-45);c.lineTo(m.x+m.w/2,m.y-45);c.stroke();}}c.restore();}
  if(w.biome.id==='sky'){for(const pl of w.platforms){if(pl.y>cameraY-180&&pl.y<cameraY+HEIGHT+160)glow(c,pl.x+pl.w/2,pl.y+65,70,'#d8edfe19');}}
+ for(const wall of w.walls||[]){round(c,wall.x,wall.y,wall.w,wall.h,4,'#596080');round(c,wall.x+3,wall.y+6,4,wall.h-12,2,'#9dadd4');for(let y=wall.y+24;y<wall.y+wall.h;y+=36)line(c,[[wall.x,y],[wall.x+wall.w,y-8]],'#bcc4dd55',2);}
  for(const h of w.hazards){for(let x=h.x;x<h.x+h.w;x+=15)poly(c,[[x,h.y+h.h],[x+7,h.y],[x+15,h.y+h.h]],h.type==='toxic'?'#c0e37b':'#f0a6a9');}
  for(const i of w.items)if(i.x>camera-60&&i.x<camera+WIDTH+60&&i.y>cameraY-80&&i.y<cameraY+HEIGHT+80)item(c,i,t);
  portal(c,w,t);
