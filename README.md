@@ -22,7 +22,7 @@ Abre la dirección que indica Vite (normalmente `http://localhost:5173`). Para p
 | Acción | Tecla |
 |---|---|
 | Movimiento | **← / →** |
-| Salto y doble salto | **Espacio** |
+| Salto y doble salto | **Espacio** o **↑** |
 | Esquivar | **Shift** |
 | Lanzar hechizo seleccionado | **W** |
 | Nova | **A** |

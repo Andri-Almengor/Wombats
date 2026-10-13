@@ -1,4 +1,5 @@
 import {BIOMES,FLOOR,HEIGHT,WIDTH,createWorld,validateWorld} from './world.mjs';
+import {wantsJump} from './controls.mjs';
 const limit=(v,a,b)=>Math.max(a,Math.min(b,v));
 const touches=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
 export const SPELLS=[
@@ -55,7 +56,7 @@ export class GameEngine{
  emit(){this.notify(this.snapshot());}
  makeSeed(){let next=randomSeed();if(next===this.seed)next=(next+0x9e3779b9)>>>0;return next;}
  newRun(){this.equippedSpell='KeyQ';this.menuIndex=0;this.seed=this.makeSeed();this.biomeIndex=0;this.player=freshPlayer();this.score=0;this.kills=0;this.elapsed=0;this.time=0;this.held.clear();this.edge.clear();this.loadBiome(0);this.status='playing';this.emit();}
- loadBiome(index){this.biomeIndex=index;this.world=createWorld(index,this.seed);if(!validateWorld(this.world))throw Error('Procedural map not reachable');const p=this.player;p.x=this.world.spawn.x;p.y=this.world.spawn.y;this.lastSafe={...this.world.spawn};this.discovered=new Set([this.world.platforms[0].id]);p.vx=p.vy=0;p.grounded=false;p.jumps=0;p.shield=0;p.invuln=1;p.spawn=1.1;p.mana=p.maxMana;this.camera=0;this.cameraY=0;this.projectiles=[];this.hostile=[];this.particles=[];this.status='playing';this.say(this.world.biome.subtitle,3.4);this.emit();}
+ loadBiome(index){this.biomeIndex=index;this.world=createWorld(index,this.seed);if(!validateWorld(this.world))throw Error('Procedural map not reachable');const p=this.player;p.x=this.world.spawn.x;p.y=this.world.spawn.y;this.lastSafe={...this.world.spawn};this.discovered=new Set([this.world.platforms[0].id]);p.vx=p.vy=0;p.grounded=true;p.jumps=0;p.shield=0;p.invuln=1;p.spawn=1.1;p.mana=p.maxMana;this.camera=0;this.cameraY=0;this.projectiles=[];this.hostile=[];this.particles=[];this.status='playing';this.say(this.world.biome.subtitle,3.4);this.emit();}
  openSpellMenu(){if(this.status!=='playing')return false;this.status='spell-menu';this.menuIndex=Math.max(0,SELECTABLE_SPELLS.findIndex(spell=>spell.key===this.equippedSpell));this.held.clear();this.edge.clear();this.emit();return true;}
  setMenuIndex(index){if(this.status!=='spell-menu'||!Number.isInteger(index)||index<0||index>=SELECTABLE_SPELLS.length)return false;if(this.menuIndex!==index){this.menuIndex=index;this.emit();}return true;}
  navigateSpellMenu(direction){if(this.status!=='spell-menu')return false;const size=SELECTABLE_SPELLS.length;this.menuIndex=(this.menuIndex+direction%size+size)%size;this.emit();return true;}
@@ -126,7 +127,7 @@ export class GameEngine{
  if(p.upgrades.recovery&&p.hp<p.maxHp){p.recoveryTime+=dt;if(p.recoveryTime>=Math.max(9,30-p.upgrades.recovery*3)){p.recoveryTime=0;p.hp=Math.min(p.maxHp,p.hp+1);p.healFx=.4;}}
  else p.recoveryTime=0;
  const dir=Number(held.has('ArrowRight'))-Number(held.has('ArrowLeft'));
- if(edge.has('Space'))p.buffer=.16;
+ if(wantsJump(edge))p.buffer=.16;
  if(p.grounded){p.coyote=.11;p.jumps=0;}
  if(p.buffer>0&&(p.coyote>0||p.jumps<2)){if(!p.grounded&&p.coyote===0&&p.jumps===0)p.jumps=1;p.vy=p.jumps===0?-650:-600;p.jumps++;p.grounded=false;p.coyote=0;p.buffer=0;this.sparks(p.x+22,p.y+p.h,'#e8e3c0',11,130);this.sfx('jump');}
  if(edge.has('ShiftLeft')||edge.has('ShiftRight')){if(p.dashCd===0){p.dash=.19;p.dashCd=1.05;p.vx=p.dir*850;this.sparks(p.x+20,p.y+40,'#bde6ff',24);this.sfx('dash');}}

@@ -2,6 +2,7 @@ import React,{useEffect,useRef,useState} from 'react';
 import {GameEngine,SPELLS,SELECTABLE_SPELLS,UPGRADES} from './engine.mjs';
 import {WIDTH,HEIGHT} from './world.mjs';
 import {drawGame} from './render.mjs';
+import {GAMEPLAY_KEYS} from './controls.mjs';
 const bestSaved=()=>{try{return Number(localStorage.getItem('wombat-best-v2'))||0;}catch{return 0;}};
 function Bar({current,max,type}){return <div className={'bar '+type}><i style={{width:Math.max(0,Math.min(100,current/max*100))+'%'}}/></div>;}
 function HUD({s}){return <div className="hud"><div className="hud-vitals"><div className="heart-row">{Array.from({length:s.maxHp},(_,i)=><span key={i} className={i>=s.hp?'dim':''}>♥</span>)}</div><label>VIDA <b>{s.hp}/{s.maxHp}</b></label><Bar current={s.hp} max={s.maxHp} type="health"/><label>ENERGÍA ARCANA <b>{s.mana}/{s.maxMana}</b></label><Bar current={s.mana} max={s.maxMana} type="mana"/></div><div className="hud-world"><small>MUNDO {String(s.biomeIndex+1).padStart(2,'0')} / 05</small><strong>{s.biome}</strong><Bar current={s.progress} max={100} type="progress"/></div><div className="hud-score"><b>✧ {s.runes}/3 <small>RUNAS</small></b>{s.bookRequired&&<b>▣ {s.bookCollected?'✓':'?'} <small>LIBRO</small></b>}<b>◆ {s.coins} <small>ESENCIAS</small></b><b>{s.score} <small>PUNTOS</small></b></div></div>;}
@@ -62,7 +63,7 @@ export default function App(){
  const ref=useRef(null),engineRef=useRef(null),raf=useRef(0),last=useRef(0),acc=useRef(0),soundRef=useRef(false),audio=useRef(null);
  if(!engineRef.current)engineRef.current=new GameEngine();const engine=engineRef.current;
  const [s,setS]=useState(()=>engine.snapshot()),[best,setBest]=useState(bestSaved),[sound,setSound]=useState(false);soundRef.current=sound;
- useEffect(()=>{engine.notify=setS;engine.emit();const keys=new Set(['ArrowLeft','ArrowRight','Space','ShiftLeft','ShiftRight','KeyA','KeyD','KeyR','KeyW']);
+ useEffect(()=>{engine.notify=setS;engine.emit();
  const down=e=>{
   if(['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName)||e.isComposing)return;
   const code=e.code;
@@ -82,7 +83,7 @@ export default function App(){
   }
   if(code==='KeyU'&&engine.status==='playing'){e.preventDefault();if(!e.repeat)engine.openUpgradeMenu();return;}
   if(code==='KeyS'&&engine.status==='playing'){e.preventDefault();if(!e.repeat)engine.openSpellMenu();return;}
-  if(keys.has(code)&&engine.status==='playing'){e.preventDefault();if(!e.repeat)engine.setHeld(code,true);}
+  if(GAMEPLAY_KEYS.has(code)&&engine.status==='playing'){e.preventDefault();if(!e.repeat)engine.setHeld(code,true);}
   else if(code==='Escape'&&!e.repeat){e.preventDefault();engine.togglePause();}
   
  };
