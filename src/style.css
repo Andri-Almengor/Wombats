@@ -5,3 +5,28 @@
 @media(max-width:1050px){.shop{display:block}.shop-intro{width:auto;margin-bottom:10px}.upgrades button .price{margin-left:0}.upgrades button{flex-wrap:wrap}.grimoire{gap:12px}.hud-score{gap:8px}}
 @media(max-width:720px){header{height:62px;padding:0 3%}.brand{font-size:17px;gap:7px}.brand>span{font-size:23px}.brand small,nav>span{display:none}nav{gap:5px}main{padding:14px 2% 0}.overline{font-size:8px}#stage{min-height:310px;aspect-ratio:16/10}.overlay{padding:4% 5%;align-items:center}.panel{max-width:80%}h1{font-size:44px}.eyebrow{font-size:8px;margin-bottom:7px}.subtitle{font-size:8px}.panel p{font-size:10px;margin:11px 0}.panel .mini,.panel .note{font-size:8px}.primary{font-size:11px;padding:11px 16px}.hud{left:2%;right:2%;top:2%}.hud-vitals{max-width:33%;width:140px;padding:6px}.heart-row{font-size:10px;min-height:13px}.hud-vitals label{font-size:6px;margin:4px 0 2px}.hud-vitals label b{font-size:7px}.bar{height:5px}.hud-world{min-width:0;width:34%;padding:7px}.hud-world small{font-size:7px}.hud-world strong{font-size:9px}.bar.progress{margin-top:6px}.hud-score{padding:7px;gap:7px}.hud-score b{font-size:10px}.hud-score small{font-size:6px}.grimoire{display:block;padding:9px}.grimoire>div:first-child{width:auto;margin:0 0 8px}.grimoire>div:first-child b{font-size:12px}.spells{gap:4px}.spells button{min-height:68px;padding:4px 1px}.spells .spell-icon{font-size:19px}.spells strong{font-size:8px}.spells small{font-size:7px}.spells .spell-key{font-size:8px;top:2px;left:3px}.upgrades{grid-template-columns:repeat(2,minmax(0,1fr))}.upgrades button{flex-wrap:nowrap}.shop{padding:10px}.instructions{gap:7px}.touch button{width:49px;height:48px;font-size:20px}footer{font-size:7px}.toast{font-size:10px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* In-game spell assignment: pauses the simulation and lets arrow keys select W's spell. */
+.action-spells{grid-template-columns:repeat(5,minmax(0,1fr));}
+.quick-menu-overlay{justify-content:center;background:#071322e8;backdrop-filter:blur(3px);z-index:10;padding:24px;}
+.quick-menu{width:min(590px,94%);max-height:95%;overflow-y:auto;padding:clamp(17px,2vw,28px);border-radius:16px;background:linear-gradient(145deg,#1b3341f7,#132533f9);border:1px solid #b0ebd866;box-shadow:0 22px 75px #030910bf;color:var(--cream);}
+.quick-menu h2{font-size:clamp(22px,2.9vw,35px);margin:4px 0 9px;}
+.quick-menu p{font-size:12px;color:#c3d6d3;line-height:1.6;margin:0 0 14px;}
+.quick-menu kbd{display:inline-block;border:1px solid #ddeddf54;padding:1px 6px;border-radius:5px;color:var(--gold);font-weight:900;font-family:inherit;}
+.quick-menu .eyebrow{font-size:10px;margin-bottom:9px;}
+.quick-spell-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;}
+.quick-spell-option{display:flex;align-items:center;gap:9px;min-width:0;min-height:76px;position:relative;overflow:hidden;padding:10px 11px;text-align:left;color:var(--cream);background:#253746;border-radius:11px;border:2px solid #ffffff19;transition:border-color .12s,background .12s,transform .12s;}
+.quick-spell-option:hover,.quick-spell-option.highlighted{border-color:#f2d89a;background:#3e5260;transform:translateY(-1px);}
+.quick-spell-option.equipped:not(.highlighted){border-color:#72bdae88;}
+.quick-spell-icon{font-size:26px;width:33px;flex-shrink:0;text-align:center;}
+.quick-spell-info{display:flex;flex-direction:column;min-width:0;}
+.quick-spell-info strong{font-size:14px;}
+.quick-spell-info small{font-size:10px;color:#b9c7c9;}
+.quick-spell-cost{margin-left:auto;align-self:start;color:var(--gold);font-size:10px;white-space:nowrap;}
+.quick-equipped{position:absolute;bottom:5px;right:8px;font-size:8px;letter-spacing:.8px;color:var(--mint);font-weight:900;}
+.quick-menu-actions{display:flex;gap:17px;align-items:center;margin-top:15px;flex-wrap:wrap;}
+.quick-menu-actions .primary{padding:12px 18px;}
+.quick-menu-actions .secondary{margin:0;}
+.quick-menu-hint{margin-top:12px;color:#90aeb3;font-size:9px;letter-spacing:.7px;}
+@media(max-width:720px){.quick-menu-overlay{padding:7px;}.quick-menu{max-height:96%;padding:13px;}.quick-menu h2{font-size:21px;margin-bottom:5px;}.quick-menu p{font-size:10px;margin-bottom:9px;}.quick-spell-list{gap:5px;}.quick-spell-option{padding:7px;min-height:61px;gap:4px;}.quick-spell-icon{font-size:18px;width:22px;}.quick-spell-info strong{font-size:11px;}.quick-spell-info small,.quick-spell-cost{font-size:8px;}.quick-menu-hint{font-size:8px;}.quick-menu-actions{margin-top:9px;}.quick-menu-actions .primary{padding:8px 12px;}}
+@media(max-width:460px){.quick-spell-list{grid-template-columns:1fr;}.quick-spell-option{min-height:48px;}}
