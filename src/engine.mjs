@@ -126,7 +126,7 @@ export class GameEngine{
  if(p.upgrades.recovery&&p.hp<p.maxHp){p.recoveryTime+=dt;if(p.recoveryTime>=Math.max(9,30-p.upgrades.recovery*3)){p.recoveryTime=0;p.hp=Math.min(p.maxHp,p.hp+1);p.healFx=.4;}}
  else p.recoveryTime=0;
  const dir=Number(held.has('ArrowRight'))-Number(held.has('ArrowLeft'));
- if(edge.has('Space')||edge.has('ArrowUp')||edge.has('KeyZ'))p.buffer=.16;
+ if(edge.has('Space'))p.buffer=.16;
  if(p.grounded){p.coyote=.11;p.jumps=0;}
  if(p.buffer>0&&(p.coyote>0||p.jumps<2)){if(!p.grounded&&p.coyote===0&&p.jumps===0)p.jumps=1;p.vy=p.jumps===0?-650:-600;p.jumps++;p.grounded=false;p.coyote=0;p.buffer=0;this.sparks(p.x+22,p.y+p.h,'#e8e3c0',11,130);this.sfx('jump');}
  if(edge.has('ShiftLeft')||edge.has('ShiftRight')){if(p.dashCd===0){p.dash=.19;p.dashCd=1.05;p.vx=p.dir*850;this.sparks(p.x+20,p.y+40,'#bde6ff',24);this.sfx('dash');}}
