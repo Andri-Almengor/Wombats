@@ -30,3 +30,31 @@
 .quick-menu-hint{margin-top:12px;color:#90aeb3;font-size:9px;letter-spacing:.7px;}
 @media(max-width:720px){.quick-menu-overlay{padding:7px;}.quick-menu{max-height:96%;padding:13px;}.quick-menu h2{font-size:21px;margin-bottom:5px;}.quick-menu p{font-size:10px;margin-bottom:9px;}.quick-spell-list{gap:5px;}.quick-spell-option{padding:7px;min-height:61px;gap:4px;}.quick-spell-icon{font-size:18px;width:22px;}.quick-spell-info strong{font-size:11px;}.quick-spell-info small,.quick-spell-cost{font-size:8px;}.quick-menu-hint{font-size:8px;}.quick-menu-actions{margin-top:9px;}.quick-menu-actions .primary{padding:8px 12px;}}
 @media(max-width:460px){.quick-spell-list{grid-template-columns:1fr;}.quick-spell-option{min-height:48px;}}
+
+
+/* Frozen skill tree: usable with touch, mouse and keyboard at every screen size. */
+.action-spells{grid-template-columns:repeat(6,minmax(0,1fr))}
+.upgrade-overlay{justify-content:center;align-items:center;padding:12px;z-index:15;background:#061522ec;backdrop-filter:blur(5px)}
+.upgrade-panel{width:min(1080px,96%);max-height:96%;overflow-y:auto;overscroll-behavior:contain;background:linear-gradient(150deg,#142b38,#101e30);border:1px solid #c4e5c17a;box-shadow:0 24px 70px #000b;border-radius:15px;padding:clamp(12px,2.1vw,23px)}
+.upgrade-head{display:flex;justify-content:space-between;align-items:start;gap:15px}
+.upgrade-head h2{font-size:clamp(19px,2.4vw,34px);margin:0 0 5px}
+.upgrade-head p{font-size:12px;margin:0 0 12px;color:#bfe7cf}
+.upgrade-head .secondary{margin:0;white-space:nowrap}
+.upgrade-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.upgrade-choice{background:#24384a;color:#f4efdd;border:1px solid #ffffff25;border-radius:9px;min-height:102px;padding:11px 9px;text-align:left;display:flex;align-items:start;gap:8px}
+.upgrade-choice:hover:enabled{background:#375563;border-color:#d5cf9a}
+.upgrade-icon{font-size:23px;line-height:1.5}
+.upgrade-data{min-width:0;flex:1;display:flex;flex-direction:column;gap:4px}
+.upgrade-data strong{font-size:12px}
+.upgrade-data small{font-size:10px;color:#b9c9ca}
+.upgrade-data em{font-style:normal;font-size:10px;color:#ecdaac;font-weight:700}
+.upgrade-choice>b{font-size:10px;white-space:nowrap;color:#f1d99c}
+.upgrade-foot{display:block;margin-top:10px;color:#adbfbd;font-size:10px}
+.shop-teaser{justify-content:space-between}
+.shop-teaser .shop-intro{width:auto;max-width:570px}
+.shop-teaser>span{font-weight:900;color:#f0d3a2}
+.minimap{position:absolute;top:26%;right:2%;width:clamp(96px,15%,180px);height:clamp(88px,24%,155px);z-index:2;pointer-events:none;background:#0d1e2bd1;border:1px solid #b9e2c955;border-radius:9px;padding:5px 8px 8px}
+.minimap small{display:block;font-weight:900;letter-spacing:.7px;font-size:8px;color:#f2dcab}
+.minimap svg{width:100%;height:calc(100% - 14px)}
+@media(max-width:900px){.upgrade-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.upgrade-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.upgrade-choice{min-height:94px}.upgrade-data strong{font-size:10px}.upgrade-data small,.upgrade-data em{font-size:9px}.upgrade-choice>b{font-size:9px}.upgrade-panel{max-height:98%;width:100%}.upgrade-overlay{padding:5px}.upgrade-head p{font-size:10px}.upgrade-head .secondary{font-size:10px}.shop-teaser{gap:7px}.shop-teaser .primary{padding:9px;font-size:10px}.shop-teaser>span{display:none}.minimap{top:27%;width:110px;height:110px}}
