@@ -88,3 +88,22 @@ test('cameras track height and full-run reset clears spell specialization',()=>{
  g.player.coins=1000;g.upgrade('spark');g.equippedSpell='KeyF';
  g.newRun();assert.equal(g.player.upgrades.spark,0);assert.equal(g.equippedSpell,'KeyQ');assert.equal(g.cameraY,0);
 });
+
+
+test('closed maze passages have collision, not just decorations',()=>{
+ const g=new GameEngine();g.newRun();g.loadBiome(2);g.world.enemies=[];
+ assert.ok(g.world.walls.length>0,'maze has locked shortcuts');
+ const wall=g.world.walls[0];g.player.x=wall.x-g.player.w-1;g.player.y=wall.y+15;g.player.vx=310;g.player.invuln=100;
+ g.setHeld('ArrowRight',true);g.update(1/60);
+ assert.ok(g.player.x+g.player.w<=wall.x+.01,'solid wall blocks walking through closed passage');
+});
+test('eclipse phase volleys issue a visible warning before projectiles',()=>{
+ const g=new GameEngine();g.newRun();g.loadBiome(4);
+ const boss=g.world.enemies.find(e=>e.type==='boss');g.world.enemies=[boss];
+ boss.attackTimer=0;g.player.invuln=100;g.update(.02);
+ assert.ok(boss.telegraph>.45);assert.equal(g.hostile.length,0);
+ for(let j=0;j<8;j++)g.update(.05);
+ assert.ok(boss.telegraph>0&&g.hostile.length===0,'warning precedes attack');
+ for(let j=0;j<5;j++)g.update(.05);
+ assert.equal(boss.telegraph,0);assert.ok(g.hostile.length>=3,'warning resolves into phase volley');
+});
