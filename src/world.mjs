@@ -76,7 +76,7 @@ export function createWorld(biomeIndex,runSeed){
   for(let k=0;k<queue.length;k++)for(const n of adjacency[queue[k]])if(distance[n]<0){distance[n]=distance[queue[k]]+1;queue.push(n);}
   const far=[...cells.keys()].sort((a,b)=>distance[b]-distance[a]);end=cells[far[0]];main=queue.map(i=>cells[i]);
   [far[4],far[10],far[17]].forEach(i=>collect(cells[i],'rune'));
-  cells.forEach((p,i)=>{rooms.push({x:p.x,y:p.y,w:p.w,h:150,nodeId:p.id,secret:distance[i]>14});if(i>0&&i%3===0)collect(p,'crystal');});
+  cells.forEach((p,i)=>{p.secret=distance[i]>14;rooms.push({x:p.x,y:p.y,w:p.w,h:150,nodeId:p.id,secret:p.secret});if(i>0&&i%3===0)collect(p,'crystal');});
   // Dungeon passage bars only where the maze has no horizontal connector.
   for(let i=0;i<25;i++)if(i%5!==4&&!edges.some(([a,b])=>(a===i&&b===i+1)||(b===i&&a===i+1))){
    const p=cells[i];walls.push({id:id(),x:p.x+p.w+12,y:p.y-135,w:20,h:156,kind:'sealed-stone'});
