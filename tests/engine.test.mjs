@@ -18,7 +18,7 @@ test('heal, shield and upgrades affect player stats',()=>{
 test('invulnerability, shield and death restart behaviour',()=>{
  const g=new GameEngine();g.newRun();g.player.invuln=0;g.player.shield=0;g.damagePlayer(1);assert.equal(g.player.hp,4);g.damagePlayer(1);assert.equal(g.player.hp,4);
  g.player.invuln=0;g.player.shield=3;g.damagePlayer(1);assert.equal(g.player.hp,4);
- g.player.shield=0;g.player.invuln=0;g.player.hp=1;const seed=g.seed;g.damagePlayer(1);assert.equal(g.status,'dead');g.update(2.6);assert.equal(g.status,'playing');assert.notEqual(g.seed,seed);
+ g.player.shield=0;g.player.invuln=0;g.player.hp=1;const seed=g.seed;g.damagePlayer(1);assert.equal(g.status,'dead');for(let i=0;i<180;i++)g.update(1/60);assert.equal(g.status,'playing');assert.notEqual(g.seed,seed);
 });
 test('runes unlock a safe portal progression to next biome',()=>{
  const g=new GameEngine();g.newRun();const oldSeed=g.seed;g.world.runes=3;
