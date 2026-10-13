@@ -79,7 +79,7 @@ export class GameEngine{
  spellCost(key){const s=SPELLS.find(x=>x.key===key);if(!s)return Infinity;return key==='KeyQ'?0:Math.max(1,Math.ceil(s.cost*(1-this.player.upgrades.efficiency*.08)));}
  say(message,duration=2){this.banner=message;this.bannerTime=duration;}
  sparks(x,y,color,n=12,force=160){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=(.3+Math.random())*force;this.particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.35+Math.random()*.4,color,size:2+Math.random()*4});}if(this.particles.length>350)this.particles.splice(0,this.particles.length-350);}
- damagePlayer(d=1,sourceX){const p=this.player;if(p.invuln>0||p.dash>0||this.status!=='playing')return;if(p.shield>0&&p.shieldHits>0){p.shieldHits--;p.shield=Math.max(0,p.shield-.2);this.sparks(p.x+22,p.y+25,'#b0eafb',13);return;}p.hp=Math.max(0,Math.round((p.hp-d*(1-p.upgrades.resistance*.10))*100)/100);p.invuln=1.25;p.hit=.5;p.vy=-240;if(sourceX!==undefined)p.vx=p.x<sourceX?-260:260;this.shake=12;this.sparks(p.x+22,p.y+30,'#ff958b',25);this.sfx('hurt');if(p.hp===0){this.status='dead';this.deadTimer=2.5;this.say('La magia renace: un mundo nuevo se está formando…',2.5);this.emit();}}
+ damagePlayer(d=1,sourceX){const p=this.player;if(p.invuln>0||p.dash>0||this.status!=='playing')return;if(p.shield>0){p.shieldHits=Math.max(0,p.shieldHits-1);if(p.shieldHits===0)p.shield=0;this.sparks(p.x+22,p.y+25,'#b0eafb',13);return;}p.hp=Math.max(0,Math.round((p.hp-d*(1-p.upgrades.resistance*.10))*100)/100);p.invuln=1.25;p.hit=.5;p.vy=-240;if(sourceX!==undefined)p.vx=p.x<sourceX?-260:260;this.shake=12;this.sparks(p.x+22,p.y+30,'#ff958b',25);this.sfx('hurt');if(p.hp===0){this.status='dead';this.deadTimer=2.5;this.say('La magia renace: un mundo nuevo se está formando…',2.5);this.emit();}}
  damageEnemy(e,amount,kind='spark'){
   if(e.hp<=0)return;
   const p=this.player,u=p.upgrades;
@@ -94,7 +94,7 @@ export class GameEngine{
    this.kills++;const miniboss=e.type==='guardian',boss=e.type==='boss',reward=boss?450:miniboss?280:65;
    this.score+=reward;p.coins+=boss?180:miniboss?155:45;p.earned+=reward;p.mana=limit(p.mana+12,0,p.maxMana);
    this.sparks(e.x+e.w/2,e.y+e.h/2,'#ffe2a4',24,210);this.sfx('kill');
-   if(miniboss){this.world.items.push({id:-e.id,x:e.x+e.w/2-11,y:e.spawnY+e.h-54,w:22,h:24,type:'book',active:true,phase:0,nodeId:e.nodeId});this.say('¡Guardián derrotado! Recupera el libro antiguo.',4);}
+   if(miniboss){const chamber=this.world.platforms.find(n=>n.id===e.nodeId);this.world.items.push({id:-e.id,x:chamber.x+20,y:chamber.y-54,w:22,h:24,type:'book',active:true,phase:0,nodeId:e.nodeId});this.say('¡Guardián derrotado! Recupera el libro antiguo.',4);}
    if(boss)this.say('¡El Rey del Eclipse cayó! Entra al portal.',4);
   }
  }
