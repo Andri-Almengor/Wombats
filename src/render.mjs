@@ -1,5 +1,5 @@
 import {WIDTH,HEIGHT,FLOOR} from './world.mjs';
-import {drawWombatSprite} from './wombat-sprites.mjs';
+import {drawWombatSprite,getWombatSocket} from './wombat-sprites.mjs';
 const TAU=Math.PI*2;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 function ellipse(c,x,y,rx,ry,color){c.fillStyle=color;c.beginPath();c.ellipse(x,y,Math.max(.1,rx),Math.max(.1,ry),0,0,TAU);c.fill();}
@@ -89,8 +89,8 @@ function proceduralWombat(c,p,t,mode='playing',deathT=0){const hpFraction=p.hp/p
  if(p.healFx<0){c.strokeStyle='#d9c6ff';c.lineWidth=6;c.beginPath();c.arc(0,0,(.6+p.healFx)*290,0,TAU);c.stroke();}
  c.restore();
 }
-function wombat(c,p,t,mode='playing',deathT=0){
- if(drawWombatSprite(c,p,t,mode,deathT))return;
+function wombat(c,p,t,mode='playing',deathT=0,visualDt){
+ if(drawWombatSprite(c,p,t,mode,deathT,visualDt))return;
  proceduralWombat(c,p,t,mode,deathT);
 }
 function enemy(c,e,t){if(e.hp<=0)return;c.save();c.translate(e.x+e.w/2,e.y+e.h/2);if(e.hit>0)c.globalAlpha=.58;
@@ -119,7 +119,7 @@ function item(c,i,t){if(!i.active)return;const y=i.y+Math.sin(t*2.4+i.phase)*5,x
 }
 function portal(c,w,t){const p=w.portal,open=w.runes>=w.requiredRunes&&(!w.bookRequired||w.bookCollected)&&!w.enemies.some(e=>(e.type==='boss'||e.type==='guardian')&&e.hp>0);
  glow(c,p.x+39,p.y+73,135,open?'#cff4cd44':'#a1bedb27');c.strokeStyle=open?'#b2f4c6':'#8a93b7';c.lineWidth=15;c.beginPath();c.ellipse(p.x+39,p.y+75,43,71,0,0,TAU);c.stroke();ellipse(c,p.x+39,p.y+75,32,61,open?'#b9ebce7b':'#263349cc');for(let j=0;j<3;j++)ellipse(c,p.x+12+j*27,p.y-10-(j===1?7:0),6,6,j<w.runes?'#ffe49f':'#526679');if(open)for(let j=0;j<10;j++){let y=p.y+20+((j*19+t*70)%110),x=p.x+39+Math.sin(t*1.3+j)*23;ellipse(c,x,y,2.5,2.5,'#ffffe3');}}
-export function drawGame(c,engine){const {world:w,player:p,status,t}= {world:engine.world,player:engine.player,status:engine.status,t:engine.time};
+export function drawGame(c,engine,visualDt){const {world:w,player:p,status,t}= {world:engine.world,player:engine.player,status:engine.status,t:engine.time};
  c.clearRect(0,0,WIDTH,HEIGHT);
  if(!w){const tmp={biome:{id:'forest',sky:['#102c36','#2e665e']},decor:[]};background(c,tmp,t,0);round(c,0,FLOOR,WIDTH,HEIGHT-FLOOR,0,'#365d47');wombat(c,{...p,x:865,y:440,dir:1,grounded:true,step:t*2,invuln:0,hit:0,cast:0,shield:0,healFx:0},t);return;}
  const camera=engine.camera,cameraY=engine.cameraY||0;c.save();
@@ -136,9 +136,10 @@ export function drawGame(c,engine){const {world:w,player:p,status,t}= {world:eng
  for(const i of w.items)if(i.x>camera-60&&i.x<camera+WIDTH+60&&i.y>cameraY-80&&i.y<cameraY+HEIGHT+80)item(c,i,t);
  portal(c,w,t);
  for(const e of w.enemies)if(e.x>camera-120&&e.x<camera+WIDTH+120&&e.y>cameraY-180&&e.y<cameraY+HEIGHT+180)enemy(c,e,t);
- for(const s of engine.projectiles){const col={spark:'#caf6bf',ice:'#c6edff',fire:'#ffc077'}[s.kind];glow(c,s.x,s.y,32,col+'66');ellipse(c,s.x,s.y,s.w*.65,s.h*.5,col);ellipse(c,s.x-s.vx*.015,s.y,s.w*.4,s.h*.3,col+'77');}
+ wombat(c,p,t,status,2.5-engine.deadTimer,visualDt);
+ for(const s of engine.projectiles){const socket=getWombatSocket(p);if(socket&&s.visualCastSequence===p.castSequence&&t-s.visualBornAt<.09){line(c,[[socket.x,socket.y],[s.x,s.y]],s.kind==='fire'?'#ffc07788':s.kind==='ice'?'#c6edff88':'#caf6bf88',2);glow(c,socket.x,socket.y,15,'#c6edff55');}const col={spark:'#caf6bf',ice:'#c6edff',fire:'#ffc077'}[s.kind];glow(c,s.x,s.y,32,col+'66');ellipse(c,s.x,s.y,s.w*.65,s.h*.5,col);ellipse(c,s.x-s.vx*.015,s.y,s.w*.4,s.h*.3,col+'77');}
  for(const s of engine.hostile){glow(c,s.x,s.y,26,s.kind==='toxic'?'#b0e97a88':'#f39ac777');ellipse(c,s.x,s.y,s.w/2,s.h/2,s.kind==='toxic'?'#c4eb94':'#e4a1cb');}
- wombat(c,p,t,status,2.5-engine.deadTimer);
+
  for(const v of engine.particles){c.globalAlpha=clamp(v.life*2,0,1);if(v.bolt){glow(c,v.x,v.y,30,'#c2eeff88');line(c,[[v.x-18,v.y-25],[v.x+5,v.y-5],[v.x-7,v.y+3],[v.x+15,v.y+24]],'#e0f5ff',4);}else ellipse(c,v.x,v.y,v.size,v.size,v.color);}c.globalAlpha=1;
  c.restore();
  const vignette=c.createRadialGradient(WIDTH/2,HEIGHT/2,250,WIDTH/2,HEIGHT/2,850);vignette.addColorStop(0,'transparent');vignette.addColorStop(1,'#0a15216b');c.fillStyle=vignette;c.fillRect(0,0,WIDTH,HEIGHT);c.restore();
