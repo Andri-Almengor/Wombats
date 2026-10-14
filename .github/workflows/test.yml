@@ -14,8 +14,19 @@ jobs:
         with:
           node-version: '22'
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Unit tests
         run: npm test
       - name: Production build
         run: npm run build
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Browser integration and sprite review
+        run: npm run test:browser
+      - name: Canvas review captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: player-animation-review
+          path: test-results/
+          retention-days: 14

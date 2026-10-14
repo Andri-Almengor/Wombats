@@ -56,7 +56,7 @@ export class GameEngine{
  emit(){this.notify(this.snapshot());}
  makeSeed(){let next=randomSeed();if(next===this.seed)next=(next+0x9e3779b9)>>>0;return next;}
  newRun(){this.equippedSpell='KeyQ';this.menuIndex=0;this.seed=this.makeSeed();this.biomeIndex=0;this.player=freshPlayer();this.score=0;this.kills=0;this.elapsed=0;this.time=0;this.held.clear();this.edge.clear();this.loadBiome(0);this.status='playing';this.emit();}
- loadBiome(index){this.biomeIndex=index;this.world=createWorld(index,this.seed);if(!validateWorld(this.world))throw Error('Procedural map not reachable');const p=this.player;p.x=this.world.spawn.x;p.y=this.world.spawn.y;this.lastSafe={...this.world.spawn};this.discovered=new Set([this.world.platforms[0].id]);p.vx=p.vy=0;p.grounded=true;p.jumps=0;p.shield=0;p.invuln=1;p.spawn=1.1;p.mana=p.maxMana;this.camera=0;this.cameraY=0;this.projectiles=[];this.hostile=[];this.particles=[];this.status='playing';this.say(this.world.biome.subtitle,3.4);this.emit();}
+ loadBiome(index){this.biomeIndex=index;this.world=createWorld(index,this.seed);if(!validateWorld(this.world))throw Error('Procedural map not reachable');const p=this.player;p.visualEpoch=(p.visualEpoch||0)+1;p.x=this.world.spawn.x;p.y=this.world.spawn.y;this.lastSafe={...this.world.spawn};this.discovered=new Set([this.world.platforms[0].id]);p.vx=p.vy=0;p.grounded=true;p.jumps=0;p.shield=0;p.invuln=1;p.spawn=1.1;p.mana=p.maxMana;this.camera=0;this.cameraY=0;this.projectiles=[];this.hostile=[];this.particles=[];this.status='playing';this.say(this.world.biome.subtitle,3.4);this.emit();}
  openSpellMenu(){if(this.status!=='playing')return false;this.status='spell-menu';this.menuIndex=Math.max(0,SELECTABLE_SPELLS.findIndex(spell=>spell.key===this.equippedSpell));this.held.clear();this.edge.clear();this.emit();return true;}
  setMenuIndex(index){if(this.status!=='spell-menu'||!Number.isInteger(index)||index<0||index>=SELECTABLE_SPELLS.length)return false;if(this.menuIndex!==index){this.menuIndex=index;this.emit();}return true;}
  navigateSpellMenu(direction){if(this.status!=='spell-menu')return false;const size=SELECTABLE_SPELLS.length;this.menuIndex=(this.menuIndex+direction%size+size)%size;this.emit();return true;}
@@ -80,7 +80,7 @@ export class GameEngine{
  spellCost(key){const s=SPELLS.find(x=>x.key===key);if(!s)return Infinity;return key==='KeyQ'?0:Math.max(1,Math.ceil(s.cost*(1-this.player.upgrades.efficiency*.08)));}
  say(message,duration=2){this.banner=message;this.bannerTime=duration;}
  sparks(x,y,color,n=12,force=160){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=(.3+Math.random())*force;this.particles.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.35+Math.random()*.4,color,size:2+Math.random()*4});}if(this.particles.length>350)this.particles.splice(0,this.particles.length-350);}
- damagePlayer(d=1,sourceX){const p=this.player;if(p.invuln>0||p.dash>0||this.status!=='playing')return;if(p.shield>0){p.shieldHits=Math.max(0,p.shieldHits-1);if(p.shieldHits===0)p.shield=0;this.sparks(p.x+22,p.y+25,'#b0eafb',13);return;}p.hp=Math.max(0,Math.round((p.hp-d*(1-p.upgrades.resistance*.10))*100)/100);p.invuln=1.25;p.hit=.5;p.vy=-240;if(sourceX!==undefined)p.vx=p.x<sourceX?-260:260;this.shake=12;this.sparks(p.x+22,p.y+30,'#ff958b',25);this.sfx('hurt');if(p.hp===0){this.status='dead';this.deadTimer=2.5;this.say('La magia renace: un mundo nuevo se está formando…',2.5);this.emit();}}
+ damagePlayer(d=1,sourceX){const p=this.player;if(p.invuln>0||p.dash>0||this.status!=='playing')return;if(p.shield>0){p.shieldHits=Math.max(0,p.shieldHits-1);if(p.shieldHits===0)p.shield=0;this.sparks(p.x+22,p.y+25,'#b0eafb',13);return;}p.hp=Math.max(0,Math.round((p.hp-d*(1-p.upgrades.resistance*.10))*100)/100);p.invuln=1.25;p.hit=.5;p.hurtSequence=(p.hurtSequence||0)+1;p.vy=-240;if(sourceX!==undefined)p.vx=p.x<sourceX?-260:260;this.shake=12;this.sparks(p.x+22,p.y+30,'#ff958b',25);this.sfx('hurt');if(p.hp===0){this.status='dead';this.deadTimer=2.5;this.say('La magia renace: un mundo nuevo se está formando…',2.5);this.emit();}}
  damageEnemy(e,amount,kind='spark'){
   if(e.hp<=0)return;
   const p=this.player,u=p.upgrades;
@@ -106,7 +106,7 @@ export class GameEngine{
  p.visualSpell=key;p.castSequence=(p.castSequence||0)+1;
  const ox=p.x+p.w/2+p.dir*22,oy=p.y+28;const power=p.power;
  if(key==='KeyQ'||key==='KeyW'||key==='KeyE'){
-  this.projectiles.push({x:ox,y:oy,w:25,h:18,vx:p.dir*(key==='KeyW'?500:key==='KeyE'?580:760),vy:0,life:key==='KeyE'?1.15:1.05,damage:(key==='KeyE'?2.4+p.upgrades.fire*.45:key==='KeyW'?1.2+p.upgrades.ice*.32:1+p.upgrades.spark*.22)*power,kind:key==='KeyQ'?'spark':key==='KeyW'?'ice':'fire',radius:key==='KeyE'?112:0});
+  this.projectiles.push({visualBornAt:this.time,visualCastSequence:p.castSequence,x:ox,y:oy,w:25,h:18,vx:p.dir*(key==='KeyW'?500:key==='KeyE'?580:760),vy:0,life:key==='KeyE'?1.15:1.05,damage:(key==='KeyE'?2.4+p.upgrades.fire*.45:key==='KeyW'?1.2+p.upgrades.ice*.32:1+p.upgrades.spark*.22)*power,kind:key==='KeyQ'?'spark':key==='KeyW'?'ice':'fire',radius:key==='KeyE'?112:0});
  }else if(key==='KeyR'){const amount=2+p.upgrades.heal;p.hp=Math.min(p.maxHp,p.hp+amount);p.healFx=.9;this.sparks(p.x+23,p.y+20,'#a8f9bd',30);this.say('+'+amount+' corazones',1.6);}
  else if(key==='KeyF'){const targets=this.nearbyEnemies(p.x+25,p.y+30,490).slice(0,4+p.upgrades.lightningChain);for(const [i,e] of targets.entries()){this.damageEnemy(e,Math.max(.9,2.5+p.upgrades.lightning*.42-i*.25)*power,'lightning');this.particles.push({x:e.x+e.w/2,y:e.y+e.h/2,vx:0,vy:0,life:.3,color:'#c0e9ff',size:18,bolt:true});}if(!targets.length)p.mana=Math.min(p.maxMana,p.mana+15);this.sparks(ox,oy,'#b4ddff',12);}
  else if(key==='KeyC'){p.shield=4.6+p.upgrades.shieldDuration*.75;p.shieldHits=1+p.upgrades.shield;this.sparks(p.x+23,p.y+28,'#a9e7ff',22);}
@@ -121,7 +121,7 @@ export class GameEngine{
  this.time+=dt;
  if(this.status==='dead'){this.deadTimer-=dt;if(this.deadTimer<=0)this.newRun();this.edge.clear();return;}
  if(this.status!=='playing'){this.edge.clear();return;}
- const p=this.player,w=this.world,edge=this.edge,held=this.held;this.elapsed+=dt;
+ const p=this.player,w=this.world,edge=this.edge,held=this.held;const wasGrounded=p.grounded;this.elapsed+=dt;
  for(const key of ['invuln','shield','hit','cast','dash','dashCd','coyote','buffer','spawn','healFx']){if(key==='healFx'){p.healFx+=(p.healFx>0?-1:1)*dt;if(Math.abs(p.healFx)<dt)p.healFx=0;}else p[key]=Math.max(0,p[key]-dt);}
  this.bannerTime-=dt;if(this.bannerTime<=0)this.banner='';
  this.shake=Math.max(0,this.shake-dt*35);
@@ -131,8 +131,8 @@ export class GameEngine{
  const dir=Number(held.has('ArrowRight'))-Number(held.has('ArrowLeft'));
  if(wantsJump(edge))p.buffer=.16;
  if(p.grounded){p.coyote=.11;p.jumps=0;}
- if(p.buffer>0&&(p.coyote>0||p.jumps<2)){if(!p.grounded&&p.coyote===0&&p.jumps===0)p.jumps=1;p.vy=p.jumps===0?-650:-600;p.jumps++;p.grounded=false;p.coyote=0;p.buffer=0;this.sparks(p.x+22,p.y+p.h,'#e8e3c0',11,130);this.sfx('jump');}
- if(edge.has('ShiftLeft')||edge.has('ShiftRight')){if(p.dashCd===0){p.dash=.19;p.dashCd=1.05;p.vx=p.dir*850;this.sparks(p.x+20,p.y+40,'#bde6ff',24);this.sfx('dash');}}
+ if(p.buffer>0&&(p.coyote>0||p.jumps<2)){if(!p.grounded&&p.coyote===0&&p.jumps===0)p.jumps=1;p.vy=p.jumps===0?-650:-600;p.jumps++;p.jumpSequence=(p.jumpSequence||0)+1;p.grounded=false;p.coyote=0;p.buffer=0;this.sparks(p.x+22,p.y+p.h,'#e8e3c0',11,130);this.sfx('jump');}
+ if(edge.has('ShiftLeft')||edge.has('ShiftRight')){if(p.dashCd===0){p.dash=.19;p.dashSequence=(p.dashSequence||0)+1;p.dashCd=1.05;p.vx=p.dir*850;this.sparks(p.x+20,p.y+40,'#bde6ff',24);this.sfx('dash');}}
  if(dir)p.dir=dir;
  if(p.dash===0){const target=dir*310;p.vx+=(target-p.vx)*Math.min(1,dt*(p.grounded?16:7));}
  p.vy+=w.biome.gravity*dt;
@@ -155,6 +155,7 @@ export class GameEngine{
   if(willLand){p.y=platform.y-p.h;p.vy=0;p.grounded=true;if(platform.move)p.x+=Math.cos(this.time*1.3+platform.phase)*platform.move*dt*.65;}
   else if(platform.kind==='ground'&&p.y<platform.y+platform.h&&p.y+p.h>platform.y&&oldTop>=platform.y+platform.h&&p.vy<0){p.y=platform.y+platform.h;p.vy=0;}
  }
+ if(p.grounded&&!wasGrounded)p.landSequence=(p.landSequence||0)+1;
  if(p.grounded){p.step+=Math.abs(p.vx)*dt/28;this.lastSafe={x:p.x,y:p.y};}
  for(const platform of w.platforms){
   if(this.discovered.has(platform.id))continue;
@@ -199,7 +200,7 @@ export class GameEngine{
  for(const h of w.hazards)if(touches(p,h))this.damagePlayer(1,h.x);
  for(const item of w.items){if(!item.active||!touches(p,item))continue;item.active=false;this.sparks(item.x+11,item.y+12,item.type==='rune'?'#ffdc9d':'#b4ebce',15,135);
   if(item.type==='rune'){w.runes++;this.score+=100;this.say(w.runes===3?'¡Portal desbloqueado!':'Runa encontrada · '+w.runes+'/3',2.4);}
-  else if(item.type==='book'){w.bookCollected=true;this.score+=350;p.coins+=120;this.say('¡Libro antiguo recuperado! Regresa al portal.',4);}else if(item.type==='heart')p.hp=Math.min(p.maxHp,p.hp+1);
+  else if(item.type==='book'){p.pickupSequence=(p.pickupSequence||0)+1;w.bookCollected=true;this.score+=350;p.coins+=120;this.say('¡Libro antiguo recuperado! Regresa al portal.',4);}else if(item.type==='heart')p.hp=Math.min(p.maxHp,p.hp+1);
   else if(item.type==='mana')p.mana=p.maxMana;
   else {this.score+=10;p.coins+=5;}
   this.sfx('pickup');

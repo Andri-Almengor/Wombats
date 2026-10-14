@@ -1,0 +1,5763 @@
+{
+  "schemaVersion": 1,
+  "cell": 512,
+  "pivot": [
+    160,
+    400
+  ],
+  "sourceZipSha256": "927fc9aba4eacbbf1e5b20016d7daf0cae8eaa1de446f1d9f318b1a584121df8",
+  "variants": {
+    "sano": {
+      "file": "sano.png",
+      "clips": {
+        "idle": {
+          "name": "idle",
+          "fps": 8,
+          "loop": true,
+          "frames": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 115,
+              "height": 107,
+              "pivot": [
+                59,
+                99
+              ],
+              "socket": [
+                97,
+                34
+              ],
+              "bounds": [
+                2,
+                2,
+                113,
+                105
+              ],
+              "source": "sprites/tecnico_wombat/sano/quieto/quieto_01.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                91
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "7d07c7e4058e0097254b9c71c94500a8b9119b134b7cb779d00edca0d649b94b"
+            },
+            {
+              "x": 115,
+              "y": 0,
+              "width": 119,
+              "height": 112,
+              "pivot": [
+                63,
+                105
+              ],
+              "socket": [
+                101,
+                40
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                110
+              ],
+              "source": "sprites/tecnico_wombat/sano/quieto/quieto_02.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                91
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "a2c3e2996128d760cf93070778697a2d6b54871f9edd48a3a148ffa806c765d5"
+            },
+            {
+              "x": 234,
+              "y": 0,
+              "width": 119,
+              "height": 107,
+              "pivot": [
+                63,
+                99
+              ],
+              "socket": [
+                101,
+                34
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                105
+              ],
+              "source": "sprites/tecnico_wombat/sano/quieto/quieto_03.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": [
+                0,
+                28,
+                3,
+                33
+              ],
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                91
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "54c849922e95806478ea40fefffc6063b54a3d7e18824a6d42c0a2afc4ddff8a"
+            },
+            {
+              "x": 353,
+              "y": 0,
+              "width": 119,
+              "height": 102,
+              "pivot": [
+                63,
+                99
+              ],
+              "socket": [
+                101,
+                34
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                100
+              ],
+              "source": "sprites/tecnico_wombat/sano/quieto/quieto_04.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                91
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "659a9796718e761f32d59383c6fb7b466a41d7814ee699164b3afaf9c18404d0"
+            },
+            {
+              "x": 472,
+              "y": 0,
+              "width": 115,
+              "height": 114,
+              "pivot": [
+                59,
+                110
+              ],
+              "socket": [
+                97,
+                45
+              ],
+              "bounds": [
+                2,
+                2,
+                113,
+                112
+              ],
+              "source": "sprites/tecnico_wombat/sano/quieto/quieto_05.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                90
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "e7d373708952541ad08e2c450442bc576f9dd1b9438d3ab145e41b7b637dbaad"
+            },
+            {
+              "x": 587,
+              "y": 0,
+              "width": 119,
+              "height": 117,
+              "pivot": [
+                63,
+                110
+              ],
+              "socket": [
+                101,
+                45
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                115
+              ],
+              "source": "sprites/tecnico_wombat/sano/quieto/quieto_06.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                90
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "6621bb7a20acfbd0b572794a4432f5f79f1a5771e494c1ba3b899906f4528ad5"
+            },
+            {
+              "x": 706,
+              "y": 0,
+              "width": 119,
+              "height": 103,
+              "pivot": [
+                63,
+                99
+              ],
+              "socket": [
+                101,
+                34
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                101
+              ],
+              "source": "sprites/tecnico_wombat/sano/quieto/quieto_07.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": [
+                0,
+                32,
+                3,
+                37
+              ],
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                90
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "22a7c6ea23c7e6d66e60758369578c3cb90f8d9a9da9fd6cecc3ac4638babd78"
+            },
+            {
+              "x": 825,
+              "y": 0,
+              "width": 119,
+              "height": 114,
+              "pivot": [
+                63,
+                110
+              ],
+              "socket": [
+                101,
+                45
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                112
+              ],
+              "source": "sprites/tecnico_wombat/sano/quieto/quieto_08.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": [
+                0,
+                30,
+                2,
+                36
+              ],
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                90
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "ca7ba49fb27bc40dbe70ddc0c351c5bca58dfc30af56e2c16d1fa507431c664d"
+            }
+          ]
+        },
+        "walk": {
+          "name": "walk",
+          "fps": 12,
+          "loop": true,
+          "frames": [
+            {
+              "x": 0,
+              "y": 117,
+              "width": 119,
+              "height": 103,
+              "pivot": [
+                63,
+                99
+              ],
+              "socket": [
+                101,
+                34
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                101
+              ],
+              "source": "sprites/tecnico_wombat/sano/caminar/caminar_01.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                91
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "a2e1e48b7d649e920b618609eaaa0b6285e68a9d759d38c3a89e11d73e904066"
+            },
+            {
+              "x": 119,
+              "y": 117,
+              "width": 119,
+              "height": 102,
+              "pivot": [
+                63,
+                99
+              ],
+              "socket": [
+                101,
+                34
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                100
+              ],
+              "source": "sprites/tecnico_wombat/sano/caminar/caminar_02.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                91
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "0576143cc973ea500b4ee4c2e31311b3f8ac06f049be8bb36923fad432fbe27a"
+            },
+            {
+              "x": 238,
+              "y": 117,
+              "width": 119,
+              "height": 108,
+              "pivot": [
+                63,
+                101
+              ],
+              "socket": [
+                101,
+                36
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                106
+              ],
+              "source": "sprites/tecnico_wombat/sano/caminar/caminar_03.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                91
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "3d1522d14bbe30f1fab7b4572dad051573fe4af86ecc6ed2efad7b025a0a07b3"
+            },
+            {
+              "x": 357,
+              "y": 117,
+              "width": 119,
+              "height": 111,
+              "pivot": [
+                63,
+                103
+              ],
+              "socket": [
+                101,
+                38
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                109
+              ],
+              "source": "sprites/tecnico_wombat/sano/caminar/caminar_04.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                91
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "e86c661a7911a7290fb9a0ed4bc315ce17c66d8190f0548a7930cea3cf2e2372"
+            },
+            {
+              "x": 476,
+              "y": 117,
+              "width": 119,
+              "height": 112,
+              "pivot": [
+                63,
+                108
+              ],
+              "socket": [
+                101,
+                43
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                110
+              ],
+              "source": "sprites/tecnico_wombat/sano/caminar/caminar_05.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                88
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "d09b9d6c9a193cb25a753b8c670b4c6129fcf23e8ca6f0fcae9914c713042068"
+            },
+            {
+              "x": 595,
+              "y": 117,
+              "width": 119,
+              "height": 110,
+              "pivot": [
+                63,
+                104
+              ],
+              "socket": [
+                101,
+                39
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                108
+              ],
+              "source": "sprites/tecnico_wombat/sano/caminar/caminar_06.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                88
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "0e196f963cb375aa15d9ae6ce7b5087b55e48d37d19a4b981f2bf449902f2b1b"
+            },
+            {
+              "x": 714,
+              "y": 117,
+              "width": 118,
+              "height": 108,
+              "pivot": [
+                63,
+                103
+              ],
+              "socket": [
+                101,
+                38
+              ],
+              "bounds": [
+                2,
+                2,
+                116,
+                106
+              ],
+              "source": "sprites/tecnico_wombat/sano/caminar/caminar_07.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                89
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "a7edef5b94d590f06eb3a8b948f0b76a202a75316f687d9a8e092c3348d13db9"
+            },
+            {
+              "x": 832,
+              "y": 117,
+              "width": 114,
+              "height": 106,
+              "pivot": [
+                62,
+                102
+              ],
+              "socket": [
+                100,
+                37
+              ],
+              "bounds": [
+                2,
+                2,
+                112,
+                104
+              ],
+              "source": "sprites/tecnico_wombat/sano/caminar/caminar_08.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                88
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "071693e4402b34dd14b658531169653cd9322ed01d60cf8847ca438567e9cb1a"
+            }
+          ]
+        },
+        "run": {
+          "name": "run",
+          "fps": 15,
+          "loop": true,
+          "frames": [
+            {
+              "x": 0,
+              "y": 229,
+              "width": 128,
+              "height": 111,
+              "pivot": [
+                69,
+                100
+              ],
+              "socket": [
+                107,
+                35
+              ],
+              "bounds": [
+                2,
+                2,
+                126,
+                109
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                14,
+                41,
+                406,
+                406
+              ],
+              "sourceOrigin": [
+                225,
+                375
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "bef89bff80976474905c8f5e2b6d771c314ce60bbeba3994f635becf6fb48e2f"
+            },
+            {
+              "x": 128,
+              "y": 229,
+              "width": 134,
+              "height": 117,
+              "pivot": [
+                74,
+                107
+              ],
+              "socket": [
+                112,
+                42
+              ],
+              "bounds": [
+                2,
+                2,
+                132,
+                115
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                402,
+                45,
+                812,
+                402
+              ],
+              "sourceOrigin": [
+                627,
+                375
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "fa8dc0409e4455e346953d34476994a83916725e42ada8fcf76b0d19c6c567a1"
+            },
+            {
+              "x": 262,
+              "y": 229,
+              "width": 134,
+              "height": 121,
+              "pivot": [
+                73,
+                111
+              ],
+              "socket": [
+                111,
+                46
+              ],
+              "bounds": [
+                2,
+                2,
+                132,
+                119
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                813,
+                33,
+                1219,
+                401
+              ],
+              "sourceOrigin": [
+                1035,
+                375
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "843108ac995381987f3587a4103d0d31f956312d591de7db16564b6b9c305509"
+            },
+            {
+              "x": 396,
+              "y": 229,
+              "width": 128,
+              "height": 118,
+              "pivot": [
+                73,
+                110
+              ],
+              "socket": [
+                111,
+                45
+              ],
+              "bounds": [
+                2,
+                2,
+                126,
+                116
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                1216,
+                33,
+                1608,
+                395
+              ],
+              "sourceOrigin": [
+                1440,
+                375
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "7503dff634132f74bf3b3e1e1870a9f6309125f9433ed0735044620723234421"
+            },
+            {
+              "x": 524,
+              "y": 229,
+              "width": 128,
+              "height": 104,
+              "pivot": [
+                78,
+                101
+              ],
+              "socket": [
+                116,
+                36
+              ],
+              "bounds": [
+                2,
+                2,
+                126,
+                102
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                1597,
+                62,
+                1983,
+                380
+              ],
+              "sourceOrigin": [
+                1835,
+                375
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "ad386307022e9f414df6852e738f099a27db2000a50d11ccc277390b7f634af6"
+            },
+            {
+              "x": 652,
+              "y": 229,
+              "width": 136,
+              "height": 117,
+              "pivot": [
+                70,
+                98
+              ],
+              "socket": [
+                108,
+                33
+              ],
+              "bounds": [
+                2,
+                2,
+                134,
+                115
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                28,
+                404,
+                443,
+                781
+              ],
+              "sourceOrigin": [
+                245,
+                720
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "31656322325ad095756d46c0aaa6a37014812df0412fc4ce2b33734b207d4d2d"
+            },
+            {
+              "x": 788,
+              "y": 229,
+              "width": 140,
+              "height": 117,
+              "pivot": [
+                75,
+                99
+              ],
+              "socket": [
+                113,
+                34
+              ],
+              "bounds": [
+                2,
+                2,
+                138,
+                115
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                428,
+                400,
+                860,
+                771
+              ],
+              "sourceOrigin": [
+                660,
+                709
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "f666cd5f4ec3386683f7749de71f12d229ceeba182e65168ec55b6b84baace53"
+            },
+            {
+              "x": 0,
+              "y": 350,
+              "width": 141,
+              "height": 115,
+              "pivot": [
+                72,
+                109
+              ],
+              "socket": [
+                110,
+                44
+              ],
+              "bounds": [
+                2,
+                2,
+                139,
+                113
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                835,
+                400,
+                1262,
+                755
+              ],
+              "sourceOrigin": [
+                1055,
+                733
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "c8d6a0eba51da1711a1c1d0d0204282fe0b873e5504ee5ceabdd2cf8f5bbf1ff"
+            },
+            {
+              "x": 141,
+              "y": 350,
+              "width": 136,
+              "height": 116,
+              "pivot": [
+                73,
+                110
+              ],
+              "socket": [
+                111,
+                45
+              ],
+              "bounds": [
+                2,
+                2,
+                134,
+                114
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 8,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                1234,
+                403,
+                1647,
+                793
+              ],
+              "sourceOrigin": [
+                1456,
+                743
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "cf9607e6a60c875ec9180eb70eb7e17a409a33aa9638153d9646d072cd55ad3d"
+            },
+            {
+              "x": 277,
+              "y": 350,
+              "width": 123,
+              "height": 113,
+              "pivot": [
+                82,
+                104
+              ],
+              "socket": [
+                120,
+                39
+              ],
+              "bounds": [
+                2,
+                2,
+                121,
+                111
+              ],
+              "source": "raw/tecnico_wombat/run.png",
+              "sourceIndex": 9,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                1607,
+                403,
+                1983,
+                761
+              ],
+              "sourceOrigin": [
+                1860,
+                729
+              ],
+              "scale": 0.32,
+              "rgbaSha256": "aef2e871b0bd1d5cfeff089783004a86df57543952675b9df57cb1008094f097"
+            }
+          ]
+        },
+        "jump_start": {
+          "name": "jump_start",
+          "fps": 12,
+          "loop": false,
+          "frames": [
+            {
+              "x": 400,
+              "y": 350,
+              "width": 140,
+              "height": 137,
+              "pivot": [
+                69,
+                131
+              ],
+              "socket": [
+                107,
+                66
+              ],
+              "bounds": [
+                2,
+                2,
+                138,
+                135
+              ],
+              "source": "sprites/tecnico_wombat/sano/salto_inicio/salto_inicio_01.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                49,
+                91
+              ],
+              "scale": 1.4545454545454546,
+              "rgbaSha256": "414e3b15dfad23621bbdcd6943feb08bdd108b45cd355019ae0b8a819d6085b0"
+            },
+            {
+              "x": 540,
+              "y": 350,
+              "width": 144,
+              "height": 125,
+              "pivot": [
+                73,
+                119
+              ],
+              "socket": [
+                111,
+                54
+              ],
+              "bounds": [
+                2,
+                2,
+                142,
+                123
+              ],
+              "source": "sprites/tecnico_wombat/sano/salto_inicio/salto_inicio_02.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                49,
+                91
+              ],
+              "scale": 1.4545454545454546,
+              "rgbaSha256": "f40588336ac66228191befe87b9cf644c16397c9516f54ed23efd73ebf958d0f"
+            },
+            {
+              "x": 684,
+              "y": 350,
+              "width": 141,
+              "height": 133,
+              "pivot": [
+                73,
+                123
+              ],
+              "socket": [
+                111,
+                58
+              ],
+              "bounds": [
+                2,
+                2,
+                139,
+                131
+              ],
+              "source": "sprites/tecnico_wombat/sano/salto_inicio/salto_inicio_03.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                49,
+                84
+              ],
+              "scale": 1.4545454545454546,
+              "rgbaSha256": "8da758407f12f3f71a6b73ea9d6c16c94aef263f2cd0d63d148fea612cc0a18d"
+            }
+          ]
+        },
+        "jump_air": {
+          "name": "jump_air",
+          "fps": 7,
+          "loop": true,
+          "frames": [
+            {
+              "x": 825,
+              "y": 350,
+              "width": 137,
+              "height": 135,
+              "pivot": [
+                74,
+                117
+              ],
+              "socket": [
+                112,
+                52
+              ],
+              "bounds": [
+                2,
+                2,
+                135,
+                133
+              ],
+              "source": "sprites/tecnico_wombat/sano/salto_aire/salto_aire_01.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                53,
+                82
+              ],
+              "scale": 1.411764705882353,
+              "rgbaSha256": "20e768d53eb1293d2abdcba3e65af507da01e09d228effce7675afb80e447266"
+            },
+            {
+              "x": 0,
+              "y": 487,
+              "width": 137,
+              "height": 131,
+              "pivot": [
+                74,
+                108
+              ],
+              "socket": [
+                112,
+                43
+              ],
+              "bounds": [
+                2,
+                2,
+                135,
+                129
+              ],
+              "source": "sprites/tecnico_wombat/sano/salto_aire/salto_aire_02.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": [
+                0,
+                25,
+                3,
+                31
+              ],
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                79
+              ],
+              "scale": 1.411764705882353,
+              "rgbaSha256": "bc268eafb9d56bb68e810ee0edbd89a7474cd46116486ef3c70311cfcaa7fbdc"
+            }
+          ]
+        },
+        "double_jump": {
+          "name": "double_jump",
+          "fps": 14,
+          "loop": false,
+          "frames": [
+            {
+              "x": 137,
+              "y": 487,
+              "width": 134,
+              "height": 137,
+              "pivot": [
+                74,
+                123
+              ],
+              "socket": [
+                112,
+                58
+              ],
+              "bounds": [
+                2,
+                2,
+                132,
+                135
+              ],
+              "source": "sprites/tecnico_wombat/sano/doble_salto/doble_salto_01.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                55,
+                88
+              ],
+              "scale": 1.411764705882353,
+              "rgbaSha256": "9e634e74d557f1e3482132b24021e3e1a9bf728ad821407fba606c79041d1099"
+            },
+            {
+              "x": 271,
+              "y": 487,
+              "width": 140,
+              "height": 134,
+              "pivot": [
+                71,
+                115
+              ],
+              "socket": [
+                109,
+                50
+              ],
+              "bounds": [
+                2,
+                2,
+                138,
+                132
+              ],
+              "source": "sprites/tecnico_wombat/sano/doble_salto/doble_salto_02.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": [
+                0,
+                35,
+                4,
+                50
+              ],
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                49,
+                84
+              ],
+              "scale": 1.411764705882353,
+              "rgbaSha256": "d1fb8abb2ca546d85e3f7226e06f06d198dd19de71f0399389fac7061653f819"
+            },
+            {
+              "x": 411,
+              "y": 487,
+              "width": 139,
+              "height": 140,
+              "pivot": [
+                73,
+                112
+              ],
+              "socket": [
+                111,
+                47
+              ],
+              "bounds": [
+                2,
+                2,
+                137,
+                138
+              ],
+              "source": "sprites/tecnico_wombat/sano/doble_salto/doble_salto_03.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                50,
+                78
+              ],
+              "scale": 1.411764705882353,
+              "rgbaSha256": "ebffde6ebbd821d6bd1b0cfdb0d5199ed86ab93be399780b993a3368a85340b6"
+            },
+            {
+              "x": 550,
+              "y": 487,
+              "width": 140,
+              "height": 137,
+              "pivot": [
+                80,
+                123
+              ],
+              "socket": [
+                118,
+                58
+              ],
+              "bounds": [
+                2,
+                2,
+                138,
+                135
+              ],
+              "source": "sprites/tecnico_wombat/sano/doble_salto/doble_salto_04.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                55,
+                86
+              ],
+              "scale": 1.411764705882353,
+              "rgbaSha256": "ce54e0950c366b2821f4c4432b3280cbf979f5921b59203c100e1456a006e1eb"
+            },
+            {
+              "x": 690,
+              "y": 487,
+              "width": 140,
+              "height": 137,
+              "pivot": [
+                74,
+                114
+              ],
+              "socket": [
+                112,
+                49
+              ],
+              "bounds": [
+                2,
+                2,
+                138,
+                135
+              ],
+              "source": "sprites/tecnico_wombat/sano/doble_salto/doble_salto_05.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                79
+              ],
+              "scale": 1.411764705882353,
+              "rgbaSha256": "69559aa032d62034b8640ac8a909081c091552a9b47a950c173e9ed076b4ae72"
+            }
+          ]
+        },
+        "fall": {
+          "name": "fall",
+          "fps": 7,
+          "loop": true,
+          "frames": [
+            {
+              "x": 830,
+              "y": 487,
+              "width": 129,
+              "height": 128,
+              "pivot": [
+                67,
+                113
+              ],
+              "socket": [
+                105,
+                48
+              ],
+              "bounds": [
+                2,
+                2,
+                127,
+                126
+              ],
+              "source": "sprites/tecnico_wombat/sano/caer/caer_01.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                84
+              ],
+              "scale": 1.3333333333333333,
+              "rgbaSha256": "a88544c6820e8fbd543b353badf878721f83570bb7579dcf550face4a4e9aa5a"
+            },
+            {
+              "x": 0,
+              "y": 627,
+              "width": 132,
+              "height": 129,
+              "pivot": [
+                70,
+                118
+              ],
+              "socket": [
+                108,
+                53
+              ],
+              "bounds": [
+                2,
+                2,
+                130,
+                127
+              ],
+              "source": "sprites/tecnico_wombat/sano/caer/caer_02.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                51,
+                87
+              ],
+              "scale": 1.3333333333333333,
+              "rgbaSha256": "0ecc4524438137fe43fed7956d3221ccc797244d47a994c450771ae93edb5870"
+            }
+          ]
+        },
+        "land": {
+          "name": "land",
+          "fps": 12,
+          "loop": false,
+          "frames": [
+            {
+              "x": 132,
+              "y": 627,
+              "width": 128,
+              "height": 121,
+              "pivot": [
+                68,
+                107
+              ],
+              "socket": [
+                106,
+                42
+              ],
+              "bounds": [
+                2,
+                2,
+                126,
+                119
+              ],
+              "source": "sprites/tecnico_wombat/sano/aterrizar/aterrizar_01.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                52,
+                85
+              ],
+              "scale": 1.2972972972972974,
+              "rgbaSha256": "950144f0eec277c0b343eb74655b385c8c35e7aa75f46b5748d89199f295ce52"
+            },
+            {
+              "x": 260,
+              "y": 627,
+              "width": 129,
+              "height": 122,
+              "pivot": [
+                69,
+                108
+              ],
+              "socket": [
+                107,
+                43
+              ],
+              "bounds": [
+                2,
+                2,
+                127,
+                120
+              ],
+              "source": "sprites/tecnico_wombat/sano/aterrizar/aterrizar_02.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": [
+                0,
+                28,
+                3,
+                31
+              ],
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                52,
+                85
+              ],
+              "scale": 1.2972972972972974,
+              "rgbaSha256": "83f952af9be0834349ae86e763ad9f49606d23bd51aa97afb8acbfe85cc0ad18"
+            },
+            {
+              "x": 389,
+              "y": 627,
+              "width": 126,
+              "height": 122,
+              "pivot": [
+                66,
+                109
+              ],
+              "socket": [
+                104,
+                44
+              ],
+              "bounds": [
+                2,
+                2,
+                124,
+                120
+              ],
+              "source": "sprites/tecnico_wombat/sano/aterrizar/aterrizar_03.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": [
+                0,
+                36,
+                1,
+                41
+              ],
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                49,
+                85
+              ],
+              "scale": 1.2972972972972974,
+              "rgbaSha256": "9f39970ec21f166d83534e78b99d8294e6a981c65e180b95ba51aff2ee49af12"
+            }
+          ]
+        },
+        "dash": {
+          "name": "dash",
+          "fps": 16,
+          "loop": false,
+          "frames": [
+            {
+              "x": 515,
+              "y": 627,
+              "width": 117,
+              "height": 105,
+              "pivot": [
+                71,
+                100
+              ],
+              "socket": [
+                109,
+                35
+              ],
+              "bounds": [
+                2,
+                2,
+                115,
+                103
+              ],
+              "source": "sprites/tecnico_wombat/sano/esquivar/esquivar_01.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                59,
+                93
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "1a4cbc8b0d31a5db6462bb4ba07320d3274ed820694efc66dcd57b9fa6f66616"
+            },
+            {
+              "x": 632,
+              "y": 627,
+              "width": 119,
+              "height": 119,
+              "pivot": [
+                72,
+                114
+              ],
+              "socket": [
+                110,
+                49
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                117
+              ],
+              "source": "sprites/tecnico_wombat/sano/esquivar/esquivar_02.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                58,
+                93
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "15d914857db8bbd8cbd6f5cc4036b2592b5a24b95f312da5169b64bcc9c0c145"
+            },
+            {
+              "x": 751,
+              "y": 627,
+              "width": 119,
+              "height": 109,
+              "pivot": [
+                79,
+                106
+              ],
+              "socket": [
+                117,
+                41
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                107
+              ],
+              "source": "sprites/tecnico_wombat/sano/esquivar/esquivar_03.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                64,
+                93
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "cc92e7abf6bac23bcb3d725c06aac5a8c2a2f835917ba79ec9b6e1471f10bba6"
+            },
+            {
+              "x": 870,
+              "y": 627,
+              "width": 113,
+              "height": 96,
+              "pivot": [
+                66,
+                65
+              ],
+              "socket": [
+                104,
+                0
+              ],
+              "bounds": [
+                2,
+                2,
+                111,
+                94
+              ],
+              "source": "sprites/tecnico_wombat/sano/esquivar/esquivar_04.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                58,
+                68
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "422aebf2cd08c5f4d80d041cf91172615e30b82a14783907c6feee52523ddc12"
+            },
+            {
+              "x": 0,
+              "y": 756,
+              "width": 119,
+              "height": 99,
+              "pivot": [
+                74,
+                70
+              ],
+              "socket": [
+                112,
+                5
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                97
+              ],
+              "source": "sprites/tecnico_wombat/sano/esquivar/esquivar_05.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": [
+                0,
+                27,
+                16,
+                47
+              ],
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                60,
+                68
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "999b94844624119bc400c607b33fc65102185e0790937a9a2d29d15291ba2d49"
+            },
+            {
+              "x": 119,
+              "y": 756,
+              "width": 119,
+              "height": 113,
+              "pivot": [
+                75,
+                83
+              ],
+              "socket": [
+                113,
+                18
+              ],
+              "bounds": [
+                2,
+                2,
+                117,
+                111
+              ],
+              "source": "sprites/tecnico_wombat/sano/esquivar/esquivar_06.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": [
+                0,
+                20,
+                7,
+                42
+              ],
+              "sourceBounds": [
+                0,
+                0,
+                96,
+                96
+              ],
+              "sourceOrigin": [
+                61,
+                68
+              ],
+              "scale": 1.2,
+              "rgbaSha256": "029a39363613c776715052699c944e1ef246557e51975620c7d35ce511b71e82"
+            }
+          ]
+        },
+        "cast_basic": {
+          "name": "cast_basic",
+          "fps": 12,
+          "loop": false,
+          "frames": [
+            {
+              "x": 238,
+              "y": 756,
+              "width": 133,
+              "height": 145,
+              "pivot": [
+                63,
+                131
+              ],
+              "socket": [
+                107,
+                55
+              ],
+              "bounds": [
+                2,
+                2,
+                131,
+                143
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                4,
+                318,
+                352
+              ],
+              "sourceOrigin": [
+                158,
+                321
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "94637a10b09a603d78959930939787cee18d54d27ce50ea0279f2fb735de2d3d"
+            },
+            {
+              "x": 371,
+              "y": 756,
+              "width": 122,
+              "height": 138,
+              "pivot": [
+                56,
+                127
+              ],
+              "socket": [
+                94,
+                37
+              ],
+              "bounds": [
+                2,
+                2,
+                120,
+                136
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                306,
+                9,
+                586,
+                350
+              ],
+              "sourceOrigin": [
+                435,
+                321
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "b3c0ce3864625c4a8c4496a8b1b1e724c43d0f70e411ca53e514c24e6e53302a"
+            },
+            {
+              "x": 493,
+              "y": 756,
+              "width": 144,
+              "height": 138,
+              "pivot": [
+                60,
+                127
+              ],
+              "socket": [
+                115,
+                58
+              ],
+              "bounds": [
+                2,
+                2,
+                142,
+                136
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                570,
+                23,
+                896,
+                350
+              ],
+              "sourceOrigin": [
+                705,
+                321
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "c8f26152751e7c87b236af7d42b8f663bae4dfb58e8bff2a614d8a6afac13eb5"
+            },
+            {
+              "x": 637,
+              "y": 756,
+              "width": 169,
+              "height": 144,
+              "pivot": [
+                54,
+                130
+              ],
+              "socket": [
+                106,
+                69
+              ],
+              "bounds": [
+                2,
+                2,
+                167,
+                142
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                868,
+                21,
+                1254,
+                350
+              ],
+              "sourceOrigin": [
+                990,
+                321
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "2c531dc03c5866c747d6045859e713f543bfecf0bdda836c453afc19d10288d2"
+            },
+            {
+              "x": 806,
+              "y": 756,
+              "width": 158,
+              "height": 123,
+              "pivot": [
+                69,
+                113
+              ],
+              "socket": [
+                122,
+                42
+              ],
+              "bounds": [
+                2,
+                2,
+                156,
+                121
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                351,
+                376,
+                635
+              ],
+              "sourceOrigin": [
+                172,
+                611
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "baaf6c975b576319e7be1267023f99cd58b21857378db811e91951c236396f6b"
+            },
+            {
+              "x": 0,
+              "y": 901,
+              "width": 146,
+              "height": 120,
+              "pivot": [
+                62,
+                114
+              ],
+              "socket": [
+                119,
+                33
+              ],
+              "bounds": [
+                2,
+                2,
+                144,
+                118
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                345,
+                350,
+                676,
+                631
+              ],
+              "sourceOrigin": [
+                485,
+                611
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "5c2704d2cbda993413efa739cccfc7915202cd130bdd4591fe5a85086c5d7743"
+            },
+            {
+              "x": 146,
+              "y": 901,
+              "width": 129,
+              "height": 120,
+              "pivot": [
+                64,
+                112
+              ],
+              "socket": [
+                106,
+                27
+              ],
+              "bounds": [
+                2,
+                2,
+                127,
+                118
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                650,
+                354,
+                941,
+                633
+              ],
+              "sourceOrigin": [
+                795,
+                611
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "f82f7b617461433a3e54594770fb8505b608d4964450670040327b68acd571d5"
+            },
+            {
+              "x": 275,
+              "y": 901,
+              "width": 131,
+              "height": 124,
+              "pivot": [
+                62,
+                115
+              ],
+              "socket": [
+                104,
+                37
+              ],
+              "bounds": [
+                2,
+                2,
+                129,
+                122
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                940,
+                347,
+                1238,
+                627
+              ],
+              "sourceOrigin": [
+                1080,
+                611
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "e79247ccf33b3da47e4a08cefcd4cd308bb3114b38d8761bb2e2ce7fddc0e6f6"
+            }
+          ]
+        },
+        "cast_fire": {
+          "name": "cast_fire",
+          "fps": 12,
+          "loop": false,
+          "frames": [
+            {
+              "x": 406,
+              "y": 901,
+              "width": 135,
+              "height": 138,
+              "pivot": [
+                62,
+                122
+              ],
+              "socket": [
+                105,
+                50
+              ],
+              "bounds": [
+                2,
+                2,
+                133,
+                136
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 8,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                17,
+                636,
+                322,
+                957
+              ],
+              "sourceOrigin": [
+                158,
+                924
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "b6e28b62e1a4607c5e76eefcdfacf773a5207138a39ff5c4b37e35922e308eaa"
+            },
+            {
+              "x": 541,
+              "y": 901,
+              "width": 124,
+              "height": 137,
+              "pivot": [
+                57,
+                122
+              ],
+              "socket": [
+                95,
+                31
+              ],
+              "bounds": [
+                2,
+                2,
+                122,
+                135
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 9,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                307,
+                636,
+                586,
+                954
+              ],
+              "sourceOrigin": [
+                435,
+                924
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "cea3ea34825bdfda87265bc5e04cdd77e4d235cf166275ad4fdad37b2c8e51dd"
+            },
+            {
+              "x": 665,
+              "y": 901,
+              "width": 140,
+              "height": 134,
+              "pivot": [
+                60,
+                122
+              ],
+              "socket": [
+                112,
+                55
+              ],
+              "bounds": [
+                2,
+                2,
+                138,
+                132
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 10,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                572,
+                636,
+                892,
+                951
+              ],
+              "sourceOrigin": [
+                710,
+                924
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "66ad0998013e90b6ba8fdb17e5ece0efa95969d033bd8c384957bbfb89ae964c"
+            },
+            {
+              "x": 805,
+              "y": 901,
+              "width": 173,
+              "height": 138,
+              "pivot": [
+                56,
+                122
+              ],
+              "socket": [
+                107,
+                63
+              ],
+              "bounds": [
+                2,
+                2,
+                171,
+                136
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 11,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                860,
+                636,
+                1254,
+                955
+              ],
+              "sourceOrigin": [
+                985,
+                924
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "489f8474e4789da8a908afca84d2e057c1733285a82c2f0077c07434dc2de1e5"
+            },
+            {
+              "x": 0,
+              "y": 1039,
+              "width": 144,
+              "height": 112,
+              "pivot": [
+                63,
+                109
+              ],
+              "socket": [
+                115,
+                42
+              ],
+              "bounds": [
+                2,
+                2,
+                142,
+                110
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 12,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                955,
+                356,
+                1216
+              ],
+              "sourceOrigin": [
+                172,
+                1205
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "9098a8bd6e2f3e5cb699822a53d98001cd3735907e8699731fe14a965be4fc37"
+            },
+            {
+              "x": 144,
+              "y": 1039,
+              "width": 151,
+              "height": 118,
+              "pivot": [
+                71,
+                110
+              ],
+              "socket": [
+                128,
+                35
+              ],
+              "bounds": [
+                2,
+                2,
+                149,
+                116
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 13,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                323,
+                953,
+                665,
+                1254
+              ],
+              "sourceOrigin": [
+                485,
+                1205
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "fc2f83b454b2edd47805fa63506e2a50e9aa31071a8c68d847e37e4061643a50"
+            },
+            {
+              "x": 295,
+              "y": 1039,
+              "width": 125,
+              "height": 123,
+              "pivot": [
+                61,
+                108
+              ],
+              "socket": [
+                103,
+                28
+              ],
+              "bounds": [
+                2,
+                2,
+                123,
+                121
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 14,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                658,
+                955,
+                941,
+                1254
+              ],
+              "sourceOrigin": [
+                795,
+                1205
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "8cd99ea1f13117b88c3bf7798f7c8139facaa275a2736401671bf70201b6baf4"
+            },
+            {
+              "x": 420,
+              "y": 1039,
+              "width": 130,
+              "height": 113,
+              "pivot": [
+                62,
+                110
+              ],
+              "socket": [
+                104,
+                30
+              ],
+              "bounds": [
+                2,
+                2,
+                128,
+                111
+              ],
+              "source": "raw/tecnico_wombat/cast_basic_fire.png",
+              "sourceIndex": 15,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                940,
+                954,
+                1240,
+                1228
+              ],
+              "sourceOrigin": [
+                1080,
+                1205
+              ],
+              "scale": 0.42857142857142855,
+              "rgbaSha256": "32e35e36de3285e6f8bcb3a93a2d0df67989b80f46cfd9d4a468a84071a00f45"
+            }
+          ]
+        },
+        "cast_ice": {
+          "name": "cast_ice",
+          "fps": 12,
+          "loop": false,
+          "frames": [
+            {
+              "x": 550,
+              "y": 1039,
+              "width": 129,
+              "height": 178,
+              "pivot": [
+                60,
+                173
+              ],
+              "socket": [
+                106,
+                96
+              ],
+              "bounds": [
+                2,
+                2,
+                127,
+                176
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                316,
+                396
+              ],
+              "sourceOrigin": [
+                163,
+                389
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "7bc193066c0f9a3b41c645548582a5689721a9eab783164bc3874695f149a1dc"
+            },
+            {
+              "x": 679,
+              "y": 1039,
+              "width": 142,
+              "height": 165,
+              "pivot": [
+                58,
+                159
+              ],
+              "socket": [
+                104,
+                73
+              ],
+              "bounds": [
+                2,
+                2,
+                140,
+                163
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                316,
+                23,
+                629,
+                404
+              ],
+              "sourceOrigin": [
+                443,
+                389
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "df674a554d0ea127ddeb2121f945c69af0ce5cad11ea4b06ff573e8340b7fcd9"
+            },
+            {
+              "x": 821,
+              "y": 1039,
+              "width": 144,
+              "height": 171,
+              "pivot": [
+                68,
+                163
+              ],
+              "socket": [
+                111,
+                75
+              ],
+              "bounds": [
+                2,
+                2,
+                142,
+                169
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                570,
+                23,
+                887,
+                404
+              ],
+              "sourceOrigin": [
+                719,
+                389
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "3ee6873a6942ed30eb34d413bca62115b143170376fed78171ce4214bfbd53f2"
+            },
+            {
+              "x": 0,
+              "y": 1217,
+              "width": 184,
+              "height": 179,
+              "pivot": [
+                59,
+                173
+              ],
+              "socket": [
+                122,
+                119
+              ],
+              "bounds": [
+                2,
+                2,
+                182,
+                177
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                845,
+                0,
+                1254,
+                404
+              ],
+              "sourceOrigin": [
+                975,
+                389
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "aba45ee62c0b3918f71830956204d579ab3428b75471b020ccbe59e1076ee964"
+            },
+            {
+              "x": 184,
+              "y": 1217,
+              "width": 133,
+              "height": 121,
+              "pivot": [
+                63,
+                114
+              ],
+              "socket": [
+                114,
+                39
+              ],
+              "bounds": [
+                2,
+                2,
+                131,
+                119
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                32,
+                447,
+                324,
+                712
+              ],
+              "sourceOrigin": [
+                170,
+                701
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "77c3a1e9c90666b8c94857f772ba9b6a4615079a0e3081498b64798b02fcdf09"
+            },
+            {
+              "x": 317,
+              "y": 1217,
+              "width": 130,
+              "height": 143,
+              "pivot": [
+                61,
+                133
+              ],
+              "socket": [
+                102,
+                47
+              ],
+              "bounds": [
+                2,
+                2,
+                128,
+                141
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                322,
+                403,
+                609,
+                720
+              ],
+              "sourceOrigin": [
+                457,
+                701
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "bdf1c99041bfbfe870e4cd314c1608380edc37e0f2714726a6df7851dbe4aed8"
+            },
+            {
+              "x": 447,
+              "y": 1217,
+              "width": 139,
+              "height": 141,
+              "pivot": [
+                64,
+                131
+              ],
+              "socket": [
+                111,
+                44
+              ],
+              "bounds": [
+                2,
+                2,
+                137,
+                139
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                610,
+                404,
+                916,
+                720
+              ],
+              "sourceOrigin": [
+                750,
+                701
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "d669f036fd93e2ffc09f8d59e8fe713fa4d6d5c1d114f8867f71e9d8ec772ed0"
+            },
+            {
+              "x": 586,
+              "y": 1217,
+              "width": 150,
+              "height": 144,
+              "pivot": [
+                55,
+                133
+              ],
+              "socket": [
+                108,
+                52
+              ],
+              "bounds": [
+                2,
+                2,
+                148,
+                142
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                915,
+                403,
+                1248,
+                721
+              ],
+              "sourceOrigin": [
+                1036,
+                701
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "f7e1ace657f88f4a8be9ea30a75c01f7185b57b8edc23f0c32c15ebefc52c7a6"
+            }
+          ]
+        },
+        "cast_lightning": {
+          "name": "cast_lightning",
+          "fps": 14,
+          "loop": false,
+          "frames": [
+            {
+              "x": 736,
+              "y": 1217,
+              "width": 127,
+              "height": 127,
+              "pivot": [
+                60,
+                116
+              ],
+              "socket": [
+                105,
+                46
+              ],
+              "bounds": [
+                2,
+                2,
+                125,
+                125
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 8,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                29,
+                730,
+                308,
+                1020
+              ],
+              "sourceOrigin": [
+                160,
+                1001
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "587370993589ec59d7c18ba4dbb281d855ff0c2e34226c468db4986402646c95"
+            },
+            {
+              "x": 863,
+              "y": 1217,
+              "width": 133,
+              "height": 129,
+              "pivot": [
+                64,
+                123
+              ],
+              "socket": [
+                109,
+                57
+              ],
+              "bounds": [
+                2,
+                2,
+                131,
+                127
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 9,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                304,
+                726,
+                597,
+                1009
+              ],
+              "sourceOrigin": [
+                445,
+                1001
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "54edd8f00513c0eebc1830db08a3ad0c6be774f1887c90cdcf45c9056a3e124e"
+            },
+            {
+              "x": 0,
+              "y": 1396,
+              "width": 138,
+              "height": 133,
+              "pivot": [
+                68,
+                126
+              ],
+              "socket": [
+                111,
+                51
+              ],
+              "bounds": [
+                2,
+                2,
+                136,
+                131
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 10,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                569,
+                720,
+                874,
+                1014
+              ],
+              "sourceOrigin": [
+                720,
+                1001
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "26d1639ca693d3e392af396cf308fc69a754d1da95f01ce5267abb586ca30882"
+            },
+            {
+              "x": 138,
+              "y": 1396,
+              "width": 185,
+              "height": 136,
+              "pivot": [
+                61,
+                125
+              ],
+              "socket": [
+                117,
+                81
+              ],
+              "bounds": [
+                2,
+                2,
+                183,
+                134
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 11,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                842,
+                720,
+                1254,
+                1021
+              ],
+              "sourceOrigin": [
+                977,
+                1001
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "13a53e70e174411309f622e8499717f07759040e13a63fa168f199c9eb0a0244"
+            },
+            {
+              "x": 323,
+              "y": 1396,
+              "width": 127,
+              "height": 105,
+              "pivot": [
+                57,
+                103
+              ],
+              "socket": [
+                101,
+                25
+              ],
+              "bounds": [
+                2,
+                2,
+                125,
+                103
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 12,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                49,
+                1006,
+                328,
+                1254
+              ],
+              "sourceOrigin": [
+                175,
+                1237
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "424d8b416356addcaee6d4640517077882152ece1282e1a5ab251219274a550a"
+            },
+            {
+              "x": 450,
+              "y": 1396,
+              "width": 127,
+              "height": 107,
+              "pivot": [
+                60,
+                104
+              ],
+              "socket": [
+                102,
+                31
+              ],
+              "bounds": [
+                2,
+                2,
+                125,
+                105
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 13,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                320,
+                1006,
+                605,
+                1240
+              ],
+              "sourceOrigin": [
+                454,
+                1237
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "58506ce767d69affbcea79302316f00b0a7e2ff8a0b093a2578bf3502a5e09ac"
+            },
+            {
+              "x": 577,
+              "y": 1396,
+              "width": 129,
+              "height": 112,
+              "pivot": [
+                55,
+                108
+              ],
+              "socket": [
+                101,
+                31
+              ],
+              "bounds": [
+                2,
+                2,
+                127,
+                110
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 14,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                622,
+                996,
+                910,
+                1254
+              ],
+              "sourceOrigin": [
+                745,
+                1237
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "96d2c06853d8765daae115a6aa48e04a8176a73bc24fc008d663232e1983a194"
+            },
+            {
+              "x": 706,
+              "y": 1396,
+              "width": 127,
+              "height": 106,
+              "pivot": [
+                60,
+                103
+              ],
+              "socket": [
+                103,
+                28
+              ],
+              "bounds": [
+                2,
+                2,
+                125,
+                104
+              ],
+              "source": "raw/tecnico_wombat/cast_ice_lightning.png",
+              "sourceIndex": 15,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                911,
+                1006,
+                1238,
+                1241
+              ],
+              "sourceOrigin": [
+                1045,
+                1237
+              ],
+              "scale": 0.44036697247706424,
+              "rgbaSha256": "fb70dc029b35b272e8ba03376d5fc768a00aeb36bf4f69c10ac413bc2be3ddd9"
+            }
+          ]
+        },
+        "cast_nova": {
+          "name": "cast_nova",
+          "fps": 14,
+          "loop": false,
+          "frames": [
+            {
+              "x": 833,
+              "y": 1396,
+              "width": 164,
+              "height": 170,
+              "pivot": [
+                91,
+                152
+              ],
+              "socket": [
+                128,
+                81
+              ],
+              "bounds": [
+                2,
+                2,
+                162,
+                168
+              ],
+              "source": "raw/tecnico_wombat/cast_nova.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                419,
+                435
+              ],
+              "sourceOrigin": [
+                233,
+                393
+              ],
+              "scale": 0.38095238095238093,
+              "rgbaSha256": "c01d170a599a6936f09935811d48b1af54d854947ce8f2aa7036b63a153879b5"
+            },
+            {
+              "x": 0,
+              "y": 1566,
+              "width": 166,
+              "height": 159,
+              "pivot": [
+                84,
+                142
+              ],
+              "socket": [
+                125,
+                67
+              ],
+              "bounds": [
+                2,
+                2,
+                164,
+                157
+              ],
+              "source": "raw/tecnico_wombat/cast_nova.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                409,
+                19,
+                837,
+                430
+              ],
+              "sourceOrigin": [
+                626,
+                393
+              ],
+              "scale": 0.38095238095238093,
+              "rgbaSha256": "aaeedd2f86ed96e6618d562b92df4fdc0f6bd3791d40f338f8da5945dd492788"
+            },
+            {
+              "x": 166,
+              "y": 1566,
+              "width": 164,
+              "height": 164,
+              "pivot": [
+                79,
+                146
+              ],
+              "socket": [
+                117,
+                44
+              ],
+              "bounds": [
+                2,
+                2,
+                162,
+                162
+              ],
+              "source": "raw/tecnico_wombat/cast_nova.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                835,
+                14,
+                1254,
+                434
+              ],
+              "sourceOrigin": [
+                1038,
+                393
+              ],
+              "scale": 0.38095238095238093,
+              "rgbaSha256": "9e4b7e1d6bd73eae60f17b3fb36aaa7b7b95cbce21d54ad109ea1577b8c8bbb2"
+            },
+            {
+              "x": 330,
+              "y": 1566,
+              "width": 155,
+              "height": 169,
+              "pivot": [
+                72,
+                152
+              ],
+              "socket": [
+                119,
+                42
+              ],
+              "bounds": [
+                2,
+                2,
+                153,
+                167
+              ],
+              "source": "raw/tecnico_wombat/cast_nova.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                15,
+                419,
+                418,
+                852
+              ],
+              "sourceOrigin": [
+                205,
+                813
+              ],
+              "scale": 0.38095238095238093,
+              "rgbaSha256": "8ad410bf1a682c6d6343b0c7a85915179d818d3f2fbfec14544a4053e194042a"
+            },
+            {
+              "x": 485,
+              "y": 1566,
+              "width": 186,
+              "height": 168,
+              "pivot": [
+                88,
+                157
+              ],
+              "socket": [
+                115,
+                41
+              ],
+              "bounds": [
+                2,
+                2,
+                184,
+                166
+              ],
+              "source": "raw/tecnico_wombat/cast_nova.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                395,
+                407,
+                874,
+                838
+              ],
+              "sourceOrigin": [
+                620,
+                813
+              ],
+              "scale": 0.38095238095238093,
+              "rgbaSha256": "0269e9206e1feb607fa25adc3f7e4d365156c260ee4ca44b186218e5832bcc41"
+            },
+            {
+              "x": 671,
+              "y": 1566,
+              "width": 160,
+              "height": 160,
+              "pivot": [
+                80,
+                154
+              ],
+              "socket": [
+                125,
+                45
+              ],
+              "bounds": [
+                2,
+                2,
+                158,
+                158
+              ],
+              "source": "raw/tecnico_wombat/cast_nova.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                836,
+                415,
+                1245,
+                838
+              ],
+              "sourceOrigin": [
+                1040,
+                813
+              ],
+              "scale": 0.38095238095238093,
+              "rgbaSha256": "3e8a6d9094666f99a11ab75594801c4d8aa7b04d32b09130230eb57e0834db60"
+            },
+            {
+              "x": 831,
+              "y": 1566,
+              "width": 164,
+              "height": 164,
+              "pivot": [
+                84,
+                143
+              ],
+              "socket": [
+                127,
+                54
+              ],
+              "bounds": [
+                2,
+                2,
+                162,
+                162
+              ],
+              "source": "raw/tecnico_wombat/cast_nova.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                835,
+                419,
+                1254
+              ],
+              "sourceOrigin": [
+                215,
+                1205
+              ],
+              "scale": 0.38095238095238093,
+              "rgbaSha256": "0b51e8b7bb36db6bfbb5c83c5c0f65d8862df169a613ba41861cfc8452663a3c"
+            },
+            {
+              "x": 0,
+              "y": 1735,
+              "width": 166,
+              "height": 159,
+              "pivot": [
+                83,
+                143
+              ],
+              "socket": [
+                127,
+                68
+              ],
+              "bounds": [
+                2,
+                2,
+                164,
+                157
+              ],
+              "source": "raw/tecnico_wombat/cast_nova.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                408,
+                835,
+                836,
+                1254
+              ],
+              "sourceOrigin": [
+                620,
+                1205
+              ],
+              "scale": 0.38095238095238093,
+              "rgbaSha256": "e89f6dda87a5aad34b06a924af82eb74b842dd961920822786a48392a25392a1"
+            },
+            {
+              "x": 166,
+              "y": 1735,
+              "width": 155,
+              "height": 153,
+              "pivot": [
+                77,
+                140
+              ],
+              "socket": [
+                121,
+                70
+              ],
+              "bounds": [
+                2,
+                2,
+                153,
+                151
+              ],
+              "source": "raw/tecnico_wombat/cast_nova.png",
+              "sourceIndex": 8,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                835,
+                837,
+                1240,
+                1254
+              ],
+              "sourceOrigin": [
+                1034,
+                1205
+              ],
+              "scale": 0.38095238095238093,
+              "rgbaSha256": "61b12540d4e7c1c6dcff1f4fbb6cc1aec852f877a542eb10cda736e0ca8523f5"
+            }
+          ]
+        },
+        "cast_heal": {
+          "name": "cast_heal",
+          "fps": 10,
+          "loop": false,
+          "frames": [
+            {
+              "x": 321,
+              "y": 1735,
+              "width": 131,
+              "height": 125,
+              "pivot": [
+                65,
+                113
+              ],
+              "socket": [
+                109,
+                39
+              ],
+              "bounds": [
+                2,
+                2,
+                129,
+                123
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                320,
+                350
+              ],
+              "sourceOrigin": [
+                167,
+                326
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "16a3f6471ac5cb4ba915c2881bbd8463ed1d9cb0f10e916fdc3af914b8ef24fc"
+            },
+            {
+              "x": 452,
+              "y": 1735,
+              "width": 131,
+              "height": 126,
+              "pivot": [
+                66,
+                119
+              ],
+              "socket": [
+                108,
+                41
+              ],
+              "bounds": [
+                2,
+                2,
+                129,
+                124
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                320,
+                39,
+                629,
+                350
+              ],
+              "sourceOrigin": [
+                473,
+                326
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "f0f689caceacc2c206d99cb479e3de27d99640b6ce790efcfe1a31e6883ba28d"
+            },
+            {
+              "x": 583,
+              "y": 1735,
+              "width": 130,
+              "height": 137,
+              "pivot": [
+                65,
+                128
+              ],
+              "socket": [
+                102,
+                42
+              ],
+              "bounds": [
+                2,
+                2,
+                128,
+                135
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                628,
+                19,
+                932,
+                348
+              ],
+              "sourceOrigin": [
+                780,
+                326
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "1fa82088952365ed729c45aae67d2ca5c059e38a84f5bf3c4c168707e25426fd"
+            },
+            {
+              "x": 713,
+              "y": 1735,
+              "width": 140,
+              "height": 145,
+              "pivot": [
+                73,
+                135
+              ],
+              "socket": [
+                96,
+                47
+              ],
+              "bounds": [
+                2,
+                2,
+                138,
+                143
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                915,
+                0,
+                1248,
+                344
+              ],
+              "sourceOrigin": [
+                1085,
+                326
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "7d9a418cdd68ab6180318c6f33fe8e0c64f7b0976e2ad2f3699569c2d72ad3ec"
+            },
+            {
+              "x": 853,
+              "y": 1735,
+              "width": 134,
+              "height": 121,
+              "pivot": [
+                63,
+                105
+              ],
+              "socket": [
+                109,
+                28
+              ],
+              "bounds": [
+                2,
+                2,
+                132,
+                119
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                367,
+                346,
+                651
+              ],
+              "sourceOrigin": [
+                180,
+                616
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "ddfb41b9c9087c2c315f985a28c5b8131e8c040384da3c57342b73f65f0061fc"
+            },
+            {
+              "x": 0,
+              "y": 1894,
+              "width": 130,
+              "height": 107,
+              "pivot": [
+                64,
+                100
+              ],
+              "socket": [
+                103,
+                25
+              ],
+              "bounds": [
+                2,
+                2,
+                128,
+                105
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                329,
+                355,
+                631,
+                645
+              ],
+              "sourceOrigin": [
+                477,
+                616
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "14e0264d67f07e5341e6289969bb196e6898873979ca6469e604405177939fdf"
+            },
+            {
+              "x": 130,
+              "y": 1894,
+              "width": 126,
+              "height": 123,
+              "pivot": [
+                62,
+                107
+              ],
+              "socket": [
+                99,
+                32
+              ],
+              "bounds": [
+                2,
+                2,
+                124,
+                121
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                642,
+                357,
+                939,
+                651
+              ],
+              "sourceOrigin": [
+                788,
+                616
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "e725c4756b96d9a9453a69b8fef66d4abeec05700988fa551f42cdd0d0148904"
+            },
+            {
+              "x": 256,
+              "y": 1894,
+              "width": 121,
+              "height": 111,
+              "pivot": [
+                62,
+                103
+              ],
+              "socket": [
+                97,
+                28
+              ],
+              "bounds": [
+                2,
+                2,
+                119,
+                109
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                941,
+                372,
+                1228,
+                629
+              ],
+              "sourceOrigin": [
+                1087,
+                616
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "0290e1fe62b533dcbfa42c03d7f289da22bca3e032d17f88632f566404d7d98c"
+            }
+          ]
+        },
+        "cast_shield": {
+          "name": "cast_shield",
+          "fps": 10,
+          "loop": false,
+          "frames": [
+            {
+              "x": 377,
+              "y": 1894,
+              "width": 141,
+              "height": 127,
+              "pivot": [
+                62,
+                115
+              ],
+              "socket": [
+                109,
+                49
+              ],
+              "bounds": [
+                2,
+                2,
+                139,
+                125
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 8,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                650,
+                346,
+                953
+              ],
+              "sourceOrigin": [
+                162,
+                925
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "fc1e36233003a343f52ab743ac63e970aecfb296983df572d7c468c970492f39"
+            },
+            {
+              "x": 518,
+              "y": 1894,
+              "width": 142,
+              "height": 128,
+              "pivot": [
+                69,
+                114
+              ],
+              "socket": [
+                112,
+                47
+              ],
+              "bounds": [
+                2,
+                2,
+                140,
+                126
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 9,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                320,
+                650,
+                653,
+                953
+              ],
+              "sourceOrigin": [
+                481,
+                925
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "5400b8cb90a843f3414d23b34068082acc833de0f45c456b126db802a82b5b47"
+            },
+            {
+              "x": 660,
+              "y": 1894,
+              "width": 137,
+              "height": 128,
+              "pivot": [
+                69,
+                112
+              ],
+              "socket": [
+                101,
+                59
+              ],
+              "bounds": [
+                2,
+                2,
+                135,
+                126
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 10,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                623,
+                650,
+                942,
+                958
+              ],
+              "sourceOrigin": [
+                785,
+                925
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "ff25736ae6837862a9314e4975ea24a0f3aa6e926a74986afec94280c857c7d7"
+            },
+            {
+              "x": 797,
+              "y": 1894,
+              "width": 131,
+              "height": 126,
+              "pivot": [
+                71,
+                112
+              ],
+              "socket": [
+                75,
+                52
+              ],
+              "bounds": [
+                2,
+                2,
+                129,
+                124
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 11,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                923,
+                658,
+                1228,
+                953
+              ],
+              "sourceOrigin": [
+                1090,
+                925
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "bebae0caf2a9ca195d0a869796c5fc4d72e89455e0ad6dca6591d5b4083ec9e5"
+            },
+            {
+              "x": 0,
+              "y": 2022,
+              "width": 140,
+              "height": 111,
+              "pivot": [
+                64,
+                106
+              ],
+              "socket": [
+                109,
+                35
+              ],
+              "bounds": [
+                2,
+                2,
+                138,
+                109
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 12,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                15,
+                953,
+                342,
+                1254
+              ],
+              "sourceOrigin": [
+                163,
+                1203
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "cad16e2a7acd16732adf67c6d514c84d9351b39629655f2411b076c62e9e9f28"
+            },
+            {
+              "x": 140,
+              "y": 2022,
+              "width": 129,
+              "height": 111,
+              "pivot": [
+                64,
+                106
+              ],
+              "socket": [
+                106,
+                35
+              ],
+              "bounds": [
+                2,
+                2,
+                127,
+                109
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 13,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                331,
+                953,
+                635,
+                1254
+              ],
+              "sourceOrigin": [
+                480,
+                1203
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "7a2827c4add9e6437d374df0f2d384cab47ac5cf77f6b6665fae69118db26e8c"
+            },
+            {
+              "x": 269,
+              "y": 2022,
+              "width": 127,
+              "height": 111,
+              "pivot": [
+                66,
+                106
+              ],
+              "socket": [
+                100,
+                37
+              ],
+              "bounds": [
+                2,
+                2,
+                125,
+                109
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 14,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                636,
+                952,
+                932,
+                1210
+              ],
+              "sourceOrigin": [
+                790,
+                1203
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "d55cf22de9d7af9127adb4da4c7df187a72b6e425ff53c010d275ba9effe90ce"
+            },
+            {
+              "x": 396,
+              "y": 2022,
+              "width": 127,
+              "height": 112,
+              "pivot": [
+                69,
+                106
+              ],
+              "socket": [
+                102,
+                35
+              ],
+              "bounds": [
+                2,
+                2,
+                125,
+                110
+              ],
+              "source": "raw/tecnico_wombat/cast_heal_shield.png",
+              "sourceIndex": 15,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                929,
+                952,
+                1224,
+                1212
+              ],
+              "sourceOrigin": [
+                1090,
+                1203
+              ],
+              "scale": 0.4155844155844156,
+              "rgbaSha256": "5ded539476d549aeba180e7cf01535739d70c9467304539da08fd5782334288a"
+            }
+          ]
+        },
+        "hurt": {
+          "name": "hurt",
+          "fps": 14,
+          "loop": false,
+          "frames": [
+            {
+              "x": 523,
+              "y": 2022,
+              "width": 120,
+              "height": 129,
+              "pivot": [
+                55,
+                120
+              ],
+              "socket": [
+                93,
+                55
+              ],
+              "bounds": [
+                2,
+                2,
+                118,
+                127
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                9,
+                328,
+                372
+              ],
+              "sourceOrigin": [
+                158,
+                351
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "6fcf75d0bf2c02d51d5bcbd6a1a494f336ae96031535f6c4fc5c8a0100909be0"
+            },
+            {
+              "x": 643,
+              "y": 2022,
+              "width": 131,
+              "height": 130,
+              "pivot": [
+                65,
+                121
+              ],
+              "socket": [
+                103,
+                56
+              ],
+              "bounds": [
+                2,
+                2,
+                129,
+                128
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                324,
+                23,
+                664,
+                372
+              ],
+              "sourceOrigin": [
+                493,
+                351
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "8893a6120cee44913f9c9ab22036ccdcaf79b303aa5cc8d5b9ad4badf4a0461b"
+            },
+            {
+              "x": 774,
+              "y": 2022,
+              "width": 124,
+              "height": 135,
+              "pivot": [
+                62,
+                128
+              ],
+              "socket": [
+                100,
+                63
+              ],
+              "bounds": [
+                2,
+                2,
+                122,
+                133
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                647,
+                15,
+                972,
+                372
+              ],
+              "sourceOrigin": [
+                807,
+                355
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "fa14a591dbe34f5ac8f95a0844f954630793c8424c1432e084263ef1ae7e4a6f"
+            },
+            {
+              "x": 0,
+              "y": 2157,
+              "width": 222,
+              "height": 143,
+              "pivot": [
+                62,
+                129
+              ],
+              "socket": [
+                100,
+                64
+              ],
+              "bounds": [
+                2,
+                2,
+                220,
+                141
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                973,
+                9,
+                1605,
+                384
+              ],
+              "sourceOrigin": [
+                1137,
+                352
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "d010ce1f5b7f2c5e764417bfc745a93957abe0ce23828e773b6deec0238c63a2"
+            }
+          ]
+        },
+        "death": {
+          "name": "death",
+          "fps": 10,
+          "loop": false,
+          "frames": [
+            {
+              "x": 222,
+              "y": 2157,
+              "width": 116,
+              "height": 140,
+              "pivot": [
+                55,
+                119
+              ],
+              "socket": [
+                93,
+                54
+              ],
+              "bounds": [
+                2,
+                2,
+                114,
+                138
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                13,
+                373,
+                323,
+                745
+              ],
+              "sourceOrigin": [
+                159,
+                687
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "0a474be45e207ef43b4147b190f4c2e6a755f31833ac6b548d3c8a73287d2fa7"
+            },
+            {
+              "x": 338,
+              "y": 2157,
+              "width": 131,
+              "height": 143,
+              "pivot": [
+                62,
+                119
+              ],
+              "socket": [
+                100,
+                54
+              ],
+              "bounds": [
+                2,
+                2,
+                129,
+                141
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                317,
+                372,
+                657,
+                745
+              ],
+              "sourceOrigin": [
+                478,
+                687
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "e19f4b966f593b586b37acb19824d7ea7cacba7452dd04e9ff111890946d784d"
+            },
+            {
+              "x": 469,
+              "y": 2157,
+              "width": 132,
+              "height": 143,
+              "pivot": [
+                64,
+                119
+              ],
+              "socket": [
+                102,
+                54
+              ],
+              "bounds": [
+                2,
+                2,
+                130,
+                141
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                626,
+                372,
+                972,
+                746
+              ],
+              "sourceOrigin": [
+                792,
+                687
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "848d6512bb76d64dc712ac40f9a3f2ef5991aad8d766df4b9a7bb2f4905b4f6b"
+            },
+            {
+              "x": 601,
+              "y": 2157,
+              "width": 132,
+              "height": 141,
+              "pivot": [
+                56,
+                118
+              ],
+              "socket": [
+                94,
+                53
+              ],
+              "bounds": [
+                2,
+                2,
+                130,
+                139
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                971,
+                373,
+                1315,
+                745
+              ],
+              "sourceOrigin": [
+                1116,
+                687
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "d407c73162036ccca1124d78d7a6217dfc5345f1ddd192caf3ad07734dc71c2e"
+            },
+            {
+              "x": 733,
+              "y": 2157,
+              "width": 131,
+              "height": 138,
+              "pivot": [
+                63,
+                125
+              ],
+              "socket": [
+                101,
+                60
+              ],
+              "bounds": [
+                2,
+                2,
+                129,
+                136
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 8,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                1278,
+                368,
+                1619,
+                737
+              ],
+              "sourceOrigin": [
+                1442,
+                698
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "34438d2a50e0d255b0d0e7b6b3a5183f7775dc414d82bd142d425cc63a441138"
+            },
+            {
+              "x": 864,
+              "y": 2157,
+              "width": 126,
+              "height": 83,
+              "pivot": [
+                57,
+                72
+              ],
+              "socket": [
+                95,
+                7
+              ],
+              "bounds": [
+                2,
+                2,
+                124,
+                81
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 9,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                17,
+                745,
+                346,
+                963
+              ],
+              "sourceOrigin": [
+                166,
+                933
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "fffe44a172b95738ce292e79317e76df337e0d9d1c2b7be68fafebf3c1c4e0f6"
+            },
+            {
+              "x": 0,
+              "y": 2300,
+              "width": 132,
+              "height": 80,
+              "pivot": [
+                64,
+                73
+              ],
+              "socket": [
+                102,
+                8
+              ],
+              "bounds": [
+                2,
+                2,
+                130,
+                78
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 10,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                324,
+                741,
+                671,
+                971
+              ],
+              "sourceOrigin": [
+                494,
+                933
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "a665ed9be4e04672314474bbdd00a8aac579fc25db7226b425e6dbe4a836dafd"
+            },
+            {
+              "x": 132,
+              "y": 2300,
+              "width": 135,
+              "height": 79,
+              "pivot": [
+                72,
+                72
+              ],
+              "socket": [
+                110,
+                7
+              ],
+              "bounds": [
+                2,
+                2,
+                133,
+                77
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 11,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                628,
+                745,
+                982,
+                949
+              ],
+              "sourceOrigin": [
+                820,
+                933
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "ec7096444f1864939c3c08992f32deced0838026f1648bac5f046eaaf26267f8"
+            },
+            {
+              "x": 267,
+              "y": 2300,
+              "width": 127,
+              "height": 80,
+              "pivot": [
+                68,
+                71
+              ],
+              "socket": [
+                106,
+                6
+              ],
+              "bounds": [
+                2,
+                2,
+                125,
+                78
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 12,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                968,
+                745,
+                1298,
+                971
+              ],
+              "sourceOrigin": [
+                1145,
+                933
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "aeaa6fc51f9ea8b2adef6e81df3ce90d995d4be84de3a7596c467d86b4686198"
+            },
+            {
+              "x": 394,
+              "y": 2300,
+              "width": 124,
+              "height": 77,
+              "pivot": [
+                68,
+                70
+              ],
+              "socket": [
+                106,
+                5
+              ],
+              "bounds": [
+                2,
+                2,
+                122,
+                75
+              ],
+              "source": "raw/tecnico_wombat/hurt_death.png",
+              "sourceIndex": 13,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                1286,
+                751,
+                1608,
+                954
+              ],
+              "sourceOrigin": [
+                1463,
+                933
+              ],
+              "scale": 0.37209302325581395,
+              "rgbaSha256": "453eb5897cddf66f68b43df382b9f0f0a26e7e1af2d35248036f173a457918bb"
+            }
+          ]
+        },
+        "victory": {
+          "name": "victory",
+          "fps": 9,
+          "loop": false,
+          "frames": [
+            {
+              "x": 518,
+              "y": 2300,
+              "width": 130,
+              "height": 129,
+              "pivot": [
+                60,
+                124
+              ],
+              "socket": [
+                98,
+                59
+              ],
+              "bounds": [
+                2,
+                2,
+                128,
+                127
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                45,
+                312,
+                360
+              ],
+              "sourceOrigin": [
+                144,
+                352
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "1661267382ba5e16948b6a1a13ba1d15d4b541f449e9f74822967da32f1860c4"
+            },
+            {
+              "x": 648,
+              "y": 2300,
+              "width": 132,
+              "height": 135,
+              "pivot": [
+                64,
+                132
+              ],
+              "socket": [
+                102,
+                67
+              ],
+              "bounds": [
+                2,
+                2,
+                130,
+                133
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                310,
+                23,
+                627,
+                358
+              ],
+              "sourceOrigin": [
+                464,
+                352
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "2aa1fefe7eeb6a70c29530eebcb1e6f05d757899b269a04b51a74ae787ce52cb"
+            },
+            {
+              "x": 780,
+              "y": 2300,
+              "width": 139,
+              "height": 150,
+              "pivot": [
+                71,
+                144
+              ],
+              "socket": [
+                109,
+                79
+              ],
+              "bounds": [
+                2,
+                2,
+                137,
+                148
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                616,
+                0,
+                951,
+                361
+              ],
+              "sourceOrigin": [
+                786,
+                352
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "b82373f0d3d4c06325e84f8ad6c95568e8bb94c384e8151d0c8d0d100b4a5afd"
+            },
+            {
+              "x": 0,
+              "y": 2450,
+              "width": 125,
+              "height": 148,
+              "pivot": [
+                69,
+                144
+              ],
+              "socket": [
+                107,
+                79
+              ],
+              "bounds": [
+                2,
+                2,
+                123,
+                146
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                950,
+                0,
+                1253,
+                356
+              ],
+              "sourceOrigin": [
+                1116,
+                352
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "899b12a263af452d9d14df766d23115467833dd01eea5b68fa497ab59082449c"
+            },
+            {
+              "x": 125,
+              "y": 2450,
+              "width": 130,
+              "height": 149,
+              "pivot": [
+                62,
+                137
+              ],
+              "socket": [
+                100,
+                72
+              ],
+              "bounds": [
+                2,
+                2,
+                128,
+                147
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                361,
+                312,
+                720
+              ],
+              "sourceOrigin": [
+                148,
+                695
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "3489ad475c6a428f1c42fedfbc36329f97a7f7a02e317bcdfc96e84390aa6f98"
+            },
+            {
+              "x": 255,
+              "y": 2450,
+              "width": 133,
+              "height": 147,
+              "pivot": [
+                64,
+                135
+              ],
+              "socket": [
+                102,
+                70
+              ],
+              "bounds": [
+                2,
+                2,
+                131,
+                145
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                312,
+                361,
+                633,
+                720
+              ],
+              "sourceOrigin": [
+                466,
+                695
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "47876bdf773fdf20edb788e4d57382abb781cf8b0c24188d6136287512569faa"
+            },
+            {
+              "x": 388,
+              "y": 2450,
+              "width": 143,
+              "height": 132,
+              "pivot": [
+                68,
+                126
+              ],
+              "socket": [
+                106,
+                61
+              ],
+              "bounds": [
+                2,
+                2,
+                141,
+                130
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                624,
+                361,
+                969,
+                720
+              ],
+              "sourceOrigin": [
+                787,
+                695
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "dc196e5c9d84bd00d0f43d776ccdd2cfb9157e6f5dc6bafa67dc43d6cb317278"
+            },
+            {
+              "x": 531,
+              "y": 2450,
+              "width": 125,
+              "height": 138,
+              "pivot": [
+                61,
+                125
+              ],
+              "socket": [
+                99,
+                60
+              ],
+              "bounds": [
+                2,
+                2,
+                123,
+                136
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                953,
+                379,
+                1254,
+                720
+              ],
+              "sourceOrigin": [
+                1100,
+                695
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "81b3ab55f613a084709dc811646021b95dfc4c0f3390de0da0e5f12c4a8c3c41"
+            }
+          ]
+        },
+        "pickup": {
+          "name": "pickup",
+          "fps": 12,
+          "loop": false,
+          "frames": [
+            {
+              "x": 656,
+              "y": 2450,
+              "width": 131,
+              "height": 108,
+              "pivot": [
+                62,
+                102
+              ],
+              "socket": [
+                100,
+                37
+              ],
+              "bounds": [
+                2,
+                2,
+                129,
+                106
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 8,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                720,
+                314,
+                978
+              ],
+              "sourceOrigin": [
+                149,
+                968
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "241dc4a2368b1b1314a0b9f4c0dbd7501da57fdc2652de547f101f219181b296"
+            },
+            {
+              "x": 787,
+              "y": 2450,
+              "width": 135,
+              "height": 111,
+              "pivot": [
+                63,
+                101
+              ],
+              "socket": [
+                101,
+                36
+              ],
+              "bounds": [
+                2,
+                2,
+                133,
+                109
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 9,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                312,
+                720,
+                637,
+                987
+              ],
+              "sourceOrigin": [
+                463,
+                968
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "3a680fcd4daba36b6f9c9b8c83e3b90ce75e593e83fb9929fd7809d0d3a74223"
+            },
+            {
+              "x": 0,
+              "y": 2599,
+              "width": 121,
+              "height": 108,
+              "pivot": [
+                59,
+                102
+              ],
+              "socket": [
+                97,
+                37
+              ],
+              "bounds": [
+                2,
+                2,
+                119,
+                106
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 10,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                642,
+                720,
+                935,
+                979
+              ],
+              "sourceOrigin": [
+                783,
+                968
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "25e5de5e891b98a42f419100a1678c84a1771ffb5d25c8b3edec729f3685386e"
+            },
+            {
+              "x": 121,
+              "y": 2599,
+              "width": 115,
+              "height": 111,
+              "pivot": [
+                55,
+                99
+              ],
+              "socket": [
+                93,
+                34
+              ],
+              "bounds": [
+                2,
+                2,
+                113,
+                109
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 11,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                960,
+                724,
+                1240,
+                995
+              ],
+              "sourceOrigin": [
+                1093,
+                968
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "9e9326cf3f06084cb36e39eb499f6ac1315ff74109e0453487f9ffd06e190d75"
+            },
+            {
+              "x": 236,
+              "y": 2599,
+              "width": 126,
+              "height": 108,
+              "pivot": [
+                57,
+                102
+              ],
+              "socket": [
+                95,
+                37
+              ],
+              "bounds": [
+                2,
+                2,
+                124,
+                106
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 12,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                27,
+                978,
+                330,
+                1254
+              ],
+              "sourceOrigin": [
+                164,
+                1227
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "59f81dddf119cd70fd5a21f080819f2db5ed4b8a16dc5d3a92e3c2bd49a47f7b"
+            },
+            {
+              "x": 362,
+              "y": 2599,
+              "width": 368,
+              "height": 114,
+              "pivot": [
+                58,
+                106
+              ],
+              "socket": [
+                96,
+                41
+              ],
+              "bounds": [
+                2,
+                2,
+                366,
+                112
+              ],
+              "source": "raw/tecnico_wombat/victory_pickup.png",
+              "sourceIndex": 13,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                331,
+                969,
+                1242,
+                1254
+              ],
+              "sourceOrigin": [
+                472,
+                1227
+              ],
+              "scale": 0.40336134453781514,
+              "rgbaSha256": "f7819fc2ed00efe50a1afb67b9a2a7406262fa41cf1c74278ac0031ef29c9fe9"
+            }
+          ]
+        },
+        "climb": {
+          "name": "climb",
+          "fps": 12,
+          "loop": true,
+          "frames": [
+            {
+              "x": 730,
+              "y": 2599,
+              "width": 114,
+              "height": 123,
+              "pivot": [
+                57,
+                117
+              ],
+              "socket": [
+                95,
+                52
+              ],
+              "bounds": [
+                2,
+                2,
+                112,
+                121
+              ],
+              "source": "raw/tecnico_wombat/climb.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                0,
+                444,
+                452
+              ],
+              "sourceOrigin": [
+                245,
+                439
+              ],
+              "scale": 0.2742857142857143,
+              "rgbaSha256": "a59ab0ddc255bee35b35b9c5e4a00ef33977e93b90a793059c60443798d029e5"
+            },
+            {
+              "x": 844,
+              "y": 2599,
+              "width": 126,
+              "height": 122,
+              "pivot": [
+                67,
+                117
+              ],
+              "socket": [
+                105,
+                52
+              ],
+              "bounds": [
+                2,
+                2,
+                124,
+                120
+              ],
+              "source": "raw/tecnico_wombat/climb.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                444,
+                19,
+                887,
+                450
+              ],
+              "sourceOrigin": [
+                680,
+                439
+              ],
+              "scale": 0.2742857142857143,
+              "rgbaSha256": "46e0a7932fa643e035e6f27177415b64e1528d7018b7a1db5369f64cc3e2be26"
+            },
+            {
+              "x": 0,
+              "y": 2722,
+              "width": 112,
+              "height": 122,
+              "pivot": [
+                48,
+                118
+              ],
+              "socket": [
+                86,
+                53
+              ],
+              "bounds": [
+                2,
+                2,
+                110,
+                120
+              ],
+              "source": "raw/tecnico_wombat/climb.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                888,
+                15,
+                1332,
+                446
+              ],
+              "sourceOrigin": [
+                1105,
+                439
+              ],
+              "scale": 0.2742857142857143,
+              "rgbaSha256": "f7561ee94d4b4b70f9ea58f80f2170ed042b055679d50e43dd1d242ae7eb20c7"
+            },
+            {
+              "x": 112,
+              "y": 2722,
+              "width": 113,
+              "height": 127,
+              "pivot": [
+                59,
+                120
+              ],
+              "socket": [
+                97,
+                55
+              ],
+              "bounds": [
+                2,
+                2,
+                111,
+                125
+              ],
+              "source": "raw/tecnico_wombat/climb.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                1331,
+                9,
+                1758,
+                456
+              ],
+              "sourceOrigin": [
+                1540,
+                439
+              ],
+              "scale": 0.2742857142857143,
+              "rgbaSha256": "a7bafdb799a3947fddc09c15a1b59b3b0c1ba672d1ff3e184749c4b6b2f16ce1"
+            },
+            {
+              "x": 225,
+              "y": 2722,
+              "width": 126,
+              "height": 115,
+              "pivot": [
+                69,
+                110
+              ],
+              "socket": [
+                107,
+                45
+              ],
+              "bounds": [
+                2,
+                2,
+                124,
+                113
+              ],
+              "source": "raw/tecnico_wombat/climb.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                450,
+                444,
+                869
+              ],
+              "sourceOrigin": [
+                245,
+                851
+              ],
+              "scale": 0.2742857142857143,
+              "rgbaSha256": "1469550dc5710121a3f72dc53330a6275451f57fe3bd6a66c7a3b27658211d51"
+            },
+            {
+              "x": 351,
+              "y": 2722,
+              "width": 125,
+              "height": 119,
+              "pivot": [
+                66,
+                115
+              ],
+              "socket": [
+                104,
+                50
+              ],
+              "bounds": [
+                2,
+                2,
+                123,
+                117
+              ],
+              "source": "raw/tecnico_wombat/climb.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                444,
+                434,
+                887,
+                865
+              ],
+              "sourceOrigin": [
+                680,
+                851
+              ],
+              "scale": 0.2742857142857143,
+              "rgbaSha256": "c257e7a0a2435fd10daa6a2c0d28f0dde4420308d78c36051656f4485d1baaf1"
+            },
+            {
+              "x": 476,
+              "y": 2722,
+              "width": 123,
+              "height": 120,
+              "pivot": [
+                62,
+                112
+              ],
+              "socket": [
+                100,
+                47
+              ],
+              "bounds": [
+                2,
+                2,
+                121,
+                118
+              ],
+              "source": "raw/tecnico_wombat/climb.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                887,
+                450,
+                1325,
+                887
+              ],
+              "sourceOrigin": [
+                1105,
+                851
+              ],
+              "scale": 0.2742857142857143,
+              "rgbaSha256": "fddc4b3814ac59d2a106fd84881491f5c29860de1e8290957de8f7682fed07e7"
+            },
+            {
+              "x": 599,
+              "y": 2722,
+              "width": 110,
+              "height": 120,
+              "pivot": [
+                53,
+                113
+              ],
+              "socket": [
+                91,
+                48
+              ],
+              "bounds": [
+                2,
+                2,
+                108,
+                118
+              ],
+              "source": "raw/tecnico_wombat/climb.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                1335,
+                448,
+                1754,
+                873
+              ],
+              "sourceOrigin": [
+                1540,
+                851
+              ],
+              "scale": 0.2742857142857143,
+              "rgbaSha256": "dcd5cfc4dea5b12a9218996875491fc9156d8ce97b3e1f70378e0f099becf5b2"
+            }
+          ]
+        }
+      },
+      "width": 1024,
+      "height": 2849,
+      "sha256": "1463409f091dc2d20ad98066ce9f4501607d98f3ad85c9eb249feffa997ac20e"
+    },
+    "herido": {
+      "file": "herido.png",
+      "clips": {
+        "idle": {
+          "name": "idle",
+          "fps": 8,
+          "loop": true,
+          "frames": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 120,
+              "height": 103,
+              "pivot": [
+                60,
+                100
+              ],
+              "socket": [
+                98,
+                35
+              ],
+              "bounds": [
+                2,
+                2,
+                118,
+                101
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 0,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                33,
+                343,
+                330
+              ],
+              "sourceOrigin": [
+                171,
+                322
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "fdf0e69132d46a362c25283ab2f926bade73172301c1f147b31be9f767e27424"
+            },
+            {
+              "x": 120,
+              "y": 0,
+              "width": 114,
+              "height": 108,
+              "pivot": [
+                59,
+                103
+              ],
+              "socket": [
+                97,
+                38
+              ],
+              "bounds": [
+                2,
+                2,
+                112,
+                106
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 1,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                324,
+                19,
+                653,
+                334
+              ],
+              "sourceOrigin": [
+                493,
+                322
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "14289bf9227b7fb5cb30e25c46dd17605f55ee246e750a9eb41f89a81aa2689b"
+            },
+            {
+              "x": 234,
+              "y": 0,
+              "width": 118,
+              "height": 99,
+              "pivot": [
+                63,
+                96
+              ],
+              "socket": [
+                101,
+                31
+              ],
+              "bounds": [
+                2,
+                2,
+                116,
+                97
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 2,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                628,
+                21,
+                965,
+                340
+              ],
+              "sourceOrigin": [
+                808,
+                322
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "ed965f4ebbd0805e817af9e1cf1aca7d46bb06267ecea1f151d2ee74f5a0aacb"
+            },
+            {
+              "x": 352,
+              "y": 0,
+              "width": 108,
+              "height": 99,
+              "pivot": [
+                60,
+                95
+              ],
+              "socket": [
+                98,
+                30
+              ],
+              "bounds": [
+                2,
+                2,
+                106,
+                97
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 3,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                946,
+                39,
+                1254,
+                332
+              ],
+              "sourceOrigin": [
+                1118,
+                322
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "18e4b453cb7adcd76e5c5d00e28c23aca8b6de00d7f437f1e39f7f985ad4da79"
+            }
+          ]
+        },
+        "walk": {
+          "name": "walk",
+          "fps": 12,
+          "loop": true,
+          "frames": [
+            {
+              "x": 460,
+              "y": 0,
+              "width": 120,
+              "height": 102,
+              "pivot": [
+                54,
+                97
+              ],
+              "socket": [
+                92,
+                32
+              ],
+              "bounds": [
+                2,
+                2,
+                118,
+                100
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 4,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                19,
+                347,
+                362,
+                641
+              ],
+              "sourceOrigin": [
+                174,
+                628
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "a1c33a89414a5a3633d7820336a18ae19704c09279675a14d9dcc815669580a0"
+            },
+            {
+              "x": 580,
+              "y": 0,
+              "width": 117,
+              "height": 110,
+              "pivot": [
+                57,
+                97
+              ],
+              "socket": [
+                95,
+                32
+              ],
+              "bounds": [
+                2,
+                2,
+                115,
+                108
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 5,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                331,
+                345,
+                666,
+                663
+              ],
+              "sourceOrigin": [
+                493,
+                628
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "090c804a113fe405cf5587e430b654421e4695aeb739ebeca6623cf514fab5a1"
+            },
+            {
+              "x": 697,
+              "y": 0,
+              "width": 116,
+              "height": 107,
+              "pivot": [
+                58,
+                98
+              ],
+              "socket": [
+                96,
+                33
+              ],
+              "bounds": [
+                2,
+                2,
+                114,
+                105
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 6,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                641,
+                341,
+                973,
+                654
+              ],
+              "sourceOrigin": [
+                808,
+                628
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "1acb04e4f371dddb2f2eeae28045890fc2a34599ee388e05a7cf87065b914dba"
+            },
+            {
+              "x": 813,
+              "y": 0,
+              "width": 104,
+              "height": 104,
+              "pivot": [
+                56,
+                95
+              ],
+              "socket": [
+                94,
+                30
+              ],
+              "bounds": [
+                2,
+                2,
+                102,
+                102
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 7,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                957,
+                351,
+                1254,
+                649
+              ],
+              "sourceOrigin": [
+                1118,
+                628
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "7082a529884c26628953e152d044aef40c4c3ec777855a65265f2bfe800b9e62"
+            }
+          ]
+        }
+      },
+      "width": 1024,
+      "height": 110,
+      "sha256": "222d4bbdb89d8492c34d5704af0ab54b1085073c2790d5e96c5586166aefe4d9"
+    },
+    "critico": {
+      "file": "critico.png",
+      "clips": {
+        "idle": {
+          "name": "idle",
+          "fps": 8,
+          "loop": true,
+          "frames": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 127,
+              "height": 103,
+              "pivot": [
+                61,
+                100
+              ],
+              "socket": [
+                99,
+                35
+              ],
+              "bounds": [
+                2,
+                2,
+                125,
+                101
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 8,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                658,
+                364,
+                951
+              ],
+              "sourceOrigin": [
+                175,
+                947
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "d22eda4bd3b5166dc4551dec1a2ad8cc9965c1d241f1fd8dcb08cac358ff238b"
+            },
+            {
+              "x": 127,
+              "y": 0,
+              "width": 121,
+              "height": 107,
+              "pivot": [
+                61,
+                100
+              ],
+              "socket": [
+                99,
+                35
+              ],
+              "bounds": [
+                2,
+                2,
+                119,
+                105
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 9,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                320,
+                650,
+                665,
+                960
+              ],
+              "sourceOrigin": [
+                495,
+                947
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "dac9a7b0692c9deeb4b67382e658754e41e3d4407fc9c65b19d7011c705ef2ce"
+            },
+            {
+              "x": 248,
+              "y": 0,
+              "width": 125,
+              "height": 108,
+              "pivot": [
+                66,
+                102
+              ],
+              "socket": [
+                104,
+                37
+              ],
+              "bounds": [
+                2,
+                2,
+                123,
+                106
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 10,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                624,
+                650,
+                982,
+                959
+              ],
+              "sourceOrigin": [
+                812,
+                947
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "580059bcaef0d261be875fb23dbb915b416e1c13847bf706f50bda1bb3a83215"
+            },
+            {
+              "x": 373,
+              "y": 0,
+              "width": 108,
+              "height": 102,
+              "pivot": [
+                61,
+                98
+              ],
+              "socket": [
+                99,
+                33
+              ],
+              "bounds": [
+                2,
+                2,
+                106,
+                100
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 11,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                947,
+                648,
+                1254,
+                953
+              ],
+              "sourceOrigin": [
+                1122,
+                947
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "834285bb88673ceb3306f0b27d0b1eb7322c600bff908441b4368d331c01615c"
+            }
+          ]
+        },
+        "walk": {
+          "name": "walk",
+          "fps": 12,
+          "loop": true,
+          "frames": [
+            {
+              "x": 481,
+              "y": 0,
+              "width": 120,
+              "height": 97,
+              "pivot": [
+                55,
+                91
+              ],
+              "socket": [
+                93,
+                26
+              ],
+              "bounds": [
+                2,
+                2,
+                118,
+                95
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 12,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                0,
+                966,
+                360,
+                1241
+              ],
+              "sourceOrigin": [
+                175,
+                1230
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "5d1f6e5042250064ffb658ba5784f5983275f8aaf9092a5f64e07f4d5550217b"
+            },
+            {
+              "x": 601,
+              "y": 0,
+              "width": 116,
+              "height": 97,
+              "pivot": [
+                56,
+                91
+              ],
+              "socket": [
+                94,
+                26
+              ],
+              "bounds": [
+                2,
+                2,
+                114,
+                95
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 13,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                335,
+                966,
+                665,
+                1242
+              ],
+              "sourceOrigin": [
+                495,
+                1230
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "b6aa58b51e0634953a71cfc621a37c75000bc86e142011bf4377cf39b7ba7814"
+            },
+            {
+              "x": 717,
+              "y": 0,
+              "width": 115,
+              "height": 97,
+              "pivot": [
+                59,
+                91
+              ],
+              "socket": [
+                97,
+                26
+              ],
+              "bounds": [
+                2,
+                2,
+                113,
+                95
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 14,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                642,
+                968,
+                970,
+                1242
+              ],
+              "sourceOrigin": [
+                812,
+                1230
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "8f766834d7d81dcd7410e0694802935ecff035b1c1da68ed67dcece8adeb93f3"
+            },
+            {
+              "x": 832,
+              "y": 0,
+              "width": 106,
+              "height": 94,
+              "pivot": [
+                60,
+                87
+              ],
+              "socket": [
+                98,
+                22
+              ],
+              "bounds": [
+                2,
+                2,
+                104,
+                92
+              ],
+              "source": "raw/tecnico_wombat/state_variants.png",
+              "sourceIndex": 15,
+              "removedForeignComponent": null,
+              "sourceBounds": [
+                951,
+                972,
+                1254,
+                1243
+              ],
+              "sourceOrigin": [
+                1122,
+                1230
+              ],
+              "scale": 0.3380281690140845,
+              "rgbaSha256": "9eefcd775f4f363989038b6c453df9ddeb59bd8a9b925a6df778a194a1897e2f"
+            }
+          ]
+        }
+      },
+      "width": 1024,
+      "height": 108,
+      "sha256": "b1aa5b5bcb925cdd94c89750b23eba96ecff1c02c82ce09c48c64f42c1c5cf24"
+    }
+  },
+  "sourceHashes": {
+    "raw/tecnico_wombat/cast_basic_fire.png": "8182fb861532c1a8afb9ffd352c7e19bd5ee89fc63bf71bac8b87158fa2d0a75",
+    "raw/tecnico_wombat/cast_ice_lightning.png": "90f0ee4c25e43e675dfa41fe54b502da61ae2e879992e23141fc7f2405c478b4",
+    "raw/tecnico_wombat/cast_heal_shield.png": "ccfaa188f8c067872013a24f50a78e3c4518bafaed05b442857d7195426ab87f",
+    "raw/tecnico_wombat/cast_nova.png": "d2cac74e1042d117538912a39d09fefb360c28159a25611ce4e31e99b73f9258",
+    "raw/tecnico_wombat/run.png": "b3506c38023aa925796665bc878dea4db8c2ed0eec81db2d21cc2135c7417805",
+    "raw/tecnico_wombat/hurt_death.png": "bd76264bc8a3019260fcb2fe73bd4fedb29590d2e65a7ae9b276e970010b7822",
+    "raw/tecnico_wombat/victory_pickup.png": "a7b7abe9d43517d491d39d2cd7857f685f0c0bfe4aa885f3096a27943284cfe3",
+    "raw/tecnico_wombat/climb.png": "cc103b019af62c43c50c8cb3bfc8a04e98d4b36d6e871ef6a49f953bdf40e672",
+    "raw/tecnico_wombat/state_variants.png": "c6a780da9bcd244ff5cdfd80c4bbb4333030ff60d4a40d4c7f209fabc0241c34",
+    "sprites/tecnico_wombat/sano/quieto/quieto_01.png": "8068b2c7ac85de14e7766cbdb225584f0ba923e2cd5097f460c4fe53f396106e",
+    "sprites/tecnico_wombat/sano/quieto/quieto_02.png": "7bfd687b1baa13be9fb02414178c53e5dc7306f7700c359b3681300ab74504b4",
+    "sprites/tecnico_wombat/sano/quieto/quieto_03.png": "e2d3489847cf1a4cbb99e8cf1fad79bc18fd3967c036b824ad4c8c7ec39f1851",
+    "sprites/tecnico_wombat/sano/quieto/quieto_04.png": "ed4352ba66fb2903542d3c88a08f811163e60ebcdfb24b5ff865031930028608",
+    "sprites/tecnico_wombat/sano/quieto/quieto_05.png": "85e0946af85be531ec11c7ac02e812aaf8200ec34cb3421483dcefa8836c12a8",
+    "sprites/tecnico_wombat/sano/quieto/quieto_06.png": "755e5cf664b4d350270843bf946789ba62c564e2c15a5e529939ce8eb0eda741",
+    "sprites/tecnico_wombat/sano/quieto/quieto_07.png": "0e8f2de3abaa785964e9b54b411ae36777ff87d8ee4b7b57ae2135e085067269",
+    "sprites/tecnico_wombat/sano/quieto/quieto_08.png": "714d4b1fcf5655aede38e62c2ade97cb92141d5f68b4bc424c3daec3eabae153",
+    "sprites/tecnico_wombat/sano/caminar/caminar_01.png": "a59910eb2e8b258760fa21c13403ba4a9a26b603f038e7143416522d4bfddb31",
+    "sprites/tecnico_wombat/sano/caminar/caminar_02.png": "a250c3a271bfb532df9014bb0e878c5fc7fd23305ebed8c7632546a65d39f1a4",
+    "sprites/tecnico_wombat/sano/caminar/caminar_03.png": "eaa8fe84e251d1ccc642b9645f70bdf63cb1e9f8168d0ed0397ceadcd91bb956",
+    "sprites/tecnico_wombat/sano/caminar/caminar_04.png": "ac22c9e66001701aad7122809455e22b2d1eb4f4c7eaa5b84361681d97ba888a",
+    "sprites/tecnico_wombat/sano/caminar/caminar_05.png": "f94acb20cc02eaed7f51ac570a01efae41bd5190a41280bcd18a2de00adf003f",
+    "sprites/tecnico_wombat/sano/caminar/caminar_06.png": "9fd5a72d1317ff29e5e18f0e297b03a24caabc796cfa60af982ce48df910b476",
+    "sprites/tecnico_wombat/sano/caminar/caminar_07.png": "7a583a9563fa784ee262035a96f1ef7b8be0219bf79dd5560de6f8916e55e17a",
+    "sprites/tecnico_wombat/sano/caminar/caminar_08.png": "462bdb1b3369ee2908759bf06ea2767b5742ef4acb38b930a5d620afdfdf6bdb",
+    "sprites/tecnico_wombat/sano/salto_inicio/salto_inicio_01.png": "4d3e89d62f17c2fda61102e61d94f59b7820473f45361f7590229703c710bf29",
+    "sprites/tecnico_wombat/sano/salto_inicio/salto_inicio_02.png": "2c82472f694b0f8e56a5b6bba2487fbd556c9bfb4743ad2202a646dbcb2915ac",
+    "sprites/tecnico_wombat/sano/salto_inicio/salto_inicio_03.png": "1baa3f697193ff5ba1235d382fd70fc079e4c2b037700ddf6a2444c086f8cdae",
+    "sprites/tecnico_wombat/sano/salto_aire/salto_aire_01.png": "417baa4f324973c1cf5c941075224abe664ca0de2494516c169647ca73f99984",
+    "sprites/tecnico_wombat/sano/salto_aire/salto_aire_02.png": "66dbec6745a2edcfaae0ca543818cf18e8c3f91a9e45863b2aec80559b3e4942",
+    "sprites/tecnico_wombat/sano/doble_salto/doble_salto_01.png": "7d7e69f9bdfa9594d119632f4426c5eca8e4090555079344e853693fcb1e2d99",
+    "sprites/tecnico_wombat/sano/doble_salto/doble_salto_02.png": "b9d5986dff43f2f7d22b05b9a51bc87b02ee544542dfe78d6e638459f8b7a5e9",
+    "sprites/tecnico_wombat/sano/doble_salto/doble_salto_03.png": "93d1833ccbf77faacdb8bf5d7c40d451b3a55cc8efb714e6fea67a9b8cc28b7e",
+    "sprites/tecnico_wombat/sano/doble_salto/doble_salto_04.png": "b16b19714824be4fcfbb85ee1b069773e3e8a97a733e6f2cd75abdd2d318a4ed",
+    "sprites/tecnico_wombat/sano/doble_salto/doble_salto_05.png": "367807837b0cad04f48a63c7df274052ff3f19aa7b5fd5ddec62997bc55e2e45",
+    "sprites/tecnico_wombat/sano/caer/caer_01.png": "ad171aa9dfa8ec5d592cfafe6472b908e61f03d3c6ff7832cec21e6035a47043",
+    "sprites/tecnico_wombat/sano/caer/caer_02.png": "fe523bef330183586095cd185b79c149c937e837eb7e817d7ec17560c680649f",
+    "sprites/tecnico_wombat/sano/aterrizar/aterrizar_01.png": "f49e03b3a44d2dfa08c4659ce081823c509c055eb37290e6dc726a7b0cc3125c",
+    "sprites/tecnico_wombat/sano/aterrizar/aterrizar_02.png": "589ed3b8cf1a4d5643dc26dfb1763544c38b1d916a0effa73430c5589b340193",
+    "sprites/tecnico_wombat/sano/aterrizar/aterrizar_03.png": "38105595b929fd717e76c780f02116e610c723b2e173d8c1962e0b61a2602c4e",
+    "sprites/tecnico_wombat/sano/esquivar/esquivar_01.png": "7f164ab8faa497178d5aceda8babd4d4a2c80f93ce59292f4db249a233257380",
+    "sprites/tecnico_wombat/sano/esquivar/esquivar_02.png": "1da5373cc4023060065fde3fb9ee7c786f8b7df5241495d081b3a572eeca469a",
+    "sprites/tecnico_wombat/sano/esquivar/esquivar_03.png": "7c6d4612145e680a6bcf5e211dc55002884daaa25f41a3b63a97c82baf002419",
+    "sprites/tecnico_wombat/sano/esquivar/esquivar_04.png": "57b5b483cf5eee414d7d6c4df6b2f639ea06367e1fd20790e1b0a275e3414a86",
+    "sprites/tecnico_wombat/sano/esquivar/esquivar_05.png": "820aa482f75be66c3005eeeed20f87ba74551c860e6a5a40dcd530e4379be23e",
+    "sprites/tecnico_wombat/sano/esquivar/esquivar_06.png": "89acf03a1ff6b155fbdcb667fa7fb1971f5e8aa0db7d3e7e63c560442a25823c"
+  }
+}
