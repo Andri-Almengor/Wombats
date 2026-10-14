@@ -1,0 +1,339 @@
+{
+  "file": "candidate-atlas.png",
+  "width": 512,
+  "height": 384,
+  "status": "review-only",
+  "reason": "Run cycle does not alternate the supporting legs convincingly.",
+  "clips": {
+    "idle": {
+      "fps": 4,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "y": 0,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "locomotion-attempt-1.png",
+          "sourceRect": [
+            20,
+            10,
+            380,
+            345
+          ],
+          "sourceOrigin": [
+            195,
+            336
+          ],
+          "scale": 0.3
+        },
+        {
+          "x": 128,
+          "y": 0,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "locomotion-attempt-1.png",
+          "sourceRect": [
+            395,
+            10,
+            770,
+            345
+          ],
+          "sourceOrigin": [
+            577,
+            336
+          ],
+          "scale": 0.3
+        },
+        {
+          "x": 256,
+          "y": 0,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "locomotion-attempt-1.png",
+          "sourceRect": [
+            780,
+            10,
+            1150,
+            345
+          ],
+          "sourceOrigin": [
+            963,
+            336
+          ],
+          "scale": 0.3
+        },
+        {
+          "x": 384,
+          "y": 0,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "locomotion-attempt-1.png",
+          "sourceRect": [
+            1165,
+            10,
+            1536,
+            345
+          ],
+          "sourceOrigin": [
+            1345,
+            336
+          ],
+          "scale": 0.3
+        }
+      ]
+    },
+    "walk": {
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "walk-attempt-2.png",
+          "sourceRect": [
+            0,
+            90,
+            545,
+            630
+          ],
+          "sourceOrigin": [
+            285,
+            618
+          ],
+          "scale": 0.1875
+        },
+        {
+          "x": 128,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "walk-attempt-2.png",
+          "sourceRect": [
+            545,
+            90,
+            1090,
+            630
+          ],
+          "sourceOrigin": [
+            830,
+            618
+          ],
+          "scale": 0.1875
+        },
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "walk-attempt-2.png",
+          "sourceRect": [
+            1090,
+            90,
+            1635,
+            630
+          ],
+          "sourceOrigin": [
+            1375,
+            618
+          ],
+          "scale": 0.1875
+        },
+        {
+          "x": 384,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "walk-attempt-2.png",
+          "sourceRect": [
+            1635,
+            90,
+            2172,
+            630
+          ],
+          "sourceOrigin": [
+            1920,
+            618
+          ],
+          "scale": 0.1875
+        }
+      ]
+    },
+    "run": {
+      "fps": 10,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "y": 256,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "locomotion-attempt-1.png",
+          "sourceRect": [
+            10,
+            680,
+            405,
+            1000
+          ],
+          "sourceOrigin": [
+            220,
+            989
+          ],
+          "scale": 0.3
+        },
+        {
+          "x": 128,
+          "y": 256,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "locomotion-attempt-1.png",
+          "sourceRect": [
+            405,
+            680,
+            785,
+            1000
+          ],
+          "sourceOrigin": [
+            601,
+            989
+          ],
+          "scale": 0.3
+        },
+        {
+          "x": 256,
+          "y": 256,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "locomotion-attempt-1.png",
+          "sourceRect": [
+            785,
+            680,
+            1175,
+            1000
+          ],
+          "sourceOrigin": [
+            994,
+            989
+          ],
+          "scale": 0.3
+        },
+        {
+          "x": 384,
+          "y": 256,
+          "width": 128,
+          "height": 128,
+          "pivot": [
+            64,
+            112
+          ],
+          "socket": [
+            98,
+            32
+          ],
+          "source": "locomotion-attempt-1.png",
+          "sourceRect": [
+            1175,
+            680,
+            1536,
+            1000
+          ],
+          "sourceOrigin": [
+            1367,
+            989
+          ],
+          "scale": 0.3
+        }
+      ]
+    }
+  }
+}

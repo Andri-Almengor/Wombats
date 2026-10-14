@@ -2,6 +2,7 @@
 import {SpriteAssetManager,manifest} from './player/SpriteAssetManager.mjs';
 import {PlayerVisualState,SPELL_ACTIONS,healthVariant,locomotion} from './player/PlayerVisualState.mjs';
 import {PlayerSpriteRenderer} from './player/PlayerSpriteRenderer.mjs';
+import {candidateRequested,preloadCandidate,candidateFrame} from './player/CandidatePreview.mjs';
 const assets=new SpriteAssetManager({base:import.meta.env?.BASE_URL||'/'});
 const states=new WeakMap(),renderer=new PlayerSpriteRenderer();
 let loading=false;
@@ -9,7 +10,7 @@ export function legacyWombatRequested(){
  if(typeof window==='undefined')return false;
  try{return new URLSearchParams(window.location.search).get('wombatRender')==='legacy'||window.localStorage?.getItem('wombat:render')==='legacy';}catch{return false;}
 }
-export function preloadWombatSprites(){if(typeof Image==='undefined'||legacyWombatRequested())return;if(!loading){loading=true;return assets.preload();}return assets.preload();}
+export function preloadWombatSprites(){if(typeof Image==='undefined'||legacyWombatRequested())return;if(!loading){loading=true;preloadCandidate();}return assets.preload();}
 export const wombatSpriteStatus=()=>assets.entries.sano.status;
 export const extraWombatSpriteStatus=wombatSpriteStatus;
 export function selectWombatAnimation(p,mode='playing'){
@@ -28,6 +29,7 @@ export function updateWombatVisual(p,t,mode='playing',visualDt){
  const controller=state.visual.update(p,mode,dt);
  const source=assets.resolve(healthVariant(p),controller.action);
  if(source){state.frame=source.clip.frames[controller.frameIndex(source.clip)];state.image=source.image;renderer.socket(p,state.frame,state.socket);}else{state.frame=null;state.image=null;}
+ if(candidateRequested()){const candidate=candidateFrame(controller);if(candidate){state.frame=candidate.frame;state.image=candidate.image;renderer.socket(p,state.frame,state.socket);}}
  return state;
 }
 export function getWombatSocket(p){return states.get(p)?.frame?states.get(p).socket:null;}
