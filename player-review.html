@@ -1,12 +1,12 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WOMBAT — revisión visual</title>
 <style>body{font:16px system-ui;background:#17222c;color:#f3e6c9;margin:24px;max-width:1100px}h1{font-size:25px}label,button,a{margin:8px;display:inline-block}button,select{font:inherit;padding:8px}a{color:#a6e2ff}canvas{width:100%;image-rendering:pixelated;border:1px solid #69808c}small{display:block;margin:10px}strong{color:#ffce84}</style></head><body>
 <h1>Técnico Wombat · comparación de animaciones</h1>
-<p><strong>Candidatos NO aprobados.</strong> La primera hoja no alterna bien las piernas al correr. Esta vista permite revisar el fallo sin sustituir el arte activo.</p>
+<p><strong>Versión jugable preliminar.</strong> La primera hoja no alterna bien las piernas al correr. El juego normal ya utiliza este lote; esta vista permite compararlo con el anterior.</p>
 <label>Acción <select id="action"><option>idle</option><option>walk</option><option>run</option></select></label>
 <button id="pause">Pausar</button><button id="next">Siguiente fotograma candidato</button><button id="mirror">Mirar a la izquierda</button>
 <label><input type="checkbox" id="guides" checked> Mostrar apoyo e hitbox</label>
 <canvas id="review" width="1000" height="480"></canvas>
 <small id="status" role="status">Cargando PNG…</small>
-<p><a href="./?wombatRender=candidate">Probar candidatos en el juego</a> · <a href="./">Juego con sprites actuales</a></p>
+<p><a href="./">Jugar con los sprites nuevos</a> · <a href="./?wombatRender=rebuilt">Comparar con sprites anteriores</a></p>
 <p>En el modo candidato solo cambian idle/walk/run; saltos, hechizos y variantes completas siguen pendientes. No es una versión final.</p>
 <script type="module" src="/src/player/review.mjs"></script></body></html>

@@ -20,7 +20,7 @@ try{
  await page.getByRole('button',{name:'Mirar a la izquierda'}).click();
  await page.locator('canvas').screenshot({path:new URL('mirrored.png',out).pathname});
  // Exercise the same real Canvas adapter used by the game, not a mocked renderer.
- await page.goto(base+'?wombatRender=candidate');
+ await page.goto(base);
  const used=await page.evaluate(async()=>{
   const {preloadCandidate}=await import('/Wombats/src/player/CandidatePreview.mjs');
   const {preloadWombatSprites,updateWombatVisual}=await import('/Wombats/src/wombat-sprites.mjs');
@@ -29,6 +29,11 @@ try{
   const p={...freshPlayer(),grounded:true};const s=updateWombatVisual(p,0);
   return {image:s.image.src,pivot:s.frame.pivot};
  });assert.ok(used.image.endsWith('/candidate-atlas.png'));assert.deepEqual(used.pivot,[64,112]);
+ const states=await page.evaluate(async()=>{
+  const {freshPlayer}=await import('/Wombats/src/engine.mjs');
+  const {updateWombatVisual}=await import('/Wombats/src/wombat-sprites.mjs');
+  return [0,150,310].map(vx=>{const p={...freshPlayer(),grounded:true,vx};const s=updateWombatVisual(p,0);return [s.visual.controller.action,s.image.src.endsWith('/candidate-atlas.png')];});
+ });assert.deepEqual(states,[['idle',true],['walk',true],['run',true]]);
  await page.getByRole('button',{name:/Comenzar aventura/}).click();
  await page.waitForTimeout(1500);await page.keyboard.down('ArrowRight');await page.waitForTimeout(300);await page.keyboard.up('ArrowRight');
  await page.screenshot({path:new URL('candidate-in-game.png',out).pathname});
@@ -39,5 +44,12 @@ try{
   const {freshPlayer}=await import('/Wombats/src/engine.mjs');
   await Promise.all([preloadCandidate(),preloadWombatSprites()]);return updateWombatVisual({...freshPlayer(),grounded:true},0).image.src;
  });assert.ok(fallback.endsWith('/rebuilt/sano.png'));
+ await page.unroute('**/candidates/*');
+ await page.goto(base+'?wombatRender=rebuilt');
+ const previous=await page.evaluate(async()=>{
+  const {preloadWombatSprites,updateWombatVisual}=await import('/Wombats/src/wombat-sprites.mjs');
+  const {freshPlayer}=await import('/Wombats/src/engine.mjs');await preloadWombatSprites();
+  return updateWombatVisual({...freshPlayer(),grounded:true},0).image.src;
+ });assert.ok(previous.endsWith('/rebuilt/sano.png'));
  assert.deepEqual(errors,[]);console.log('Candidate review: playback, mirroring, actual game adapter and failed-asset fallback pass. Artistic acceptance remains BLOCKED.');
 }finally{await browser?.close();await server.close();}

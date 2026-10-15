@@ -1,8 +1,8 @@
 # Revisión del protagonista después del PR #8
 
-**Estado: NO APROBADO para sustituir los sprites de producción.** Este PR es
-un borrador de trabajo con implementación de revisión y evidencia, no una
-declaración de que los glitches del juego están resueltos.
+**Estado: versión jugable preliminar, habilitada por petición del usuario.**
+Idle, caminar y correr usan el atlas nuevo por defecto. La revisión artística
+sigue pendiente: esta activación no declara resueltos todos los glitches.
 
 Base: `df126151f669ed5d446ab31e4e5d54633b6f7b29` (PR #8 fusionado).
 No se modifica física, hitboxes, controles, daño, maná ni cooldown.
@@ -49,10 +49,12 @@ El atlas de revisión tiene 12 cuadros: 4 idle, 4 walk y 4 run. Esto **no signif
 
 La ruta `player-review.html` compara producción/candidato sobre fondo de
 contraste, permite pausar, avanzar cuadros y reflejar. Usa el renderizador real.
-El enlace `?wombatRender=candidate` permite probar el mismo atlas dentro del
-juego, solo para idle/walk/run. Las demás acciones usan producción, por lo que
-habrá cambios de estilo: esta modalidad es exclusivamente diagnóstica.
-Sin ese parámetro no se descargan ni se usan los candidatos. Si falla su carga,
+El juego normal usa el mismo atlas para idle/walk/run, sin parámetros.
+El enlace `?wombatRender=candidate` sigue siendo compatible. Las demás acciones usan producción, por lo que
+habrá cambios de estilo en esta versión preliminar. Las variantes de salud de
+estas tres acciones comparten por ahora el arte nuevo; las demás mantienen su
+selección anterior. `?wombatRender=rebuilt` permite comparar con el atlas anterior.
+Si falla la carga del atlas nuevo,
 se conserva el sprite actual. El fallback procedural anterior sigue disponible.
 
 ## Reproducción
@@ -85,5 +87,5 @@ las capturas individuales de las dos baterías en `player-animation-review`.
 
 Falta un ciclo run con apoyos alternados y revisión visual satisfactoria del lote
 completo; posteriormente faltan salto, caída, aterrizaje, dash, daño, muerte,
-hechizos y variantes de salud con la nueva identidad. No se activa el lote por
-defecto ni se recomienda fusionar este borrador como solución final.
+hechizos y variantes de salud con la nueva identidad. El lote se activa para jugar por autorización expresa;
+no debe confundirse esta activación con una aprobación artística final.

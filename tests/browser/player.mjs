@@ -66,7 +66,7 @@ try{
  assert.equal(result.deathFrame,9);assert.equal(result.restart,'idle');assert.ok(result.victoryFrame>0);
  await page.locator('#engine-review').screenshot({path:new URL('victory.png',out).pathname});
  // Network failures use the procedural renderer, never an incomplete image.
- const failed=await browser.newPage();await failed.route('**/assets/sprites/wombat/rebuilt/*.png',r=>r.abort());await failed.goto(base);
+ const failed=await browser.newPage();await failed.route('**/assets/sprites/wombat/**/*.png',r=>r.abort());await failed.goto(base);
  const fallback=await failed.evaluate(async()=>{const api=await import('/Wombats/src/wombat-sprites.mjs');await api.preloadWombatSprites();const {freshPlayer}=await import('/Wombats/src/engine.mjs');const c=document.createElement('canvas').getContext('2d');return {status:api.wombatSpriteStatus(),drawn:api.drawWombatSprite(c,freshPlayer(),0)};});assert.deepEqual(fallback,{status:'error',drawn:false});await failed.close();
  assert.deepEqual(errors,[]);console.log(JSON.stringify({browser:browser.version(),...atlasResult,...result,fallback,errors},null,2));
 }finally{await browser.close();await server.close();}

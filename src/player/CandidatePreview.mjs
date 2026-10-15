@@ -1,6 +1,10 @@
-// Opt-in diagnostic only. Rejected poses must never replace production assets.
+// Playable preview enabled by request; artistic review is still pending.
 let image=null, data=null, pending=null;
-const enabled=typeof window!=='undefined'&&new URLSearchParams(window.location.search).get('wombatRender')==='candidate';
+export function useCandidate(search=''){
+ const mode=new URLSearchParams(search).get('wombatRender');
+ return mode!=='rebuilt'&&mode!=='legacy';
+}
+const enabled=typeof window!=='undefined'&&useCandidate(window.location.search);
 export function candidateRequested(){
  return enabled;
 }
