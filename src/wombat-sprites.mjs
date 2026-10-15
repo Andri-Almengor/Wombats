@@ -10,7 +10,7 @@ export function legacyWombatRequested(){
  if(typeof window==='undefined')return false;
  try{return new URLSearchParams(window.location.search).get('wombatRender')==='legacy'||window.localStorage?.getItem('wombat:render')==='legacy';}catch{return false;}
 }
-export function preloadWombatSprites(){if(typeof Image==='undefined'||legacyWombatRequested())return;if(!loading){loading=true;preloadCandidate();}return assets.preload();}
+export function preloadWombatSprites(){if(typeof Image==='undefined'||legacyWombatRequested())return;loading=true;return Promise.all([assets.preload(),preloadCandidate()]);}
 export const wombatSpriteStatus=()=>assets.entries.sano.status;
 export const extraWombatSpriteStatus=wombatSpriteStatus;
 export function selectWombatAnimation(p,mode='playing'){

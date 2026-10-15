@@ -2,10 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {PNG} from 'pngjs';
-import {candidateRequested,preloadCandidate,candidateFrame} from '../src/player/CandidatePreview.mjs';
+import {candidateRequested,preloadCandidate,candidateFrame,useCandidate} from '../src/player/CandidatePreview.mjs';
 const root=new URL('../public/assets/sprites/wombat/candidates/',import.meta.url);
 const data=JSON.parse(readFileSync(new URL('manifest.json',root)));
-test('unapproved art is not loaded or substituted by default',async()=>{
+test('playable preview is default with explicit previous/procedural opt-outs',()=>{
+ assert.equal(useCandidate(''),true);assert.equal(useCandidate('?wombatRender=candidate'),true);
+ assert.equal(useCandidate('?wombatRender=rebuilt'),false);assert.equal(useCandidate('?wombatRender=legacy'),false);
+});
+test('server-side use never attempts to load browser images',async()=>{
  assert.equal(candidateRequested(),false);assert.equal(await preloadCandidate(),false);
  assert.equal(candidateFrame({action:'walk'}),null);assert.equal(data.status,'review-only');
 });
